@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {url} from '../lib/paths';
+---
+<BaseLayout title="Page not found">
+<section class="wrap page-header error-page">
+<p class="eyebrow">404 / OUTSIDE THE BLUEPRINT</p>
+<h1>A small<br/>
+<span>detour.</span>
+</h1>
+<p>This page doesn't exist. Let's get you back to the work.</p>
+<a class="button primary" href={url('/')}>Back home →</a>
+</section>
+</BaseLayout>

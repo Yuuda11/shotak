@@ -1,0 +1,12 @@
+---
+import type {education} from '../data/profile';
+interface Props {item:(typeof education)[number];}
+const {item}=Astro.props;
+---
+<article class="education-card surface" data-reveal>
+<span class="education-mark">{item.mark}</span>
+<p class="eyebrow">{item.date}</p>
+<h3>{item.school}</h3>
+<p class="degree">{item.degree}</p>
+<p>{item.detail}</p>
+</article>

@@ -1,0 +1,22 @@
+---
+import {experience} from '../data/profile';
+import Icon from './Icon.astro';
+---
+<div class="timeline">{experience.map((item,i)=>
+<details class="experience" open={i===0} data-reveal>
+<summary>
+<span class="timeline-dot">
+</span>
+<span class="experience-date">{item.date}{item.location&&<small>{item.location}</small>}</span>
+<span class="experience-main">
+<span class="experience-company">{item.company}</span>
+<span>{item.role}</span>
+<small>{item.focus}</small>
+</span>
+<span class="expand-icon">
+<Icon name="plus"/>
+</span>
+</summary>
+<ul>{item.points.map(point=>
+<li>{point}</li>)}</ul>
+</details>)}</div>

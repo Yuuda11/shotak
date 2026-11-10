@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCard from '../components/ContactCard.astro';
+import {site,resumeAvailable} from '../data/site';
+import {url} from '../lib/paths';
+---
+<BaseLayout title="Contact">
+<div class="wrap contact-page">
+<header class="page-header">
+<p class="eyebrow">a conversation is a good place to start</p>
+<h1>let's connect.
+</h1>
+<p>Interested in engineering, hardware development, manufacturing, or new technologies? I'd love to hear from you.</p>
+</header>
+<div class="contact-grid">
+<ContactCard href={site.linkedin} label="01 / LinkedIn" value="Shota Kakiuchi" icon="linkedin" external/>
+{resumeAvailable&&<ContactCard href={url('/resume/')} label="02 / resume" value="view my resume" icon="download"/>}{site.github&&<ContactCard href={site.github} label="03 / GitHub" value="explore my code" external/>}</div>
+<p class="contact-note">Hardware, research, or a new perspective. Always happy to connect.</p>
+</div>
+</BaseLayout>

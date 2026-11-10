@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PdfPreview from '../../components/PdfPreview.astro';
+import {projectDocuments} from '../../data/documents';
+import {url} from '../../lib/paths';
+export function getStaticPaths(){ return Object.entries(projectDocuments).map(([slug,document])=>({params:{slug},props:{document}})); }
+const {document}=Astro.props;
+---
+<BaseLayout title={document.title} description={document.description}>
+  <article class="wrap document-page">
+    <a class="back-link" href={url('/projects/rocket-airbrake/#report-poster')}>← rocket case study</a>
+    <header class="page-header document-header"><p class="eyebrow">team project document · {document.pages} {document.pages===1?'page':'pages'}</p><h1>{document.title}</h1><p>{document.description}</p></header>
+    <PdfPreview title={document.title} file={document.file} preview={document.preview}/>
+  </article>
+</BaseLayout>

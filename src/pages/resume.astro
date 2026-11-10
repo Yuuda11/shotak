@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PdfPreview from '../components/PdfPreview.astro';
+import {resumeAvailable,resumePath} from '../data/site';
+---
+<BaseLayout title="Resume" description="Read Shota Kakiuchi’s resume, with browser PDF preview and a separate download option.">
+  <div class="wrap document-page">
+    <header class="page-header"><p class="eyebrow">experience, on paper</p><h1>resume.</h1></header>
+    {resumeAvailable ? <PdfPreview title="Shota Kakiuchi’s resume" file={resumePath} preview="/images/resume-preview.webp" previewAlt="First page of Shota Kakiuchi’s resume; open the PDF for readable text and the complete document"/> : <p>The resume PDF is not available. Please get in touch for a copy.</p>}
+  </div>
+</BaseLayout>

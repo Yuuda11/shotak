@@ -1,0 +1,19 @@
+---
+import Portrait from './Portrait.astro';
+import Icon from './Icon.astro';
+import {site,resumeAvailable} from '../data/site';
+import {url} from '../lib/paths';
+---
+<aside class="business-card" aria-label="Shota Kakiuchi personal business card" data-reveal>
+  <div class="business-top"><a class="logo" href={url('/')} aria-label="Shota Kakiuchi home">SK<span>.</span></a><span class="mini-label">a little introduction</span></div>
+  <div class="business-identity">
+    <div class="business-portrait"><Portrait/></div>
+    <div><h2>Shota Kakiuchi</h2><p>Mechanical Engineer /<br/>Hardware &amp; Systems</p></div>
+  </div>
+  <div class="business-education"><span class="mini-label">currently</span><p>Columbia University<br/>M.S. Mechanical Engineering, 2027</p></div>
+  <div class="business-focus"><span class="mini-label">focus</span><p>hardware / optics / manufacturing / controls</p></div>
+  <div class="business-links">
+    <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <Icon name="arrow"/></a>
+    {resumeAvailable&&<a class="business-resume" href={url('/resume/')}>view resume <Icon name="download"/></a>}
+  </div>
+</aside>

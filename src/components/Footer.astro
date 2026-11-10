@@ -1,0 +1,17 @@
+---
+import {site} from '../data/site';
+import {url} from '../lib/paths';
+---
+<footer class="footer wrap">
+<div>
+<a class="logo" href={url('/')}>SK<span>.</span>
+</a>
+<p>Thoughtfully engineered.</p>
+</div>
+<div class="footer-right">
+<div>
+<a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+{site.github&&<a href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}</div>
+<p>© {new Date().getFullYear()} Shota Kakiuchi</p>
+</div>
+</footer>

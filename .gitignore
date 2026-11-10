@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+
+# Local secrets, credentials and disposable outputs
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+secrets*
+.aws/
+.codex/
+.venv/
+venv/
+tmp/
+temp/
+*.tmp
+*.swp
+artifacts/screenshots/*-window.png
+
+checkpoints/*.bundle

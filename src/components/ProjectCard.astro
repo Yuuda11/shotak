@@ -1,0 +1,27 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import {url} from '../lib/paths';
+import Icon from './Icon.astro';
+interface Props { project: CollectionEntry<'projects'>; }
+const {project}=Astro.props;
+const p=project.data;
+const tags=(p.previewTools ?? p.tools).slice(0,5);
+const illustration=p.illustration;
+const mediaLabel=illustration?'concept illustration':{concept:'concept illustration',diagram:'functional diagram',photo:'project photograph',cad:'project CAD',platform:'Mini Pupper platform'}[p.mediaKind];
+---
+<article class="project-card" data-project={project.id} data-media-kind={illustration?'concept':p.mediaKind} data-categories={p.filters.join(' ')} data-reveal>
+  <a href={url(`/projects/${project.id}/`)} class="project-card-link" aria-labelledby={`title-${project.id}`}>
+    <div class="project-art">
+      <img src={url(illustration?.src ?? p.cover)} alt={illustration?.alt ?? p.coverAlt} width="800" height="500" loading="lazy"/>
+      <span class="project-open"><Icon/></span>
+      <span class="art-caption">{mediaLabel}</span>
+    </div>
+    <div class="project-copy">
+      <div class="project-meta"><span>{p.category}</span>{p.projectStatus&&<span class="project-status">{p.projectStatus}</span>}{p.year&&<span>{p.year}</span>}</div>
+      <h3 id={`title-${project.id}`}>{p.title}</h3>
+      <p>{p.summary}</p>
+      {p.cardNote&&<p class="project-evidence">{p.cardNote}</p>}
+      {tags.length>0&&<div class="tags">{tags.map(tag=><span>{tag}</span>)}</div>}
+    </div>
+  </a>
+</article>

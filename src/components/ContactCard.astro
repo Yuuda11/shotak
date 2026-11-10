@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+interface Props{href?:string;label:string;value:string;icon?:string;external?:boolean;download?:boolean;}
+const {href,label,value,icon='arrow',external=false,download=false}=Astro.props;const Tag=href?'a':'div';
+---
+<Tag class:list={['contact-card','surface',!href&&'unavailable']} href={href} target={external?'_blank':undefined} rel={external?'noopener noreferrer':undefined} download={download||undefined} data-reveal>
+<span class="contact-icon">
+<Icon name={icon}/>
+</span>
+<p class="eyebrow">{label}</p>
+<h2>{value}</h2>{href?<span class="card-arrow">
+<Icon/>
+</span>:<span class="mini-label">available soon</span>}</Tag>

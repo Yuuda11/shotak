@@ -1,0 +1,32 @@
+---
+import {getCollection} from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+const projects=(await getCollection('projects',({data})=>data.status==='published')).sort((a,b)=>a.data.order-b.data.order);
+const filters=['All','Hardware','Manufacturing','Controls','Research'];
+---
+<div class="project-gallery">
+<div class="filters" aria-label="Filter projects" role="group" hidden>{filters.map((filter,i)=>
+<button type="button" data-filter={filter} aria-pressed={i===0}>{filter==='All'?'all':filter}<span>{filter==='All'?String(projects.length).padStart(2,'0'):''}</span>
+</button>)}</div>
+<p class="sr-only" role="status" id="filter-status">
+</p>
+<div class="project-grid">{projects.map(project=>
+<ProjectCard project={project}/>)}
+</div>
+<div class="empty-state surface" hidden>
+<h3>More research to come.</h3>
+<p>No published projects in this category yet. Explore the other categories in the meantime.</p>
+</div>
+</div>
+<script>
+ document.querySelectorAll<HTMLElement>('.project-gallery').forEach(gallery=>{
+ gallery.querySelector<HTMLElement>('.filters')!.hidden=false;
+ gallery.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
+ const filter=button.dataset.filter!;let count=0;
+ gallery.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+ gallery.querySelectorAll<HTMLElement>('[data-categories]').forEach(card=>{const show=filter==='All'||card.dataset.categories!.split(' ').includes(filter);card.hidden=!show;if(show){count++;card.classList.add('is-visible');}});
+ gallery.querySelector<HTMLElement>('.empty-state')!.hidden=count!==0;
+ gallery.querySelector<HTMLElement>('#filter-status')!.textContent=`${count} ${count===1?'project':'projects'} shown${filter==='All'?'':` in ${filter}`}.`;
+ }));
+ });
+</script>

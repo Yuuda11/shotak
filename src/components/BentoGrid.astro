@@ -1,0 +1,58 @@
+---
+import BentoCard from './BentoCard.astro';
+import Portrait from './Portrait.astro';
+import Icon from './Icon.astro';
+import {url} from '../lib/paths';
+import {site} from '../data/site';
+---
+<div class="bento-grid">
+ <BentoCard href={url('/about/')} class="bento-about" label="01 / THE ENGINEER">
+<h3>Curious by nature.<br/>Engineer by training.</h3>
+<p>I'm a mechanical engineering graduate student at Columbia, interested in how thoughtful engineering turns ideas into physical systems.</p>
+<span class="text-link">A little about me</span>
+</BentoCard>
+ <BentoCard href={url('/about/#education')} class="bento-education" label="02 / EDUCATION">
+<div class="school-symbol" aria-hidden="true">♔</div>
+<h3>Columbia<br/>University</h3>
+<p>M.S. Mechanical Engineering</p>
+<span class="mini-label">EXPECTED MAY 2027</span>
+</BentoCard>
+ <BentoCard class="bento-portrait">
+<Portrait/>
+</BentoCard>
+ <BentoCard href={url('/about/#experience')} class="bento-experience" label="03 / EXPERIENCE">
+<h3>Ideas meet<br/>the real world.</h3>
+<div class="company-list">
+<span>Apple</span>
+<span>Medtronic</span>
+<span>Deloitte<span class="deloitte-dot">.</span>
+</span>
+</div>
+<p>Hardware. Manufacturing. Consulting.</p>
+</BentoCard>
+ <BentoCard href={url('/projects/rocket-airbrake/')} class="bento-featured" label="04 / FEATURED PROJECT">
+<img src={url('/images/projects/rocket.svg')} alt="" width="800" height="500" loading="lazy"/>
+<div class="featured-copy">
+<span class="mini-label">AVIONICS & CONTROLS</span>
+<h3>Altitude-Targeting<br/>Rocket System</h3>
+<span class="text-link">Explore the project</span>
+</div>
+</BentoCard>
+ <BentoCard href={url('/about/#expertise')} class="bento-focus" label="05 / ENGINEERING FOCUS">
+<div class="focus-orbit" aria-hidden="true">+</div>
+<h3>Across disciplines.<br/>Into the details.</h3>
+<div class="tags">
+<span>Optics</span>
+<span>Manufacturing</span>
+<span>Hardware</span>
+<span>Embedded Systems</span>
+</div>
+</BentoCard>
+ <BentoCard class="bento-connect" label="06 / CONNECT">
+<h3>Good work starts<br/>with a conversation.</h3>
+<div class="connect-links">
+<a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <Icon/>
+</a>
+</div>
+</BentoCard>
+</div>

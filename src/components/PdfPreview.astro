@@ -1,0 +1,17 @@
+---
+import {url} from '../lib/paths';
+import Icon from './Icon.astro';
+interface Props { title:string; file:string; preview?:string; previewAlt?:string; }
+const {title,file,preview,previewAlt=`First-page preview of ${title}`}=Astro.props;
+---
+<section class="pdf-preview" aria-label={title}>
+  <div class="pdf-actions">
+    <a class="button primary" href={url(file)} target="_blank" rel="noopener noreferrer">Open PDF <Icon name="arrow"/></a>
+    <a class="text-link" href={url(file)} download>Download PDF <Icon name="download"/></a>
+  </div>
+  <p class="pdf-help">Use Open PDF for the full document, browser zoom, and an accessible text view. A first-page image is shown on small screens where embedded PDF support varies.</p>
+  <object class="pdf-embed" data={`${url(file)}#view=FitH`} type="application/pdf" aria-label={`${title} PDF viewer`}>
+    <p>Your browser cannot display this PDF here. <a href={url(file)} target="_blank" rel="noopener noreferrer">Open the PDF in a new tab.</a></p>
+  </object>
+  {preview&&<a class="pdf-mobile-preview" href={url(file)} target="_blank" rel="noopener noreferrer" aria-label={`Open complete ${title} PDF`}><img src={url(preview)} alt={previewAlt} width="1800" height="2400" loading="eager"/></a>}
+</section>

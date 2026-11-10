@@ -1,0 +1,35 @@
+{
+  "mode": "built-in imagegen",
+  "reference": "public/images/projects/ecm.svg (original preserved)",
+  "jobs": [
+    {
+      "key": "rocket",
+      "prompt": "Use case: style-transfer. Create a portfolio cover matching the supplied ECM reference image's flat technical concept illustration visual language: thin muted blue-gray outlines, restrained pale gradients, very subtle evenly spaced grid, soft shading, generous negative space, pale pastel background. Simplified vector-like illustration, NOT photorealistic, NOT a 3D product render or detailed CAD. Landscape 3:2, central subject occupies about 55-60% of frame with ample margins. No text, labels, logos, dimensions, arrows, or watermark. This is representative concept artwork. Preserve quiet minimalism and consistent outline weights. Complete long slender high-powered rocket angled diagonally, pointed nose, cylindrical body approximately 20:1 body length to diameter, small aft fins. Clean smooth neutral blue-gray finish. Pale blue background. No exposed internal mechanisms, no airbrakes shown, no launch flames.",
+      "status": "Blocked by image tool; existing complete-rocket generated artwork retained"
+    },
+    {
+      "key": "chamber",
+      "prompt": "Use case: style-transfer. Create a portfolio cover matching the supplied ECM reference image's flat technical concept illustration visual language: thin muted blue-gray outlines, restrained pale gradients, very subtle evenly spaced grid, soft shading, generous negative space, pale pastel background. Simplified vector-like illustration, NOT photorealistic, NOT a 3D product render or detailed CAD. Landscape 3:2, central subject occupies about 55-60% of frame with ample margins. No text, labels, logos, dimensions, arrows, or watermark. This is representative concept artwork. Preserve quiet minimalism and consistent outline weights. Simplified box-shaped environmental chamber enclosure with a transparent pale front panel, small unmarked monitoring screen and one understated sensor symbol; no detailed internal mechanism. Pale sage background.",
+      "status": "generated",
+      "source": "/Users/shotak/.codex/generated_images/01a1c27c-bde5-73f0-a8d5-ca8ce8437f4c/exec-8e8cb07c-b766-40e8-8493-d3d05caf99bd.png"
+    },
+    {
+      "key": "gimbal",
+      "prompt": "Use case: style-transfer. Create a portfolio cover matching the supplied ECM reference image's flat technical concept illustration visual language: thin muted blue-gray outlines, restrained pale gradients, very subtle evenly spaced grid, soft shading, generous negative space, pale pastel background. Simplified vector-like illustration, NOT photorealistic, NOT a 3D product render or detailed CAD. Landscape 3:2, central subject occupies about 55-60% of frame with ample margins. No text, labels, logos, dimensions, arrows, or watermark. This is representative concept artwork. Preserve quiet minimalism and consistent outline weights. Simplified small camera module on a two-axis servo-mounted gimbal with a compact base and two understated articulated supports. No laser beam, faces or people. Pale blue background.",
+      "status": "generated",
+      "source": "/Users/shotak/.codex/generated_images/01a1c27c-bde5-73f0-a8d5-ca8ce8437f4c/exec-bf19d2e4-ebc1-4d95-a211-83b7f16cc39c.png"
+    },
+    {
+      "key": "mini-pupper",
+      "prompt": "Use case: style-transfer. Create a portfolio cover matching the supplied ECM reference image's flat technical concept illustration visual language: thin muted blue-gray outlines, restrained pale gradients, very subtle evenly spaced grid, soft shading, generous negative space, pale pastel background. Simplified vector-like illustration, NOT photorealistic, NOT a 3D product render or detailed CAD. Landscape 3:2, central subject occupies about 55-60% of frame with ample margins. No text, labels, logos, dimensions, arrows, or watermark. This is representative concept artwork. Preserve quiet minimalism and consistent outline weights. Simplified compact quadruped robot dog, box-shaped small body, four articulated legs, understated camera module; recognizable Mini Pupper-like proportions without branding or invented gripper. Pale sage background.",
+      "status": "generated",
+      "source": "/Users/shotak/.codex/generated_images/01a1c27c-bde5-73f0-a8d5-ca8ce8437f4c/exec-cf7aebb4-753b-4ca4-b71e-499d0d1d6b37.png"
+    },
+    {
+      "key": "rube-goldberg",
+      "prompt": "Use case: style-transfer. Create a portfolio cover matching the supplied ECM reference image's flat technical concept illustration visual language: thin muted blue-gray outlines, restrained pale gradients, very subtle evenly spaced grid, soft shading, generous negative space, pale pastel background. Simplified vector-like illustration, NOT photorealistic, NOT a 3D product render or detailed CAD. Landscape 3:2, central subject occupies about 55-60% of frame with ample margins. No text, labels, logos, dimensions, arrows, or watermark. This is representative concept artwork. Preserve quiet minimalism and consistent outline weights. A simple connected tabletop sequence of three abstract mechanisms: ball ramp, pivoting lever, and pulley. Minimal thin structural lines, one small ball, mechanically suggestive rather than a specific documented machine. Pale lavender background.",
+      "status": "generated",
+      "source": "/Users/shotak/.codex/generated_images/01a1c27c-bde5-73f0-a8d5-ca8ce8437f4c/exec-402a9ff2-4b4f-4852-a481-8b5e7fc70149.png"
+    }
+  ]
+}

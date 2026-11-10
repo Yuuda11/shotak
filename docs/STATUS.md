@@ -1,0 +1,76 @@
+# Project status and handoff
+
+Last updated: 2026-11-10.
+
+## Repository state
+
+The workspace has no root `.git` directory; ordinary Git status/history at the project root are unavailable. A separate checkpoint repository and verified portable bundle are documented at [checkpoints/README.md](../checkpoints/README.md). Latest known branch there: `main`.
+
+Relevant references:
+
+- `94228a8` — before technical cover refinement.
+- `48789c9` — technical cover refinement and production resume path fix.
+
+Documentation was committed as `1078224`. Subsequent implementation checkpoints are recorded below; inspect current history before editing.
+
+## Implemented and verified
+
+- Astro static site with TypeScript, Tailwind CSS 4, project Markdown collection, and GitHub Pages workflow.
+- White editorial layout, SK. mark, name-first hero, philosophy, responsive mobile menu, selected work, Projects filters, About business card, Contact, and six project case studies.
+- `/resume/` preview with real resume PDF, mobile first-page fallback, Open PDF, and separate Download PDF.
+- Rocket report and poster copied intact to `public/documents/` and linked through preview pages.
+- Rocket case study separates simulations, ground tests, flights, and team contribution. Existing airbrake CAD and report evidence remain in the case study.
+- ECM original SVG is preserved and active as its cover; four new projects use pale technical generated illustrations. Rocket cover uses the existing complete slender rocket illustration.
+- Latest verification before this documentation-only task: `npm run verify` passed Astro diagnostics, built 14 pages, checked 187 local links, required routes, drafts, all six listing illustrations, rocket evidence/document links, and resume viewer. GitHub Pages subpath check passed with temporary example variables.
+- Native Safari inspection covered desktop hero/project artwork/resume viewer and 390px Home, Projects, Resume, rocket case study, and document preview routes. All six project listing images loaded. Poster Open PDF opened Safari’s viewer. Mobile filtering and Escape/menu navigation were exercised.
+
+## Unfinished and known limitations
+
+- **Rocket cover styling:** built-in image generation rejected two attempts. Current complete, slender, generated cover replaces the airbrake CAD on listings, but does not yet match the ECM thin-outline style. Generate a matching full-rocket concept when image generation is available. Do not reuse the detailed mechanism as its listing image.
+- Separate rocket reference attachment was unavailable during the previous work; user may need to attach it again for accurate matching.
+- IMU model differs between report and poster. Public copy intentionally does not name a model until resolved.
+- Project-specific factual gaps (individual contributions, validation, dates, and technical stacks) are listed in [CONTENT_PROFILE.md](CONTENT_PROFILE.md) and the current project entries. Do not fill by inference.
+- Full keyboard-only audit, OS reduced-motion test, and cross-browser/mobile PDF behavior: **Not verified**.
+- Current 4321 development daemon and server restart behavior after these documentation changes: **Not verified**. The earlier final build passed.
+
+## Recommended next actions
+
+1. Resolve Git checkpoint access and commit the documentation work without overwriting any files; update checkpoint references here.
+2. Generate and visually verify the complete rocket cover in the ECM technical-illustration style when the image tool accepts it.
+3. Re-run `npm run verify` and inspect all six covers on desktop and at 390px after any asset changes.
+4. Ask Shota to resolve the report/poster IMU discrepancy and clarify only the project facts needed for future copy.
+5. Perform a fuller keyboard, reduced-motion, and browser PDF review when convenient.
+
+No deployment, publication, or remote push was performed.
+
+## Resumed visual refinement — 2026-11-10
+
+Checkpoint: `e988be5`. Chamber listing artwork updated to `chamber-spools.webp` from the approved screenshot; technology section now labels the screenshot stack as an initial architecture. DigitalOcean deployment and Home Assistant role remain unconfirmed. Rocket shortening was rejected by image generation and remains incomplete. No private proposal was accessed or added. Build verification is recorded in the completion message; new desktop/390px browser inspection remains Not verified until performed.
+
+Verification for this refinement: `npm run verify` passed with zero diagnostics, 14 pages and 187 links. Native Safari Projects desktop capture confirms the new chamber cover renders. A temporary same-origin browser harness checked Home and Projects at exactly 390px; both reported scrollWidth 390 and the new chamber asset reference. Harness removed afterward. Rocket clearance remains unresolved because its image edit was rejected. Private PDF audit: tracked PDFs are only the existing resume, rocket report and rocket poster; no proposal added. Screenshots: `artifacts/screenshots/chamber-refinement-desktop.png` and `chamber-refinement-mobile.png`.
+
+## Chamber engineering story — 2026-11-10
+
+Checkpoint: `63b5973`. Replaced the chamber's long table/narrative with one wide System architecture card and three supporting cards, in reading order: architecture, problem, hardware/sensing, monitoring/analysis. The five-stage pipeline is semantic text with horizontal arrows on desktop and a vertical flow on narrow screens. Existing `chamber-spools.webp` is reused as the case-study concept cover; no new artwork, photo, dashboard screenshot or private source was added.
+
+Public wording follows the owner's latest brief: drying/storage context, temperature/humidity observations, MQTT/Mosquitto, Node-RED JSON processing, InfluxDB time-series storage, Grafana, Docker/Portainer. Unconfirmed Home Assistant/hosting/part numbers and unsupported performance claims were removed. The established Undergraduate Research Fellow role remains; no new personal ownership claims were added.
+
+Verification: `npm run verify` passed (zero diagnostics, 14 pages, 187 links). Native Safari desktop and exact 390px iframe inspected: five stages present; content width 390, no horizontal overflow; architecture followed by problem/hardware/analysis cards; vertical arrows legible. Temporary browser harness removed. Screenshots: `artifacts/screenshots/chamber-story-desktop.png` and `chamber-story-mobile.png`.
+
+Remaining input: which sensing, software, container setup, data integration, dashboard, and chamber-design tasks Shota personally completed; any approved prototype photo or readable Grafana screenshot and its context. No suitable approved evidence image was found, so the case study is complete with the architecture flow. Deployment/validation status beyond the supplied in-development description remains unconfirmed.
+
+## Rocket framing completed — 2026-11-10
+
+Baseline/checkpoint: `9a0a7cd`. Owner explicitly authorized local pixel editing after image generation rejected the edit. Removed about 15% of total length from the cylindrical middle only; blended the join and repositioned the rocket/shadow. Existing nose, fins, width, diagonal angle, blue palette, HTML label and arrow remain. This resolves the earlier shortening/clearance blocker; a separate change to the illustration's overall style was not requested here.
+
+Verified in native Safari on both Home and Projects at desktop width and exact 390px iframe widths: label, tail shadow and arrow have clear separation. Both mobile documents reported content width 390. Screenshots saved as `artifacts/screenshots/rocket-framing-*.png`. Temporary review harness removed. `npm run verify` passed: zero diagnostics, 14 pages, 187 links, all required listing references and document checks. No deployment or push.
+
+## Supplied gimbal and Mini Pupper covers — 2026-11-10
+
+Checkpoint: `c87d423`. Active listing-cover metadata now points to permanent owner-supplied gimbal and Mini Pupper illustrations. Repository copies remove the baked lower-left caption and upper-right arrow, preserving the artwork while keeping `ProjectCard.astro` as the only rendered caption/arrow. The gimbal's wiring and the Mini Pupper's complete feet remain inside the source framing; documentary project photos and evidence remain only within their case studies.
+
+Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local links. Native Chrome review confirmed the active image paths, one HTML caption and one HTML arrow per card, and visible gimbal wiring/Mini Pupper feet on the desktop project collection. At exactly 390px, both the project collection and homepage had `scrollWidth` equal to `clientWidth` (390); the new Mini Pupper homepage cover loaded correctly. No deployment or push is authorized.
+
+## Public email removal — 2026-11-10
+
+Removed the email address and email links from public page components, central site configuration, and public content documentation at the owner's request. Verification pending. Existing resume PDF remains a public document and may itself contain contact information; review or replace it locally if it should also be removed before publishing.

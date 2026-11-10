@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BusinessCard from '../components/BusinessCard.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import EducationCard from '../components/EducationCard.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import {education,skills} from '../data/profile';
+import {resumeAvailable} from '../data/site';
+import {url} from '../lib/paths';
+import Icon from '../components/Icon.astro';
+---
+<BaseLayout title="About">
+<div class="wrap">
+<header class="page-header">
+<p class="eyebrow">the person behind the projects</p>
+<h1>a little<br/>
+<span>about me.</span>
+</h1>
+</header>
+<section class="about-intro">
+<div class="bio" data-reveal>
+<p class="lead">An engineer with a curiosity for how things work—and how they can work better.</p>
+<p>I am a mechanical engineering graduate student at Columbia University with experience in optical metrology, manufacturing, embedded systems, engineering research, and technical consulting.</p>
+<p>My professional interests include developing new technologies, validating hardware systems, manufacturing process optimization, and solving complex engineering problems.</p>
+<div class="bio-signature">Shota Kakiuchi <span>機械工学 / MECHANICAL ENGINEERING</span>
+</div>
+</div>
+<BusinessCard/>
+</section>
+<section id="education" class="section">
+<SectionHeading eyebrow="01 / education" title="a foundation for what's next."/>
+<div class="education-grid">{education.map(item=>
+<EducationCard item={item}/>)}</div>
+</section>
+<section id="experience" class="section">
+<SectionHeading eyebrow="02 / experience" title="learning by building." description="Across hardware, manufacturing, research, and consulting."/>
+<ExperienceTimeline/>
+</section>
+<section id="expertise" class="section">
+<SectionHeading eyebrow="03 / toolkit" title="different tools. connected thinking."/>
+<div class="skills-grid">{skills.map(group=>
+<article class="skill-group surface" data-reveal>
+<h3>{group.name}</h3>
+<div class="tags">{group.items.map(skill=>
+<span>{skill}</span>)}</div>
+</article>)}</div>
+</section>
+<details class="overview-disclosure"><summary>at a glance <span aria-hidden="true">+</span></summary><div class="overview-content"><BentoGrid/></div></details>
+{resumeAvailable && <section class="resume-strip surface" data-reveal>
+  <div><p class="eyebrow">the full picture</p><h2>experience, on paper.</h2></div>
+  <a class="button primary" href={url('/resume/')}>view resume <Icon name="download"/></a>
+</section>}
+</div>
+</BaseLayout>

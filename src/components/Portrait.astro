@@ -1,0 +1,10 @@
+---
+import {site} from '../data/site';
+import {url} from '../lib/paths';
+---
+<div class="portrait">
+  {site.portrait ? <img src={url(site.portrait)} alt="Shota Kakiuchi" width="600" height="750" loading="lazy"/> :
+    <div class="portrait-identity" role="img" aria-label="SK. monogram for Shota Kakiuchi">
+      <span class="portrait-monogram" aria-hidden="true">SK<span>.</span></span>
+    </div>}
+</div>

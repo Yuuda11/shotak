@@ -1,0 +1,23 @@
+---
+import {url} from '../lib/paths';
+import Icon from './Icon.astro';
+---
+<section class="hero wrap" aria-labelledby="intro-heading">
+  <div class="hero-columns">
+    <div class="hero-title">
+      <h1 id="intro-heading">shota kakiuchi.</h1>
+      <p class="hero-subtitle">mechanical &amp; <span>hardware engineer.</span></p>
+      <div class="actions">
+        <a class="hero-work-link" href={url('/#work')}>explore my work <Icon name="arrow"/></a>
+        <a class="text-link" href={url('/about/')}>about me</a>
+      </div>
+    </div>
+    <section class="philosophy" aria-labelledby="philosophy-heading">
+      <h2 id="philosophy-heading">my philosophy</h2>
+      <p>turning complex engineering problems into simple, reliable, and impactful solutions — from idea to implementation.</p>
+      <ul class="philosophy-tags" aria-label="Engineering focus">
+        <li>hardware</li><li>manufacturing</li><li>systems</li>
+      </ul>
+    </section>
+  </div>
+</section>
