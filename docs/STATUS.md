@@ -80,3 +80,9 @@ Removed the email address and email links from public page components, central s
 Checkpoint: `085e9fd`. Replaced the active ECM listing and case-study cover with the owner-supplied electrochemical-machining concept image at `public/images/projects/covers/ecm.webp`, optimized from its supplied 1536 × 1024 PNG. The original `public/images/projects/ecm.svg` remains preserved as a style reference. Project metadata, the ECM case-cover background selector, and the build regression expectation now use the permanent WebP path. The unrelated untracked `Shota_Kakiuchi_Recruit_Personal_Statement.pdf` was not changed or included.
 
 Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local links. Built Home/Projects card and ECM case-study HTML reference the new WebP; the optimized asset was visually inspected at its full 1536 × 1024 dimensions. A local browser preview could not remain running in this environment, so fresh desktop/390px page-level browser screenshots are not available.
+
+## ECM cover refresh — 2026-11-11
+
+Checkpoint: `7ce4044`. Replaced `public/images/projects/covers/ecm.webp` in place with the latest owner-supplied ECM concept illustration, optimized from the attached 1536 × 1024 PNG. The active listing and case-study references remain unchanged.
+
+Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local links. The final WebP was visually inspected at full size.

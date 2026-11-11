@@ -6,6 +6,11 @@
 - Regression assertions confirm `covers/ecm.webp` is the ECM listing image in both Home and Projects. The built ECM case-study route also references the new WebP.
 - The 1536 × 1024 optimized WebP was visually inspected directly and preserves the supplied concept illustration. A local preview server did not remain available for fresh desktop/390px page screenshots.
 
+## ECM cover refresh — 2026-11-11
+
+- Replaced the ECM cover asset in place with the latest owner-supplied 1536 × 1024 concept illustration.
+- `npm run verify` passed: zero Astro diagnostics, 14 generated pages, and 187 checked local asset/navigation links.
+
 ## Completed
 
 - Astro check and production build pass; required-page, local-link and draft-exclusion checks pass.
