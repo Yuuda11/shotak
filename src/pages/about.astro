@@ -4,6 +4,7 @@ import BusinessCard from '../components/BusinessCard.astro';
 import AboutContents from '../components/AboutContents.astro';
 import ResearchProcess from '../components/ResearchProcess.astro';
 import AboutGlance from '../components/AboutGlance.astro';
+import PageIntro from '../components/PageIntro.astro';
 import ExpertiseGrid from '../components/ExpertiseGrid.astro';
 import ToolkitGrid from '../components/ToolkitGrid.astro';
 import IndustriesGrid from '../components/IndustriesGrid.astro';
@@ -18,12 +19,7 @@ import Icon from '../components/Icon.astro';
 <BaseLayout title="About">
 <div class="wrap">
 <div class="about-lead-layout">
-<header class="page-header about-page-header">
-<p class="eyebrow">the person behind the projects</p>
-<h1 id="about-page-heading">a little<br/>
-<span class="about-heading-mark">about me.</span>
-</h1>
-</header>
+<PageIntro class="about-page-header" eyebrow="the person behind the projects" lines={['a little','about me']} highlight="about me" id="about-page-heading"/>
 <AboutGlance/>
 <div class="bio" data-reveal>
 <p class="lead">I've always been curious about how things work—and even more interested in finding ways to make them work better.</p>

@@ -1,18 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectGallery from '../../components/ProjectGallery.astro';
+import PageIntro from '../../components/PageIntro.astro';
 ---
 <BaseLayout title="Projects & Research">
 <div class="wrap">
-<header class="page-header projects-header">
-<p class="eyebrow">ideas, experiments & engineering</p>
-<h1>projects <span class="ampersand">&</span>
-<br/>
-<span>research</span>
-<span class="accent-dot">.</span>
-</h1>
-<p>An exploration of hardware, manufacturing, and engineering systems.</p>
-</header>
+<PageIntro class="projects-header" eyebrow="ideas, experiments & engineering" lines={['projects &','research']} highlight="research" accent="lavender" description="An exploration of hardware, manufacturing, and engineering systems."/>
 <ProjectGallery/>
 <div class="gallery-footnote">
 <span class="status-dot">

@@ -1,0 +1,20 @@
+---
+import AnimatedPageTitle from './AnimatedPageTitle.astro';
+
+interface Props {
+  eyebrow: string;
+  lines: string[];
+  highlight?: string;
+  accent?: 'blue' | 'lavender' | 'sage' | 'cream';
+  description?: string;
+  class?: string;
+  id?: string;
+}
+
+const {eyebrow,lines,highlight,accent,description,class:className='',id}=Astro.props;
+---
+<header class:list={['page-header','page-intro',className]}>
+  <p class="eyebrow">{eyebrow}</p>
+  <AnimatedPageTitle lines={lines} highlight={highlight} accent={accent} id={id}/>
+  {description&&<p class="page-intro-description">{description}</p>}
+</header>

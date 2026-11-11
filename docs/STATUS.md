@@ -1,10 +1,10 @@
 # Project status and handoff
 
-Last updated: 2026-11-10.
+Last updated: 2026-11-11.
 
 ## Repository state
 
-The workspace has no root `.git` directory; ordinary Git status/history at the project root are unavailable. A separate checkpoint repository and verified portable bundle are documented at [checkpoints/README.md](../checkpoints/README.md). Latest known branch there: `main`.
+The workspace has a root `.git` directory and the active branch is `main`; inspect current status before editing. The historical checkpoint repository and portable bundle are documented at [checkpoints/README.md](../checkpoints/README.md).
 
 Relevant references:
 
@@ -123,3 +123,11 @@ The owner replaced the rocket cover at its existing path, `public/images/project
 Checkpoint: `6264a6d`. Added the missing About `03 / research & development` section between Experience and Engineering Expertise, including the five-stage R&D process and restrained examples. TOC and About navigation dropdown share `src/data/aboutSections.ts`, so their six labels, anchors, and numbering stay aligned. The name-first hero is preserved; its subtitle now has a one-time masked typing reveal, static screen-reader text, and a reduced-motion fallback. Added sparse sage/lavender heading markers, responsive R&D styling, a native expandable profile-card detail area, and an accessible native-details About dropdown that also works in the mobile hamburger menu.
 
 Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 202 checked local asset/navigation links. The browser automation host was unavailable, so the requested six viewport sizes, hover/focus behavior, reduced-motion behavior, and screenshots could not be visually exercised; code-level responsive rules and the built anchors were inspected. No deployment or push was performed.
+
+## Shared page introductions and About navigation — 2026-11-11
+
+Added reusable `PageIntro.astro` and `AnimatedPageTitle.astro` components for the Home, About, Projects, Contact, and Resume introductions. They share large editorial title typography, dark/gray line hierarchy, steel-blue periods, route-specific pastel marker highlights, a one-time reveal, and complete screen-reader text. The reveal extends slightly beyond the final glyph to prevent edge clipping, and punctuation appears only after its line finishes typing. A shared `--page-intro-top` aligns headings below the sticky navigation; the Home hero aligns from the top and keeps its Selected Work transition in normal flow. Reduced-motion CSS reveals all text and highlights immediately.
+
+The About navigation now uses a direct About link and a separate chevron button. Its six links still use the shared section data and `url()` helper. Desktop pointer/focus and mobile hamburger behavior track the button's `aria-expanded` state; Escape and outside clicks close the menu.
+
+Verification: `npm run verify` passed with zero diagnostics, 14 generated pages, and 212 local asset/navigation links. Local preview HTML for Home, About, Projects, Contact, and Resume was fetched and checked for shared heading markup and expected highlights. The browser automation bridge could not attach to Chrome, so screenshot-based breakpoint review and direct pointer/keyboard interaction checks remain unverified; responsive rules and reduced-motion behavior were code-reviewed. Changes remain local and uncommitted, as requested.

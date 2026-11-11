@@ -1,12 +1,12 @@
 ---
 import {url} from '../lib/paths';
 import Icon from './Icon.astro';
+import AnimatedPageTitle from './AnimatedPageTitle.astro';
 ---
 <section class="hero wrap" aria-labelledby="intro-heading">
   <div class="hero-columns">
     <div class="hero-title">
-      <h1 id="intro-heading">shota kakiuchi.</h1>
-      <p class="hero-subtitle"><span class="subtitle-reveal" aria-hidden="true">mechanical &amp; <span>hardware engineer.</span></span><span class="sr-only">mechanical &amp; hardware engineer.</span></p>
+      <AnimatedPageTitle id="intro-heading" lines={['shota kakiuchi']} variant="hero" subtitle="mechanical & hardware engineer" subtitleHighlight="hardware engineer"/>
       <div class="actions">
         <a class="hero-work-link" href={url('/#work')}>explore my work <Icon name="arrow"/></a>
         <a class="text-link" href={url('/about/')}>about me</a>

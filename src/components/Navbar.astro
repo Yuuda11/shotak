@@ -14,13 +14,14 @@ const current=Astro.url.pathname.replace(/\/$/,'');
     <a class="logo" href={url('/')} aria-label="Shota Kakiuchi home">SK<span>.</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
     <div class="nav-links" id="nav-links">
-      <details class="nav-dropdown" data-current={current.startsWith(url('/about/').replace(/\/$/,'')) ? 'true' : 'false'}>
-        <summary>About <span aria-hidden="true">⌄</span></summary>
-        <div class="nav-submenu">
+      <div class="nav-about" data-current={current.startsWith(url('/about/').replace(/\/$/,'')) ? 'true' : 'false'}>
+        <a class="nav-about-link" href={url('/about/')} aria-current={current.startsWith(url('/about/').replace(/\/$/,'')) ? 'page' : undefined}>About</a>
+        <button class="nav-about-toggle" type="button" aria-expanded="false" aria-controls="nav-about-submenu" aria-label="Show About sections"><span aria-hidden="true">⌄</span></button>
+        <div class="nav-submenu" id="nav-about-submenu" hidden>
           <a class="nav-about-overview" href={url('/about/')}>About overview</a>
           {aboutSections.map(section=><a href={url(`/about/#${section.id}`)}><span>{section.number}</span>{section.navLabel}</a>)}
         </div>
-      </details>
+      </div>
       {links.map(link => <a href={link.href} aria-current={link.path && current.startsWith(url(link.path).replace(/\/$/,'')) ? 'page' : undefined}>{link.label}</a>)}
     </div>
   </nav>
@@ -28,17 +29,57 @@ const current=Astro.url.pathname.replace(/\/$/,'');
 <script>
   document.querySelector('.navbar')?.classList.add('nav-enhanced');
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const about = document.querySelector<HTMLElement>('.nav-about');
+  const aboutToggle = document.querySelector<HTMLButtonElement>('.nav-about-toggle');
+  const aboutSubmenu = document.querySelector<HTMLElement>('#nav-about-submenu');
+  const desktopAbout = window.matchMedia('(min-width: 601px) and (hover: hover)');
+  let aboutPinned = false;
+  let suppressAboutFocus = false;
   function closeMenu() { toggle?.setAttribute('aria-expanded','false'); toggle?.setAttribute('aria-label','Open navigation'); }
+  function setAboutOpen(open: boolean) {
+    if (!aboutSubmenu || !aboutToggle) return;
+    aboutSubmenu.hidden = !open;
+    aboutToggle.setAttribute('aria-expanded', String(open));
+    aboutToggle.setAttribute('aria-label', open ? 'Hide About sections' : 'Show About sections');
+  }
   toggle?.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   });
-  document.querySelectorAll('#nav-links a').forEach(link => link.addEventListener('click', closeMenu));
-  const aboutMenu = document.querySelector<HTMLDetailsElement>('.nav-dropdown');
+  document.querySelectorAll('#nav-links a').forEach(link => link.addEventListener('click', () => {
+    closeMenu();
+    aboutPinned = false;
+    setAboutOpen(false);
+  }));
+  aboutToggle?.addEventListener('click', () => {
+    const isOpen = aboutToggle.getAttribute('aria-expanded') === 'true';
+    aboutPinned = !isOpen || !aboutPinned;
+    setAboutOpen(aboutPinned);
+  });
+  about?.addEventListener('pointerenter', event => {
+    if (desktopAbout.matches && event.pointerType !== 'touch') setAboutOpen(true);
+  });
+  about?.addEventListener('pointerleave', () => {
+    requestAnimationFrame(() => {
+      if (!aboutPinned && !about?.contains(document.activeElement)) setAboutOpen(false);
+    });
+  });
+  about?.addEventListener('focusin', () => { if (!suppressAboutFocus) setAboutOpen(true); });
+  about?.addEventListener('focusout', () => {
+    requestAnimationFrame(() => {
+      if (!aboutPinned && !about?.contains(document.activeElement) && !(desktopAbout.matches && about?.matches(':hover'))) setAboutOpen(false);
+    });
+  });
   document.addEventListener('keydown', event => {
     if(event.key === 'Escape') {
-      if(aboutMenu?.open) { aboutMenu.open = false; aboutMenu.querySelector('summary')?.focus(); }
+      if(aboutToggle?.getAttribute('aria-expanded') === 'true') {
+        aboutPinned = false;
+        suppressAboutFocus = true;
+        setAboutOpen(false);
+        aboutToggle.focus();
+        requestAnimationFrame(() => { suppressAboutFocus = false; });
+      }
       if(toggle?.getAttribute('aria-expanded') === 'true') { closeMenu(); toggle.focus(); }
     }
   });
@@ -46,7 +87,8 @@ const current=Astro.url.pathname.replace(/\/$/,'');
   document.addEventListener('click', event => {
     if(event.target instanceof Node && !document.querySelector('.navbar')?.contains(event.target)) {
       closeMenu();
-      if(aboutMenu) aboutMenu.open = false;
+      aboutPinned = false;
+      setAboutOpen(false);
     }
   });
 </script>

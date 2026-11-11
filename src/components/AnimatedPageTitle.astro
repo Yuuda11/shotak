@@ -1,0 +1,58 @@
+---
+interface Props {
+  lines: string[];
+  highlight?: string;
+  accent?: 'blue' | 'lavender' | 'sage' | 'cream';
+  subtitle?: string;
+  subtitleHighlight?: string;
+  subtitleAccent?: 'blue' | 'lavender' | 'sage' | 'cream';
+  variant?: 'hero';
+  id?: string;
+}
+
+const {
+  lines,
+  highlight = '',
+  accent = 'blue',
+  subtitle = '',
+  subtitleHighlight = '',
+  subtitleAccent = 'blue',
+  variant,
+  id,
+} = Astro.props;
+
+const makeLine = (text: string, delay: number, marker = '') => {
+  const duration = Math.min(1.1, Math.max(.62, text.length * .034));
+  const at = marker ? text.indexOf(marker) : -1;
+  return {
+    text,
+    before: at >= 0 ? text.slice(0, at) : text,
+    after: at >= 0 ? text.slice(at + marker.length) : '',
+    marker: at >= 0 ? marker : '',
+    duration,
+    style: `--type-steps:${Math.max(1, text.length)};--type-duration:${duration}s;--type-delay:${delay}s;--marker-delay:${delay + duration + .04}s;--cursor-delay:${delay + duration + .12}s;--period-delay:${delay + duration}s`,
+  };
+};
+
+let nextDelay = .2;
+const titleLines = lines.map((text, index) => {
+  const line = makeLine(text, nextDelay, highlight);
+  nextDelay += line.duration + (index < lines.length - 1 ? .14 : 0);
+  return line;
+});
+const titleText = `${lines.join(' ')}.`;
+const subtitleLine = subtitle ? makeLine(subtitle, nextDelay + .12, subtitleHighlight) : undefined;
+const subtitleText = subtitle ? `${subtitle}.` : '';
+---
+<h1 id={id} class:list={['page-intro-title', variant && `page-intro-title--${variant}`]}>
+  <span class="sr-only">{titleText}</span>
+  <span class="page-intro-visual" aria-hidden="true">
+    {titleLines.map((line,index)=><span class:list={['page-title-line',index>0&&'page-title-line--secondary']}>
+      <span class="type-line" style={line.style}>{line.before}{line.marker&&<span class={`page-title-highlight accent-${accent}`}>{line.marker}</span>}{line.after}</span>{index===titleLines.length-1&&<span class="page-intro-period" style={line.style}>.</span>}
+    </span>)}
+  </span>
+</h1>
+{subtitleLine&&<p class="page-intro-subtitle">
+  <span class="sr-only">{subtitleText}</span>
+  <span class="page-intro-subtitle-visual" aria-hidden="true"><span class="page-subtitle-line"><span class="type-line" style={subtitleLine.style}>{subtitleLine.before}{subtitleLine.marker&&<span class={`page-title-highlight accent-${subtitleAccent}`}>{subtitleLine.marker}</span>}{subtitleLine.after}</span><span class="page-intro-period" style={subtitleLine.style}>.</span></span></span>
+</p>}

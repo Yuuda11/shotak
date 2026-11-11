@@ -20,4 +20,4 @@
 
 ## Not approved by this spec
 
-Do not treat a new visual direction, additional animation, new portfolio section, or alternate hero wording as approved. Ask the site owner when a material design choice is not settled by this document.
+Do not treat a new visual direction, additional animation, new portfolio section, or alternate hero wording as approved unless the site owner explicitly requests it. The owner has since requested a shared page-title typing reveal, route-specific pastel marker accents, and revised About navigation; see the implementation notes and `DECISIONS.md`.
