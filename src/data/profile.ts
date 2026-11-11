@@ -25,29 +25,40 @@ export const skills = [
 ];
 
 export const expertiseGroups = [
- {number:'01',title:'Manufacturing & Quality Engineering',description:'Production systems, process development, and manufacturing optimization grounded in traceability and continuous improvement.',skills:['Lean Six Sigma','Process Optimization','Design for Manufacturing','CNC Machining','Manufacturing','RFID Traceability'],references:[{label:'Medtronic manufacturing internship',href:'/about/#experience'},{label:'Electrochemical Machining',href:'/projects/electrochemical-machining/'}]},
- {number:'02',title:'Robotics, Controls & Automation',description:'Sensing, computation, control development, and actuation brought together in intelligent physical systems.',skills:['Controls','State Estimation','Kalman Filtering','Sensor Fusion','MATLAB / Simulink','C++','Servo Actuation','System Integration'],references:[{label:'Rocket flight computer',href:'/projects/rocket-airbrake/'},{label:'Mini Pupper',href:'/projects/autonomous-mini-pupper/'},{label:'Face-tracking gimbal',href:'/projects/face-tracking-laser-gimbal/'}]},
- {number:'03',title:'Computer Vision, Cameras & Optics',description:'Optical metrology, camera-oriented hardware work, and computer-vision integration for measurement and tracking.',skills:['OpenCV','Computer Vision','Optical Metrology','3D Surface Characterization','Calibration','MATLAB','Experimental Validation'],references:[{label:'Apple optics & camera internship',href:'/about/#experience'},{label:'Face-tracking gimbal',href:'/projects/face-tracking-laser-gimbal/'}]},
+ {number:'01',title:'Manufacturing & Quality Engineering',description:'Production systems, process development, and manufacturing optimization grounded in traceability and continuous improvement.',skills:['Lean Six Sigma','Design of Experiments (DOE)','FMEA','Quality Control Methods','Process Optimization','Design for Manufacturing','CNC Machining','Manufacturing','RFID Traceability'],references:[{label:'Medtronic manufacturing internship',href:'/about/#experience'},{label:'Electrochemical Machining',href:'/projects/electrochemical-machining/'}]},
+ {number:'02',title:'Robotics, Controls & Automation',description:'Sensing, computation, control development, and actuation brought together in intelligent physical systems.',skills:['Controls','PID Control','ROS','State Estimation','Kalman Filtering','Sensor Fusion','MATLAB / Simulink','C++','Servo Actuation','System Integration'],references:[{label:'Rocket flight computer',href:'/projects/rocket-airbrake/'},{label:'Mini Pupper',href:'/projects/autonomous-mini-pupper/'},{label:'Face-tracking gimbal',href:'/projects/face-tracking-laser-gimbal/'}]},
+ {number:'03',title:'Computer Vision, Cameras & Optics',description:'Optical metrology, camera-oriented hardware work, and computer-vision integration for measurement and tracking.',skills:['OpenCV','Computer Vision','Optical Metrology','Interferometry','3D Surface Characterization','Calibration','MATLAB','Experimental Validation'],references:[{label:'Apple optics & camera internship',href:'/about/#experience'},{label:'Face-tracking gimbal',href:'/projects/face-tracking-laser-gimbal/'}]},
  {number:'04',title:'Physics-Based Modeling & Simulation',description:'Simulation and analysis used to understand physical behavior and inform engineering design decisions.',skills:['CFD','FEA','MATLAB','Simulink','State Estimation','Aerodynamics','Fluid Mechanics','Python'],references:[{label:'Rocket simulation work',href:'/projects/rocket-airbrake/'},{label:'Fluid dynamics research',href:'/about/#experience'}]},
- {number:'05',title:'Data Analytics & Technical Computing',description:'Experimental, surface, and operational data analysis to support investigation, visualization, and engineering decisions.',skills:['Python','MATLAB','SQL','Jupyter Notebook','Statistical Analysis','Signal Processing','Data Visualization','Data Analysis'],references:[{label:'Apple optical metrology analysis',href:'/about/#experience'},{label:'Fluid dynamics research',href:'/about/#experience'}]},
- {number:'06',title:'Research & Experimental Engineering',description:'Hypothesis-driven experimentation, instrumentation, and validation across hardware and fluid-dynamics research.',skills:['Experimental Design','Rheometry','Controlled Experiments','Hardware Validation','Technical Documentation','Root-Cause Investigation','Measurement Workflows'],references:[{label:'Apple hardware engineering',href:'/about/#experience'},{label:'GW fluid dynamics research',href:'/about/#experience'},{label:'Rocket capstone',href:'/projects/rocket-airbrake/'}]},
+ {number:'05',title:'Data Analytics & Technical Computing',description:'Experimental, surface, and operational data analysis to support investigation, visualization, and engineering decisions.',skills:['Python','Pandas','NumPy','MATLAB','SQL','Jupyter Notebook','Statistical Analysis','Signal Processing','Data Visualization','Data Analysis'],references:[{label:'Academic research',href:'/about/#experience'},{label:'Apple optical metrology analysis',href:'/about/#experience'}]},
+ {number:'06',title:'Research & Experimental Engineering',description:'Hypothesis-driven experimentation, instrumentation, and validation across hardware and fluid-dynamics research.',skills:['Experimental Design','Design of Experiments (DOE)','Rheometry','Controlled Experiments','Hardware Validation','Technical Documentation','Root-Cause Investigation','Measurement Workflows'],references:[{label:'Apple hardware engineering',href:'/about/#experience'},{label:'GW fluid dynamics research',href:'/about/#experience'},{label:'Rocket capstone',href:'/projects/rocket-airbrake/'}]},
  {number:'07',title:'Embedded Systems & IoT',description:'Connected sensing, data logging, and hardware integration for monitoring and physical-system prototypes.',skills:['Teensy 4.1','Raspberry Pi','Microcontrollers','RFID','Sensor Integration','Embedded Software','Data Logging','Docker','Grafana'],references:[{label:'Rocket flight computer',href:'/projects/rocket-airbrake/'},{label:'Environmental chamber',href:'/projects/embedded-iot/'},{label:'RFID manufacturing work',href:'/about/#experience'}]},
- {number:'08',title:'Engineering Management & Risk',description:'Technical execution supported by requirements, cross-functional collaboration, process improvement, and clear documentation.',skills:['Risk Management','Requirements Management','Cross-Functional Collaboration','Process Improvement','ERP Controls','Technical Communication','Project Execution'],references:[{label:'Deloitte consulting internship',href:'/about/#experience'},{label:'Medtronic manufacturing internship',href:'/about/#experience'},{label:'Rocket capstone',href:'/projects/rocket-airbrake/'}]},
+ {number:'08',title:'Engineering Management & Risk',description:'Technical execution supported by project planning, requirements, cross-functional coordination, risk awareness, and clear documentation.',skills:['Project Management','Technical Program Coordination','Project Planning','Risk Assessment','FMEA','Requirements Management','Cross-Functional Collaboration','Stakeholder Communication','Process Improvement','Technical Documentation'],references:[{label:'Deloitte consulting internship',href:'/about/#experience'},{label:'Medtronic manufacturing internship',href:'/about/#experience'},{label:'Rocket capstone',href:'/projects/rocket-airbrake/'}]},
 ];
 
 export const toolkitCategories = [
  {name:'Programming',items:['Python','C++','MATLAB','SQL']},
- {name:'Data & technical computing',items:['Jupyter Notebook','OpenCV','Data Visualization','Statistical Analysis','Signal Processing']},
+ {name:'Data & technical computing',items:['Pandas','NumPy','Jupyter Notebook','OpenCV','Data Visualization','Statistical Analysis','Signal Processing']},
  {name:'CAD & simulation',items:['SolidWorks','ANSYS','CFD','FEA','Simulink']},
- {name:'Robotics & controls',items:['Controls','State Estimation','Kalman Filtering','Sensor Fusion','Servo Actuation']},
+ {name:'Robotics & controls',items:['ROS','PID Control','Controls','State Estimation','Kalman Filtering','Sensor Fusion','Servo Actuation']},
  {name:'Embedded & IoT',items:['Teensy 4.1','Raspberry Pi','Microcontrollers','RFID','Sensor Integration']},
- {name:'Infrastructure & monitoring',items:['Linux','Docker','Grafana','MQTT','InfluxDB']},
- {name:'Manufacturing & quality',items:['Lean Six Sigma','Process Optimization','Design for Manufacturing','CNC Machining']},
- {name:'Engineering execution',items:['Risk Management','Requirements Management','Cross-Functional Collaboration','Technical Documentation']},
+ {name:'Infrastructure & monitoring',items:['Cloud Services','Linux','Docker','Grafana','MQTT','InfluxDB']},
+ {name:'Manufacturing & quality',items:['Lean Six Sigma','DOE','FMEA','Quality Control Methods','Process Optimization','Design for Manufacturing','CNC Machining']},
+ {name:'Engineering execution',items:['Project Planning','Risk Assessment','Requirements Management','Cross-Functional Coordination','Technical Communication','Engineering Documentation']},
  {name:'Languages',items:['English','Japanese']},
 ];
 
-export const skillsForReview = ['AWS / cloud services','ROS','PID control','FMEA','Design of Experiments (DOE)','Machine learning','Pandas','NumPy','Interferometry','Formal quality-control methods'];
+export const skillsForReview = ['AWS (specific service or work to confirm)','Machine learning'];
+
+export const skillsVerificationNotes = [
+ 'Cloud services — Deloitte professional experience; AWS is not named until the specific service or work is confirmed.',
+ 'ROS and PID control — Mini Pupper project experience.',
+ 'FMEA — Rocket capstone and Medtronic experience.',
+ 'Design of Experiments (DOE) — Medtronic and Apple experience.',
+ 'Pandas and NumPy — academic research.',
+ 'Interferometry — Apple experience; no confidential process or measurement details are included.',
+ 'Quality control methods — Medtronic experience; no formal certification is implied.',
+ 'Machine learning — remains under review until a specific project, application, or coursework example is established.',
+];
 
 export const industries = [
  {kind:'Professional experience',title:'Consumer Electronics & Camera Hardware',detail:'Apple · optics and camera hardware',href:'/about/#experience'},

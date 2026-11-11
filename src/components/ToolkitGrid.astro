@@ -1,5 +1,5 @@
 ---
-import {toolkitCategories,skillsForReview} from '../data/profile';
+import {toolkitCategories,skillsForReview,skillsVerificationNotes} from '../data/profile';
 ---
 <section id="toolkit" class="section toolkit-section" aria-labelledby="toolkit-heading">
   <div class="section-heading" data-reveal>
@@ -11,7 +11,8 @@ import {toolkitCategories,skillsForReview} from '../data/profile';
   </dl>
   <aside class="skill-review" aria-labelledby="skill-review-heading" data-reveal>
     <h3 id="skill-review-heading">Skills to confirm before public claims</h3>
-    <p>These requested topics are not yet supported by project-specific or professional evidence in the portfolio.</p>
+    <p>Machine learning needs a specific project, application, or coursework example. AWS remains unnamed until its service or work context is confirmed.</p>
     <div class="tags">{skillsForReview.map(skill => <span>{skill}</span>)}</div>
+    <ul class="skill-verification-notes">{skillsVerificationNotes.filter(note=>!note.startsWith('Machine learning')).map(note=><li>{note}</li>)}</ul>
   </aside>
 </section>

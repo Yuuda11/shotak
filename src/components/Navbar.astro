@@ -1,8 +1,8 @@
 ---
 import {url} from '../lib/paths';
 import {resumeAvailable} from '../data/site';
+import {aboutSections} from '../data/aboutSections';
 const links = [
-  {label:'About',href:url('/about/'),path:'/about/'},
   {label:'Projects',href:url('/projects/'),path:'/projects/'},
   ...(resumeAvailable ? [{label:'Resume',href:url('/resume/'),path:'/resume/'}] : []),
   {label:'Contact',href:url('/contact/'),path:'/contact/'},
@@ -14,6 +14,13 @@ const current=Astro.url.pathname.replace(/\/$/,'');
     <a class="logo" href={url('/')} aria-label="Shota Kakiuchi home">SK<span>.</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
     <div class="nav-links" id="nav-links">
+      <details class="nav-dropdown" data-current={current.startsWith(url('/about/').replace(/\/$/,'')) ? 'true' : 'false'}>
+        <summary>About <span aria-hidden="true">⌄</span></summary>
+        <div class="nav-submenu">
+          <a class="nav-about-overview" href={url('/about/')}>About overview</a>
+          {aboutSections.map(section=><a href={url(`/about/#${section.id}`)}><span>{section.number}</span>{section.navLabel}</a>)}
+        </div>
+      </details>
       {links.map(link => <a href={link.href} aria-current={link.path && current.startsWith(url(link.path).replace(/\/$/,'')) ? 'page' : undefined}>{link.label}</a>)}
     </div>
   </nav>
@@ -28,9 +35,18 @@ const current=Astro.url.pathname.replace(/\/$/,'');
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   });
   document.querySelectorAll('#nav-links a').forEach(link => link.addEventListener('click', closeMenu));
+  const aboutMenu = document.querySelector<HTMLDetailsElement>('.nav-dropdown');
   document.addEventListener('keydown', event => {
-    if(event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') { closeMenu(); toggle.focus(); }
+    if(event.key === 'Escape') {
+      if(aboutMenu?.open) { aboutMenu.open = false; aboutMenu.querySelector('summary')?.focus(); }
+      if(toggle?.getAttribute('aria-expanded') === 'true') { closeMenu(); toggle.focus(); }
+    }
   });
   window.matchMedia('(min-width: 601px)').addEventListener('change', closeMenu);
-  document.addEventListener('click', event => { if(event.target instanceof Node && !document.querySelector('.navbar')?.contains(event.target)) closeMenu(); });
+  document.addEventListener('click', event => {
+    if(event.target instanceof Node && !document.querySelector('.navbar')?.contains(event.target)) {
+      closeMenu();
+      if(aboutMenu) aboutMenu.open = false;
+    }
+  });
 </script>

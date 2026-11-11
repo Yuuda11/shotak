@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BusinessCard from '../components/BusinessCard.astro';
+import AboutContents from '../components/AboutContents.astro';
+import ResearchProcess from '../components/ResearchProcess.astro';
 import BentoGrid from '../components/BentoGrid.astro';
 import ExpertiseGrid from '../components/ExpertiseGrid.astro';
 import ToolkitGrid from '../components/ToolkitGrid.astro';
@@ -23,14 +25,16 @@ import Icon from '../components/Icon.astro';
 </header>
 <section class="about-intro">
 <div class="bio" data-reveal>
-<p class="lead">An engineer with a curiosity for how things work—and how they can work better.</p>
-<p>I am a mechanical engineering graduate student at Columbia University with experience in optical metrology, manufacturing, embedded systems, engineering research, and technical consulting.</p>
-<p>My professional interests include developing new technologies, validating hardware systems, manufacturing process optimization, and solving complex engineering problems.</p>
+<p class="lead">I've always been curious about how things work—and even more interested in finding ways to make them work better.</p>
+<p>I'm currently pursuing my M.S. in Mechanical Engineering at Columbia University. My experience has taken me from precision optical metrology at Apple and manufacturing at Medtronic to robotics, embedded systems, and experimental engineering research.</p>
+<p>What I enjoy most is connecting technical ideas with real-world applications. Whether I'm developing hardware, analyzing data, or improving a manufacturing process, I like working through complex problems and turning them into practical solutions.</p>
+<p>I'm equally interested in the people and planning behind successful engineering. I enjoy collaborating across disciplines, taking ownership of projects, and bringing teams together to move an idea from concept to implementation. I'm particularly drawn to opportunities in hardware, manufacturing, robotics, and engineering project or program management.</p>
 <div class="bio-signature">Shota Kakiuchi <span>機械工学 / MECHANICAL ENGINEERING</span>
 </div>
 </div>
 <BusinessCard/>
 </section>
+<AboutContents/>
 <section id="education" class="section">
 <SectionHeading eyebrow="01 / education" title="a foundation for what's next."/>
 <div class="education-grid">{education.map(item=>
@@ -40,6 +44,7 @@ import Icon from '../components/Icon.astro';
 <SectionHeading eyebrow="02 / experience" title="learning by building." description="Across hardware, manufacturing, research, and consulting."/>
 <ExperienceTimeline/>
 </section>
+<ResearchProcess/>
 <ExpertiseGrid/>
 <ToolkitGrid/>
 <IndustriesGrid/>

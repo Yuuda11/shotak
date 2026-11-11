@@ -10,6 +10,8 @@ The checkpoint bundle begins on 2026-11-10; no original repository history exist
 
 ## Newly recorded in this handoff
 
+- **2026-11-11 — Motion, color, and navigation refinement** — Added the missing About Research & Development section, centralized About anchor numbering for its TOC and navigation flyout, added the accessible hero subtitle reveal and profile-card disclosure, and introduced restrained pastel marker accents. `npm run verify` passed. Browser automation was unavailable for viewport screenshots; no deploy or push was made.
+
 - **2026-11-11 — Engineering expertise & technical toolkit** — Added eight structured expertise profiles, compact toolkit rows, a visible factual-review list, and industry/application rows to About. The homepage focus card now links to the new expertise anchor. Unsupported requested skills are explicitly held for confirmation; no deployment or push was made.
 
 - **2026-11-11 — Portfolio UI/UX refinement** — Improved Projects-card scanability and case-study list alignment; adjusted the name-first hero to reveal the Selected Work transition; added a concise four-card homepage At a Glance overview after Selected Work. No deployment or push was made for this local refinement.

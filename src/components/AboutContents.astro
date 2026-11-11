@@ -1,0 +1,18 @@
+---
+import {url} from '../lib/paths';
+import {aboutSections as sections} from '../data/aboutSections';
+---
+<nav class="about-contents" aria-label="On this page">
+  <p class="about-contents-label">ON THIS PAGE</p>
+  <ol>
+    {sections.map(section=><li><a href={url(`/about/#${section.id}`)}><span class="about-contents-number">{section.number} /</span><span class="about-contents-name">{section.label}</span><span class="about-contents-arrow" aria-hidden="true">↗</span></a></li>)}
+  </ol>
+</nav>
+<details class="about-contents-mobile">
+  <summary><span>Jump to section</span><span class="about-contents-toggle" aria-hidden="true">+</span></summary>
+  <nav aria-label="On this page">
+    <ol>
+      {sections.map(section=><li><a href={url(`/about/#${section.id}`)}><span class="about-contents-number">{section.number} /</span><span>{section.label}</span><span class="about-contents-arrow" aria-hidden="true">↗</span></a></li>)}
+    </ol>
+  </nav>
+</details>

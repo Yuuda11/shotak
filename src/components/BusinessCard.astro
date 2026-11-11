@@ -8,12 +8,21 @@ import {url} from '../lib/paths';
   <div class="business-top"><a class="logo" href={url('/')} aria-label="Shota Kakiuchi home">SK<span>.</span></a><span class="mini-label">a little introduction</span></div>
   <div class="business-identity">
     <div class="business-portrait"><Portrait/></div>
-    <div><h2>Shota Kakiuchi</h2><p>Mechanical Engineer /<br/>Hardware &amp; Systems</p></div>
+    <div><h2>Shota Kakiuchi</h2><p>Mechanical &amp; Hardware Engineer</p></div>
   </div>
-  <div class="business-education"><span class="mini-label">currently</span><p>Columbia University<br/>M.S. Mechanical Engineering, 2027</p></div>
-  <div class="business-focus"><span class="mini-label">focus</span><p>hardware / optics / manufacturing / controls</p></div>
+  <div class="business-education"><span class="mini-label">currently</span><p>Columbia University<br/>M.S. Mechanical Engineering · 2027</p></div>
+  <div class="business-focus"><span class="mini-label">engineering focus</span><p>Manufacturing / Robotics / Optics / Controls</p></div>
+  <div class="business-focus business-leadership"><span class="mini-label">beyond engineering</span><p>Project Management / Technical Leadership</p></div>
   <div class="business-links">
     <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <Icon name="arrow"/></a>
     {resumeAvailable&&<a class="business-resume" href={url('/resume/')}>view resume <Icon name="download"/></a>}
   </div>
+  <details class="business-more">
+    <summary>more about me <span aria-hidden="true">+</span></summary>
+    <div class="business-more-content">
+      <div><span class="mini-label">technical interests</span><p>Manufacturing, Robotics, Optics, Controls, R&amp;D</p></div>
+      <div><span class="mini-label">project &amp; technical leadership</span><p>Project Management, Cross-Functional Collaboration, Engineering Execution</p></div>
+      <div><span class="mini-label">languages</span><p>English / Japanese</p></div>
+    </div>
+  </details>
 </aside>
