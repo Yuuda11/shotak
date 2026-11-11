@@ -1,0 +1,27 @@
+---
+import {aboutSections} from '../data/aboutSections';
+import {url} from '../lib/paths';
+const number = aboutSections.find(section => section.id === 'honors')?.number ?? '03';
+const awards = [
+  {id:'senior-design',title:'Best Senior Design Project in the Department of Mechanical and Aerospace Engineering',year:'2026',description:'Team award · Altitude Targeting High Power Rocket System · Leonardo Borchert, Tyler Jones, Lean Albeshri, and Shota Kakiuchi.',links:[{label:'Rocket project',href:url('/projects/rocket-airbrake/#recognition')},{label:'GW announcement',href:'https://engineering.gwu.edu/undergraduates-celebrate-academic-achievements-and-professional-commitment',external:true}]},
+  {id:'undergraduate-research',title:'Undergraduate Research Award',year:'',description:'University-wide recognition supporting faculty-mentored undergraduate research.',links:[{label:'GW research experience',href:url('/about/#gw-research-experience')},{label:'Research & Development',href:url('/about/#research-development')},{label:'Program',href:'https://research.gwu.edu/undergraduate-research-and-scholarship',external:true}]},
+  {id:'deans-list',title:"Dean’s List",year:'',description:'Academic distinction at The George Washington University.',links:[]},
+];
+---
+<section id="honors" class="section honors-section" aria-labelledby="honors-heading">
+  <div class="section-heading" data-reveal>
+    <p class="eyebrow">{number} / honors &amp; recognition</p>
+    <h2 id="honors-heading">work worth <span class="marker-highlight marker-cream">recognizing.</span></h2>
+  </div>
+  <ol class="honors-list">
+    {awards.map((award,index)=><li id={`honors-${award.id}`} class="honors-row" data-reveal>
+      <span class="honors-index" aria-hidden="true">0{index+1}</span>
+      <div class="honors-main">
+        <h3>{award.title}</h3>
+        <p class="honors-institution">The George Washington University{award.year&&` · ${award.year}`}</p>
+        <p class="honors-description">{award.description}</p>
+        {award.links.length>0&&<ul class="honors-links">{award.links.map(link=><li><a href={link.href} target={link.external?'_blank':undefined} rel={link.external?'noopener noreferrer':undefined}>{link.label}<span aria-hidden="true"> ↗</span></a></li>)}</ul>}
+      </div>
+    </li>)}
+  </ol>
+</section>

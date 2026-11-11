@@ -19,6 +19,12 @@ This is a concise factual reference, not a substitute for the project entries or
 - Columbia University — Master of Science in Mechanical Engineering; expected May 2027.
 - The George Washington University — Bachelor of Science in Mechanical Engineering; Aerospace and Robotics concentration; GPA 3.5/4.0; May 2026.
 
+## Honors and recognition
+
+- 2026 Best Senior Design Project in the Department of Mechanical and Aerospace Engineering, The George Washington University — team award for the Altitude Targeting High Power Rocket System. The official GW announcement names Leonardo Borchert, Tyler Jones, Lean Albeshri, and Shota Kakiuchi.
+- GW Undergraduate Research Award — describe only as a university-wide award supporting a faculty-mentored undergraduate research project. Recipient count and “only engineer” claim remain unverified; do not publish them without recipient documentation.
+- Dean’s List — academic distinction at GW; do not add semesters, years, or award count without records.
+
 ## Experience currently approved for site display
 
 - Apple — Hardware Engineering Intern, Optics & Camera; June–August 2026; Japan. Current copy describes optical metrology workflows, calibration, controlled experiments, MATLAB and surface-data analysis, and collaboration with hardware, manufacturing, and suppliers. Avoid confidential technical parameters, internal measurement data, and proprietary imagery.

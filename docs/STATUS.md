@@ -131,3 +131,15 @@ Added reusable `PageIntro.astro` and `AnimatedPageTitle.astro` components for th
 The About navigation now uses a direct About link and a separate chevron button. Its six links still use the shared section data and `url()` helper. Desktop pointer/focus and mobile hamburger behavior track the button's `aria-expanded` state; Escape and outside clicks close the menu.
 
 Verification: `npm run verify` passed with zero diagnostics, 14 generated pages, and 212 local asset/navigation links. Local preview HTML for Home, About, Projects, Contact, and Resume was fetched and checked for shared heading markup and expected highlights. The browser automation bridge could not attach to Chrome, so screenshot-based breakpoint review and direct pointer/keyboard interaction checks remain unverified; responsive rules and reduced-motion behavior were code-reviewed. Changes remain local and uncommitted, as requested.
+
+## Honors and rocket case-study refinement — 2026-11-11
+
+Added a restrained Honors & Recognition section after Education and updated the shared About navigation to seven correctly numbered sections. The 2026 Best Senior Design Project is presented as a team award; the undergraduate research award description follows official program information only, without the unverified “one of 12” or “only engineer” claims. Dean’s List is listed without invented dates or counts. The GW experience anchor now links to the specific Undergraduate Research Assistant entry.
+
+Reorganized the rocket page around the CAD cover, team-wide six-system overview, Shota’s electronics/software control architecture, development timeline, two-flight comparison, recognition/video link, preserved report/poster and gallery, and concise lessons. The timeline and graphic separate simulation from flight, identify February 28 recovery damage and disabled airbrake, and describe April 11/12 results without claiming controlled comparison or closed-loop target accuracy. ANSYS Fluent is named for CFD; no FEA package or IMU model is asserted. Direct CAD-image enlargement is available from the cover caption.
+
+Verification: `npm run check` and `npm run verify` passed; Astro reported zero diagnostics, 14 pages built, and 213 local asset/navigation links checked. Built HTML confirms the seven About anchors/numbering and all rocket diagram, timeline, result, recognition, document, gallery, and lessons anchors. `git diff --check` passed. Responsive browser screenshots and manual keyboard/mobile interaction review remain unavailable in this environment. No commit, push, or deployment was performed.
+
+## About section order and compact honors — 2026-11-11
+
+Moved Honors & Recognition after Professional Experience. Shared About navigation and heading numbering now follow Education (01), Experience (02), Honors (03), then Research & Development (04), Expertise (05), Toolkit (06), and Industries (07). Reduced award heading size, row padding, metadata spacing, and link spacing; retained the full senior design award title, team attribution, and award links.

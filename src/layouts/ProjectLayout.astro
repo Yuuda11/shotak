@@ -4,6 +4,11 @@ import BaseLayout from './BaseLayout.astro';
 import {url} from '../lib/paths';
 import Icon from '../components/Icon.astro';
 import ProjectDocuments from '../components/ProjectDocuments.astro';
+import RocketSystemsOverview from '../components/RocketSystemsOverview.astro';
+import RocketControlArchitecture from '../components/RocketControlArchitecture.astro';
+import RocketTimeline from '../components/RocketTimeline.astro';
+import RocketFlightResults from '../components/RocketFlightResults.astro';
+import RocketRecognition from '../components/RocketRecognition.astro';
 interface Props{project:CollectionEntry<'projects'>;headings:{depth:number;slug:string;text:string}[];}
 const {project,headings}=Astro.props;const p=project.data;
 ---
@@ -17,9 +22,9 @@ const {project,headings}=Astro.props;const p=project.data;
 </header>
 <div class="case-cover">
 <img src={url(p.cover)} alt={p.coverAlt} width="1200" height="750" fetchpriority="high"/>
-<span class="art-caption">{{concept:'concept illustration',diagram:'functional diagram',photo:'project photograph',cad:'project CAD',platform:'Mini Pupper platform'}[p.mediaKind]}</span>
+<span class="art-caption">{{concept:'concept illustration',diagram:'functional diagram',photo:'project photograph',cad:'project CAD',platform:'Mini Pupper platform'}[p.mediaKind]}{project.id==='rocket-airbrake'&&<> · <a href={url(p.cover)} target="_blank" rel="noopener noreferrer">open CAD image</a></>}</span>
 </div>
-<dl class="project-facts">
+{project.id!=='rocket-airbrake'&&<dl class="project-facts">
 {p.projectStatus&&<div><dt>Status</dt><dd>{p.projectStatus}</dd></div>}
 {p.teamContext&&<div><dt>Team context</dt><dd>{p.teamContext}</dd></div>}{p.role&&<div>
 <dt>Role</dt>
@@ -32,20 +37,32 @@ const {project,headings}=Astro.props;const p=project.data;
 <dd>{p.category}</dd>
 </div>
 {p.tools.length>0&&<div><dt>Tools & technologies</dt><dd>{p.tools.join(' · ')}</dd></div>}
-</dl>
+</dl>}
  <div class="case-body">
 <aside class="case-nav">
 <p class="eyebrow">in this project</p>
-<nav aria-label="Case study sections">{headings.filter(h=>h.depth===2).map(h=>
+<nav aria-label="Case study sections">{project.id==='rocket-airbrake'&&<>
+<a href="#engineering-systems">Engineering systems</a><a href="#control-architecture">My contribution</a><a href="#development-timeline">Development timeline</a><a href="#flight-results">Test results</a><a href="#recognition">Recognition</a></>}{headings.filter(h=>h.depth===2).map(h=>
 <a href={`#${h.slug}`}>{h.text}</a>)}{p.documents.length>0&&<a href="#report-poster">Report &amp; poster</a>}</nav>
 </aside>
 <div class="prose">
+{project.id==='rocket-airbrake'&&<>
+<RocketSystemsOverview/><RocketControlArchitecture/><RocketTimeline/><RocketFlightResults/><RocketRecognition/>
+</>}
+{project.id==='rocket-airbrake'?<>
+{p.documents.length>0&&<ProjectDocuments ids={p.documents}/>}
+{p.gallery.length>0&&<section class="case-gallery" aria-label="Project gallery">{p.gallery.map(img=><figure>
+<img src={url(img.src)} alt={img.alt} width="1000" height="650" loading="lazy"/>{img.caption&&<figcaption>{img.caption}</figcaption>}</figure>)}</section>}
+<slot/>
+</>:<>
 <slot/>{p.documents.length>0&&<ProjectDocuments ids={p.documents}/>}
 {p.gallery.length>0&&<section class="case-gallery" aria-label="Project gallery">{p.gallery.map(img=>
 <figure>
 <img src={url(img.src)} alt={img.alt} width="1000" height="650" loading="lazy"/>{img.caption&&<figcaption>{img.caption}</figcaption>}</figure>)}</section>}{p.links.length>0&&<div class="actions">{p.links.map(link=>
 <a class="button secondary" href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<Icon/>
-</a>)}</div>}</div>
+</a>)}</div>}
+</>}
+</div>
 </div>
 <div class="case-bottom">
 <p>More intersections to explore.</p>

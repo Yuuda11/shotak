@@ -1,0 +1,20 @@
+---
+const milestones = [
+  {date:'August 2025',title:'Design',text:'Requirements, system concept, and initial CAD.',tone:'blue'},
+  {date:'Fall / Winter 2025–26',title:'Engineering & Manufacturing',text:'Team CAD, CFD / FEA, manufacturing, propulsion, electronics, avionics, and PCB integration.',tone:'sage'},
+  {date:'February 28, 2026',title:'First Flight',text:'Recovery failure damaged the vehicle; airbrake deployment was disabled for data collection.',tone:'coral'},
+  {date:'March 2026',title:'Rebuild & Refine',text:'Recovery revisions, hardware integration, software, and simulation work.',tone:'lavender'},
+  {date:'April 11, 2026',title:'Baseline Flight',text:'5,867 ft; airbrakes did not actuate.',tone:'cream'},
+  {date:'April 12, 2026',title:'Full-Deployment Flight',text:'5,597 ft with full deployment; reported apogee was 4.6% lower than baseline.',tone:'sage'},
+  {date:'May 2026',title:'Best Senior Design Project',text:'Department of Mechanical and Aerospace Engineering team award.',tone:'blue'},
+];
+---
+<section id="development-timeline" class="rocket-section rocket-timeline" aria-labelledby="rocket-timeline-heading">
+  <div class="rocket-section-heading"><p class="eyebrow">PROJECT DEVELOPMENT</p><h2 id="rocket-timeline-heading">from concept to flight.</h2></div>
+  <ol class="rocket-milestones">
+    {milestones.map((milestone,index)=><li class={`rocket-milestone tone-${milestone.tone}`}>
+      <span class="rocket-milestone-dot" aria-hidden="true"></span><span class="rocket-milestone-index">0{index+1}</span>
+      <p class="rocket-milestone-date">{milestone.date}</p><h3>{milestone.title}</h3><p>{milestone.text}</p>
+    </li>)}
+  </ol>
+</section>

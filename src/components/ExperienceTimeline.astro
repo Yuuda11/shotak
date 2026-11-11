@@ -3,7 +3,7 @@ import {experience} from '../data/profile';
 import Icon from './Icon.astro';
 ---
 <div class="timeline">{experience.map((item,i)=>
-<details class="experience" open={i===0} data-reveal>
+<details class="experience" id={item.company === 'The George Washington University' && item.role === 'Undergraduate Research Assistant' ? 'gw-research-experience' : undefined} open={i===0} data-reveal>
 <summary>
 <span class="timeline-dot">
 </span>

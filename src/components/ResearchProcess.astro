@@ -1,5 +1,7 @@
 ---
 import {url} from '../lib/paths';
+import {aboutSections} from '../data/aboutSections';
+const number = aboutSections.find(section=>section.id==='research-development')?.number;
 const steps = [
   {title:'Explore',text:'Identify problems, review existing approaches, and develop hypotheses.',tone:'blue'},
   {title:'Design',text:'Develop analytical models, simulations, and engineering concepts.',tone:'sage'},
@@ -10,7 +12,7 @@ const steps = [
 ---
 <section id="research-development" class="section research-development" aria-labelledby="research-heading">
   <div class="section-heading" data-reveal>
-    <p class="eyebrow">03 / research &amp; development</p>
+    <p class="eyebrow">{number} / research &amp; development</p>
     <h2 id="research-heading">from hypothesis to <span class="marker-highlight marker-lavender">hardware.</span></h2>
     <p class="section-description">My approach to engineering combines curiosity, experimentation, and practical implementation. I enjoy investigating how physical systems behave, testing ideas through simulation and experimentation, and translating findings into reliable engineering solutions.</p>
   </div>

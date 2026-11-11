@@ -1,9 +1,11 @@
 ---
 import {toolkitCategories,skillsForReview,skillsVerificationNotes} from '../data/profile';
+import {aboutSections} from '../data/aboutSections';
+const number = aboutSections.find(section=>section.id==='toolkit')?.number;
 ---
 <section id="toolkit" class="section toolkit-section" aria-labelledby="toolkit-heading">
   <div class="section-heading" data-reveal>
-    <p class="eyebrow">05 / technical toolkit</p>
+    <p class="eyebrow">{number} / technical toolkit</p>
     <h2 id="toolkit-heading">the tools behind the work.</h2>
   </div>
   <dl class="toolkit-grid">

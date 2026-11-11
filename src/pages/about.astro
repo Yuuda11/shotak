@@ -11,10 +11,13 @@ import IndustriesGrid from '../components/IndustriesGrid.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import EducationCard from '../components/EducationCard.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import HonorsSection from '../components/HonorsSection.astro';
 import {education} from '../data/profile';
+import {aboutSections} from '../data/aboutSections';
 import {resumeAvailable} from '../data/site';
 import {url} from '../lib/paths';
 import Icon from '../components/Icon.astro';
+const sectionNumber = (id:string) => aboutSections.find(section=>section.id===id)?.number;
 ---
 <BaseLayout title="About">
 <div class="wrap">
@@ -33,14 +36,15 @@ import Icon from '../components/Icon.astro';
 </div>
 <AboutContents/>
 <section id="education" class="section">
-<SectionHeading eyebrow="01 / education" title="a foundation for what's next."/>
+<SectionHeading eyebrow={`${sectionNumber('education')} / education`} title="a foundation for what's next."/>
 <div class="education-grid">{education.map(item=>
 <EducationCard item={item}/>)}</div>
 </section>
 <section id="experience" class="section">
-<SectionHeading eyebrow="02 / experience" title="learning by building." description="Across hardware, manufacturing, research, and consulting."/>
+<SectionHeading eyebrow={`${sectionNumber('experience')} / experience`} title="learning by building." description="Across hardware, manufacturing, research, and consulting."/>
 <ExperienceTimeline/>
 </section>
+<HonorsSection/>
 <ResearchProcess/>
 <ExpertiseGrid/>
 <ToolkitGrid/>

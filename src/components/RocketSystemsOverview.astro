@@ -1,0 +1,19 @@
+---
+const systems = [
+  {name:'Design & CAD',tone:'blue',items:['Rocket airframe','Airbrake mechanism','Mechanical integration']},
+  {name:'CFD & FEA',tone:'sage',items:['Aerodynamic modeling','Structural analysis','ANSYS Fluent · CFD']},
+  {name:'Propulsion',tone:'cream',items:['Solid-propellant propulsion','Motor integration','Ground testing']},
+  {name:'Avionics',tone:'lavender',items:['Teensy 4.1 flight controller','IMU + barometric sensors','PCB + power electronics']},
+  {name:'Controls & Software',tone:'blue',items:['MATLAB / Simulink','Flight simulation','State estimation + apogee prediction','Embedded flight logic']},
+  {name:'Recovery',tone:'sage',items:['Recovery avionics','Deployment systems','Ground + flight integration']},
+];
+---
+<section id="engineering-systems" class="rocket-section rocket-systems" aria-labelledby="rocket-systems-heading">
+  <div class="rocket-section-heading"><p class="eyebrow">TEAM SYSTEMS</p><h2 id="rocket-systems-heading">one rocket. six interconnected systems.</h2><p>Four-person capstone project · disciplines shown here represent the team's integrated work.</p></div>
+  <ol class="rocket-systems-grid">
+    {systems.map((system,index)=><li class={`rocket-system tone-${system.tone}`}>
+      <span class="rocket-system-index">0{index+1}</span><h3>{system.name}</h3>
+      <ul>{system.items.map(item=><li>{item}</li>)}</ul>
+    </li>)}
+  </ol>
+</section>

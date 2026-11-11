@@ -1,0 +1,19 @@
+---
+const stages = ['IMU + barometers','Teensy 4.1 / PCB','State estimation','Apogee prediction','Drag / deployment command','Servo actuation','Airbrake extension'];
+---
+<section id="control-architecture" class="rocket-section rocket-control" aria-labelledby="rocket-control-heading">
+  <div class="rocket-section-heading"><p class="eyebrow">MY CONTRIBUTION · ELECTRONICS &amp; SOFTWARE</p><h2 id="rocket-control-heading">from sensor data to airbrake actuation.</h2><p>My primary responsibility was the dedicated airbrake flight computer and control-system development within the four-person team.</p></div>
+  <ol class="rocket-control-flow" aria-label="Airbrake control signal flow">
+    {stages.map((stage,index)=><li><span class="rocket-flow-index">0{index+1}</span><span>{stage}</span></li>)}
+  </ol>
+  <div class="rocket-control-details">
+    <div><h3>Flight computer</h3><p>Embedded C/C++ · sensor integration and acquisition · real-time flight-state logic · data logging · servo command and actuation</p></div>
+    <div><h3>Estimation &amp; control</h3><p>State-space estimation · filtering · sensor fusion · predictive guidance · feedback-loop development</p></div>
+    <div><h3>Simulation</h3><p>MATLAB / Simulink rocket dynamics and airbrake-controller models supported predictive feedback development.</p></div>
+  </div>
+  <div class="rocket-evidence-split">
+    <div class="rocket-evidence simulation"><span>SIMULATION</span><p>Predictive feedback control developed and tested in simulation.</p></div>
+    <div class="rocket-evidence flight"><span>FLIGHT</span><p>Full airbrake deployment demonstrated; closed-loop altitude targeting was not validated in flight.</p></div>
+  </div>
+  <p class="rocket-attribution"><strong>Team scope:</strong> airframe, propulsion, recovery, and flight outcomes were collaborative project work; the contribution summary above describes my documented electronics and software responsibility.</p>
+</section>

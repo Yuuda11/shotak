@@ -1,10 +1,12 @@
 ---
 import {expertiseGroups} from '../data/profile';
 import {url} from '../lib/paths';
+import {aboutSections} from '../data/aboutSections';
+const number = aboutSections.find(section=>section.id==='expertise')?.number;
 ---
 <section id="expertise" class="section expertise-section" aria-labelledby="expertise-heading">
   <div class="section-heading" data-reveal>
-    <p class="eyebrow">04 / engineering expertise</p>
+    <p class="eyebrow">{number} / engineering expertise</p>
     <h2 id="expertise-heading">where <span class="marker-highlight marker-lavender">disciplines</span> connect.</h2>
     <p class="section-description">An interdisciplinary approach to engineering, combining physical systems, software, simulation, and experimental validation to turn ideas into functional solutions.</p>
   </div>
