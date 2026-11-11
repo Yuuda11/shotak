@@ -6,7 +6,7 @@ All live website dependencies must use repository paths under `public/`. Do not 
 
 Homepage and Projects cards use `illustration` in each project Markdown entry. The component labels these images “concept illustration”. These images are representative artwork, never documentary evidence.
 
-- Rocket: `public/images/projects/covers/rocket.webp` — generated full slender rocket concept with pointed nose and aft fins. It does not yet match the ECM line-art style; see STATUS.
+- Rocket: `public/images/projects/covers/rocket.webp` — latest owner-replaced rocket cover illustration, showing the full vehicle with avionics and airbrake hardware on a warm neutral background. The permanent `.webp` path remains active for Home and Projects cards.
 - Environmental chamber: `public/images/projects/covers/chamber-spools.webp` — generated enclosure and monitor concept.
 - Face-tracking gimbal: `public/images/projects/covers/face-tracking-laser-gimbal-cover-v2.png` — owner-supplied red camera-gimbal concept illustration. The baked caption and arrow were removed from the repository copy so the card's HTML controls remain the only caption and arrow.
 - Mini Pupper: `public/images/projects/covers/autonomous-mini-pupper-cover-v2.png` — owner-supplied yellow quadruped concept illustration. The baked caption and arrow were removed from the repository copy so the card's HTML controls remain the only caption and arrow.

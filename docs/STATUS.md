@@ -20,14 +20,12 @@ Documentation was committed as `1078224`. Subsequent implementation checkpoints 
 - `/resume/` preview with real resume PDF, mobile first-page fallback, Open PDF, and separate Download PDF.
 - Rocket report and poster copied intact to `public/documents/` and linked through preview pages.
 - Rocket case study separates simulations, ground tests, flights, and team contribution. Existing airbrake CAD and report evidence remain in the case study.
-- ECM uses the owner-supplied `covers/ecm.webp` concept illustration; its original SVG is preserved as a style reference. Rocket cover uses the existing complete slender rocket illustration.
+- ECM uses the owner-supplied `covers/ecm.webp` concept illustration; its original SVG is preserved as a style reference. The rocket listing uses the latest owner-replaced cover at its existing permanent path.
 - Latest verification before this documentation-only task: `npm run verify` passed Astro diagnostics, built 14 pages, checked 187 local links, required routes, drafts, all six listing illustrations, rocket evidence/document links, and resume viewer. GitHub Pages subpath check passed with temporary example variables.
 - Native Safari inspection covered desktop hero/project artwork/resume viewer and 390px Home, Projects, Resume, rocket case study, and document preview routes. All six project listing images loaded. Poster Open PDF opened Safari’s viewer. Mobile filtering and Escape/menu navigation were exercised.
 
 ## Unfinished and known limitations
 
-- **Rocket cover styling:** built-in image generation rejected two attempts. Current complete, slender, generated cover replaces the airbrake CAD on listings, but does not yet match the ECM thin-outline style. Generate a matching full-rocket concept when image generation is available. Do not reuse the detailed mechanism as its listing image.
-- Separate rocket reference attachment was unavailable during the previous work; user may need to attach it again for accurate matching.
 - IMU model differs between report and poster. Public copy intentionally does not name a model until resolved.
 - Project-specific factual gaps (individual contributions, validation, dates, and technical stacks) are listed in [CONTENT_PROFILE.md](CONTENT_PROFILE.md) and the current project entries. Do not fill by inference.
 - Full keyboard-only audit, OS reduced-motion test, and cross-browser/mobile PDF behavior: **Not verified**.
@@ -36,10 +34,9 @@ Documentation was committed as `1078224`. Subsequent implementation checkpoints 
 ## Recommended next actions
 
 1. Resolve Git checkpoint access and commit the documentation work without overwriting any files; update checkpoint references here.
-2. Generate and visually verify the complete rocket cover in the ECM technical-illustration style when the image tool accepts it.
-3. Re-run `npm run verify` and inspect all six covers on desktop and at 390px after any asset changes.
-4. Ask Shota to resolve the report/poster IMU discrepancy and clarify only the project facts needed for future copy.
-5. Perform a fuller keyboard, reduced-motion, and browser PDF review when convenient.
+2. Re-run `npm run verify` and inspect all six covers on desktop and at 390px after any asset changes.
+3. Ask Shota to resolve the report/poster IMU discrepancy and clarify only the project facts needed for future copy.
+4. Perform a fuller keyboard, reduced-motion, and browser PDF review when convenient.
 
 No deployment, publication, or remote push was performed.
 
@@ -116,6 +113,10 @@ Verification: `npm run check`, `npm run build`, and `node scripts/verify-build.m
 Moved the compact At a Glance summary to the upper-right of the About introduction, above the profile card. The heading keeps its exact wording and line break with a powder-blue marker reveal. The native expandable panel previews education, experience, and engineering focus, then reveals four concise groups. The biography and existing profile card remain paired in the second row on desktop; tablet and mobile stack heading, summary, biography, and card. Removed the old bottom disclosure while retaining `BentoGrid.astro`.
 
 Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 198 checked local links. Built About markup confirms the new panel and existing section anchors; a local preview response served the new content. Browser automation was unavailable, so requested viewport screenshots, 200% zoom, and manual interaction checks remain unverified. These edits are local and uncommitted; no push or deployment was performed.
+
+## Rocket cover replacement — 2026-11-11
+
+The owner replaced the rocket cover at its existing path, `public/images/projects/covers/rocket.webp`; project metadata and listing references remain unchanged. The replacement was saved as PNG bytes with a `.webp` extension, so it was converted to lossless WebP at the same path. Decoded pixels were hash-checked before and after conversion; the file is now about 1.0 MB instead of 1.7 MB. Visual inspection confirms the new warm-neutral illustration is present.
 
 ## Motion, color, and navigation refinement — 2026-11-11
 
