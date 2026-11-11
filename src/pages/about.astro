@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BusinessCard from '../components/BusinessCard.astro';
 import AboutContents from '../components/AboutContents.astro';
 import ResearchProcess from '../components/ResearchProcess.astro';
-import BentoGrid from '../components/BentoGrid.astro';
+import AboutGlance from '../components/AboutGlance.astro';
 import ExpertiseGrid from '../components/ExpertiseGrid.astro';
 import ToolkitGrid from '../components/ToolkitGrid.astro';
 import IndustriesGrid from '../components/IndustriesGrid.astro';
@@ -17,13 +17,14 @@ import Icon from '../components/Icon.astro';
 ---
 <BaseLayout title="About">
 <div class="wrap">
-<header class="page-header">
+<div class="about-lead-layout">
+<header class="page-header about-page-header">
 <p class="eyebrow">the person behind the projects</p>
-<h1>a little<br/>
-<span>about me.</span>
+<h1 id="about-page-heading">a little<br/>
+<span class="about-heading-mark">about me.</span>
 </h1>
 </header>
-<section class="about-intro">
+<AboutGlance/>
 <div class="bio" data-reveal>
 <p class="lead">I've always been curious about how things work—and even more interested in finding ways to make them work better.</p>
 <p>I'm currently pursuing my M.S. in Mechanical Engineering at Columbia University. My experience has taken me from precision optical metrology at Apple and manufacturing at Medtronic to robotics, embedded systems, and experimental engineering research.</p>
@@ -33,7 +34,7 @@ import Icon from '../components/Icon.astro';
 </div>
 </div>
 <BusinessCard/>
-</section>
+</div>
 <AboutContents/>
 <section id="education" class="section">
 <SectionHeading eyebrow="01 / education" title="a foundation for what's next."/>
@@ -48,7 +49,6 @@ import Icon from '../components/Icon.astro';
 <ExpertiseGrid/>
 <ToolkitGrid/>
 <IndustriesGrid/>
-<details class="overview-disclosure"><summary>at a glance <span aria-hidden="true">+</span></summary><div class="overview-content"><BentoGrid/></div></details>
 {resumeAvailable && <section class="resume-strip surface" data-reveal>
   <div><p class="eyebrow">the full picture</p><h2>experience, on paper.</h2></div>
   <a class="button primary" href={url('/resume/')}>view resume <Icon name="download"/></a>

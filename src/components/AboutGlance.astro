@@ -1,0 +1,27 @@
+---
+const groups = [
+  {number:'01',label:'Education',title:'Columbia University',detail:'M.S. Mechanical Engineering · Expected May 2027'},
+  {number:'02',label:'Experience',title:'Apple · Medtronic · Deloitte',detail:'Hardware, manufacturing, and consulting.'},
+  {number:'03',label:'Engineering Focus',title:'Manufacturing · Robotics · Optics · Controls',detail:'Research, simulation, embedded systems, and physical engineering.'},
+  {number:'04',label:'Beyond Engineering',title:'Project Management · Technical Leadership',detail:'Cross-functional collaboration, engineering execution, and technical problem-solving.'},
+];
+---
+<details class="about-glance">
+  <summary>
+    <span class="about-glance-kicker">the quick introduction</span>
+    <span class="about-glance-heading" role="heading" aria-level="2">at a glance.</span>
+    <span class="about-glance-preview" aria-hidden="true">
+      <span>Columbia University — M.S. Mechanical Engineering</span>
+      <span>Apple · Medtronic · Deloitte</span>
+      <span>Hardware · Robotics · Manufacturing</span>
+    </span>
+    <span class="about-glance-action"><span class="about-glance-expand-text">expand to explore</span><span class="about-glance-collapse-text">collapse</span><span aria-hidden="true">+</span></span>
+  </summary>
+  <div class="about-glance-groups">
+    {groups.map(group=><section class="about-glance-group">
+      <p class="about-glance-label"><span>{group.number} /</span>{group.label}</p>
+      <h3>{group.title}</h3>
+      <p>{group.detail}</p>
+    </section>)}
+  </div>
+</details>

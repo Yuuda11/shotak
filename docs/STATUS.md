@@ -111,6 +111,12 @@ Supported content is sourced from the public profile and project entries. AWS/cl
 
 Verification: `npm run check`, `npm run build`, and `node scripts/verify-build.mjs` passed with zero Astro diagnostics, 14 generated pages, and 201 checked local links. Built Home and About markup confirms the new expertise/toolkit/industries anchors and homepage expertise link. Native Chrome automation could not load localhost for a responsive screenshot; fresh breakpoint screenshots remain unavailable. No deployment or push is authorized.
 
+## About heading and At a Glance refinement — 2026-11-11
+
+Moved the compact At a Glance summary to the upper-right of the About introduction, above the profile card. The heading keeps its exact wording and line break with a powder-blue marker reveal. The native expandable panel previews education, experience, and engineering focus, then reveals four concise groups. The biography and existing profile card remain paired in the second row on desktop; tablet and mobile stack heading, summary, biography, and card. Removed the old bottom disclosure while retaining `BentoGrid.astro`.
+
+Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 198 checked local links. Built About markup confirms the new panel and existing section anchors; a local preview response served the new content. Browser automation was unavailable, so requested viewport screenshots, 200% zoom, and manual interaction checks remain unverified. These edits are local and uncommitted; no push or deployment was performed.
+
 ## Motion, color, and navigation refinement — 2026-11-11
 
 Checkpoint: `6264a6d`. Added the missing About `03 / research & development` section between Experience and Engineering Expertise, including the five-stage R&D process and restrained examples. TOC and About navigation dropdown share `src/data/aboutSections.ts`, so their six labels, anchors, and numbering stay aligned. The name-first hero is preserved; its subtitle now has a one-time masked typing reveal, static screen-reader text, and a reduced-motion fallback. Added sparse sage/lavender heading markers, responsive R&D styling, a native expandable profile-card detail area, and an accessible native-details About dropdown that also works in the mobile hamburger menu.
