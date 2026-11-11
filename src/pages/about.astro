@@ -2,10 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BusinessCard from '../components/BusinessCard.astro';
 import BentoGrid from '../components/BentoGrid.astro';
+import ExpertiseGrid from '../components/ExpertiseGrid.astro';
+import ToolkitGrid from '../components/ToolkitGrid.astro';
+import IndustriesGrid from '../components/IndustriesGrid.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import EducationCard from '../components/EducationCard.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
-import {education,skills} from '../data/profile';
+import {education} from '../data/profile';
 import {resumeAvailable} from '../data/site';
 import {url} from '../lib/paths';
 import Icon from '../components/Icon.astro';
@@ -37,15 +40,9 @@ import Icon from '../components/Icon.astro';
 <SectionHeading eyebrow="02 / experience" title="learning by building." description="Across hardware, manufacturing, research, and consulting."/>
 <ExperienceTimeline/>
 </section>
-<section id="expertise" class="section">
-<SectionHeading eyebrow="03 / toolkit" title="different tools. connected thinking."/>
-<div class="skills-grid">{skills.map(group=>
-<article class="skill-group surface" data-reveal>
-<h3>{group.name}</h3>
-<div class="tags">{group.items.map(skill=>
-<span>{skill}</span>)}</div>
-</article>)}</div>
-</section>
+<ExpertiseGrid/>
+<ToolkitGrid/>
+<IndustriesGrid/>
 <details class="overview-disclosure"><summary>at a glance <span aria-hidden="true">+</span></summary><div class="overview-content"><BentoGrid/></div></details>
 {resumeAvailable && <section class="resume-strip surface" data-reveal>
   <div><p class="eyebrow">the full picture</p><h2>experience, on paper.</h2></div>

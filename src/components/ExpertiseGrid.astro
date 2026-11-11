@@ -1,0 +1,20 @@
+---
+import {expertiseGroups} from '../data/profile';
+import {url} from '../lib/paths';
+---
+<section id="expertise" class="section expertise-section" aria-labelledby="expertise-heading">
+  <div class="section-heading" data-reveal>
+    <p class="eyebrow">04 / engineering expertise</p>
+    <h2 id="expertise-heading">where disciplines connect.</h2>
+    <p class="section-description">An interdisciplinary approach to engineering, combining physical systems, software, simulation, and experimental validation to turn ideas into functional solutions.</p>
+  </div>
+  <div class="expertise-grid">
+    {expertiseGroups.map(group => <article class="expertise-group" data-reveal>
+      <p class="expertise-number">{group.number}</p>
+      <h3>{group.title}</h3>
+      <p>{group.description}</p>
+      <div class="tags" aria-label={`${group.title} skills`}>{group.skills.map(skill => <span>{skill}</span>)}</div>
+      <p class="expertise-references"><span>Related:</span> {group.references.map((reference,index) => <>{index>0 && ' · '}<a href={url(reference.href)}>{reference.label}</a></>)}</p>
+    </article>)}
+  </div>
+</section>

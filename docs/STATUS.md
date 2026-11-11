@@ -102,3 +102,11 @@ Checkpoint: `a4cf736`. The homepage now shortens the desktop hero enough to reve
 The Projects collection now uses 80–96px desktop row spacing, 32–40px column spacing, larger readable summaries, and a steadier metadata-to-tags rhythm. Shared `.prose` rules standardize list indentation, wrapped-line alignment, list spacing, and nested lists across case studies without one-off page fixes.
 
 Verification: `npm run check`, `npm run build`, and `node scripts/verify-build.mjs` passed with zero Astro diagnostics, 14 generated pages, and 188 checked local links. The built site was served locally and Home/Projects route responses were checked. Chrome’s automation bridge did not render localhost for a screenshot, so fresh visual captures at the requested breakpoints remain unavailable. No deployment or push is authorized for this refinement.
+
+## Engineering expertise & technical toolkit — 2026-11-11
+
+Checkpoint: `858dca1`. The About page now renders eight linked Engineering Expertise profiles, a compact Technical Toolkit, a clearly labeled visible review list for unsupported requested skills, and six Applications & Industries rows that distinguish professional experience from academic/project work. The homepage At a Glance engineering-focus card now lists Manufacturing; Robotics & Controls; Optics & Computer Vision; Modeling & Simulation; Data Analytics; and Research & Development, linking to `/about/#expertise`.
+
+Supported content is sourced from the public profile and project entries. AWS/cloud services, ROS, PID control, FMEA, DOE, machine learning, Pandas, NumPy, interferometry, and formal quality-control methods are not presented as established expertise; they remain visible in the review list awaiting confirmation. No confidential internship detail was added.
+
+Verification: `npm run check`, `npm run build`, and `node scripts/verify-build.mjs` passed with zero Astro diagnostics, 14 generated pages, and 201 checked local links. Built Home and About markup confirms the new expertise/toolkit/industries anchors and homepage expertise link. Native Chrome automation could not load localhost for a responsive screenshot; fresh breakpoint screenshots remain unavailable. No deployment or push is authorized.

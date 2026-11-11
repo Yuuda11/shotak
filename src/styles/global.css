@@ -723,3 +723,56 @@ dd { margin: 0; font-size: 13px; color: #51564d; }
   .project-gallery .project-grid { row-gap: 52px; }
   .project-copy p { font-size: 14px; }
 }
+
+/* About: expertise is editorial profiles first, with the toolkit kept deliberately compact. */
+.expertise-section { padding-top: 92px; }
+.expertise-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 clamp(36px,5vw,76px); border-top: 1px solid var(--border); }
+.expertise-group { position: relative; min-width: 0; padding: 34px 0 36px; border-bottom: 1px solid var(--border); }
+.expertise-group:nth-child(3), .expertise-group:nth-child(6) { margin-inline: -18px; padding-inline: 18px; background: #f7f8f4; }
+.expertise-number { font-size: 10px; letter-spacing: .12em; color: var(--category); margin-bottom: 15px; }
+.expertise-group h3 { max-width: 430px; font-size: clamp(24px,2.3vw,31px); line-height: 1.15; margin-bottom: 13px; }
+.expertise-group>p:not(.expertise-number):not(.expertise-references) { max-width: 500px; font-size: 14px; line-height: 1.8; }
+.expertise-group .tags { margin-top: 19px; }
+.expertise-group .tags>span { font-size: 10px; }
+.expertise-references { margin-top: 21px; font-size: 11px; line-height: 1.75; }
+.expertise-references>span { color: var(--text); }
+.expertise-references a { color: var(--accent); text-decoration: underline; text-decoration-color: #b8cbe0; text-underline-offset: 3px; }
+.expertise-references a:hover { text-decoration-color: var(--accent); }
+.toolkit-section { padding-top: 88px; }
+.toolkit-grid { margin: 0; border-top: 1px solid var(--border); }
+.toolkit-row { display: grid; grid-template-columns: minmax(170px,.38fr) 1fr; gap: 28px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+.toolkit-row dt { padding-top: 4px; margin: 0; font-size: 12px; color: var(--text); }
+.toolkit-row dd { margin: 0; }
+.toolkit-row .tags>span { font-size: 10px; }
+.skill-review { margin-top: 28px; padding: 23px 26px; border-left: 2px solid #afbdad; background: #f7f8f4; }
+.skill-review h3 { font-size: 16px; margin-bottom: 7px; }
+.skill-review p { max-width: 700px; font-size: 12px; line-height: 1.75; }
+.skill-review .tags { margin-top: 15px; }
+.skill-review .tags>span { background: #e9ece6; color: #5a6258; font-size: 10px; }
+.industries-section { padding-top: 88px; }
+.industries-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 clamp(36px,5vw,76px); border-top: 1px solid var(--border); }
+.industry-row { display: block; min-width: 0; padding: 27px 0; border-bottom: 1px solid var(--border); transition: color .2s, padding-left .2s; }
+.industry-row:hover { color: var(--accent); padding-left: 6px; }
+.industry-kind { font-size: 10px; letter-spacing: .04em; color: var(--category); margin-bottom: 11px; }
+.industry-row h3 { font-size: 22px; line-height: 1.2; margin-bottom: 9px; }
+.industry-row>p:last-child { font-size: 12px; line-height: 1.7; }
+.glance-focus-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+.glance-focus-tags span { display: inline-flex; font-size: 10px; line-height: 1.45; padding: 5px 8px; border-radius: 5px; color: var(--tag-text); background: #e9e6ef; }
+@media (max-width: 800px) {
+  .expertise-section, .toolkit-section, .industries-section { padding-top: 68px; }
+  .expertise-grid, .industries-grid { gap: 0 34px; }
+  .expertise-group { padding-block: 29px; }
+  .expertise-group:nth-child(3), .expertise-group:nth-child(6) { margin-inline: -12px; padding-inline: 12px; }
+  .toolkit-row { grid-template-columns: 155px 1fr; gap: 20px; }
+}
+@media (max-width: 600px) {
+  .expertise-section, .toolkit-section, .industries-section { padding-top: 58px; }
+  .expertise-grid, .industries-grid { grid-template-columns: 1fr; }
+  .expertise-group h3 { font-size: 25px; }
+  .expertise-group>p:not(.expertise-number):not(.expertise-references) { font-size: 14px; }
+  .toolkit-row { grid-template-columns: 1fr; gap: 12px; padding-block: 18px; }
+  .toolkit-row dt { padding-top: 0; }
+  .skill-review { padding: 20px; }
+  .industry-row { padding-block: 23px; }
+  .industry-row h3 { font-size: 21px; }
+}

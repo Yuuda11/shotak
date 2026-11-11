@@ -1,0 +1,17 @@
+---
+import {toolkitCategories,skillsForReview} from '../data/profile';
+---
+<section id="toolkit" class="section toolkit-section" aria-labelledby="toolkit-heading">
+  <div class="section-heading" data-reveal>
+    <p class="eyebrow">05 / technical toolkit</p>
+    <h2 id="toolkit-heading">the tools behind the work.</h2>
+  </div>
+  <dl class="toolkit-grid">
+    {toolkitCategories.map(category => <div class="toolkit-row" data-reveal><dt>{category.name}</dt><dd><div class="tags">{category.items.map(item => <span>{item}</span>)}</div></dd></div>)}
+  </dl>
+  <aside class="skill-review" aria-labelledby="skill-review-heading" data-reveal>
+    <h3 id="skill-review-heading">Skills to confirm before public claims</h3>
+    <p>These requested topics are not yet supported by project-specific or professional evidence in the portfolio.</p>
+    <div class="tags">{skillsForReview.map(skill => <span>{skill}</span>)}</div>
+  </aside>
+</section>
