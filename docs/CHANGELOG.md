@@ -10,6 +10,8 @@ The checkpoint bundle begins on 2026-11-10; no original repository history exist
 
 ## Newly recorded in this handoff
 
+- **2026-11-11 — Wide Mini Pupper and gimbal covers** — Replaced the pixels at the active versioned cover paths with the owner-supplied 1536 × 1024 card artwork and verified the build.
+
 - **2026-11-11 — Mini Pupper and gimbal cover cache refresh** — Versioned their active cover URLs as `*-cover-v2.png` and updated project metadata and listing-cover verification so cached older paths cannot mask the owner-supplied artwork.
 
 - **2026-11-11 — ECM cover refresh** — Updated `covers/ecm.webp` in place with the latest owner-supplied concept illustration; project references remain unchanged.
