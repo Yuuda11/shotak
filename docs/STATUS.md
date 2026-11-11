@@ -86,3 +86,7 @@ Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated 
 Checkpoint: `7ce4044`. Replaced `public/images/projects/covers/ecm.webp` in place with the latest owner-supplied ECM concept illustration, optimized from the attached 1536 × 1024 PNG. The active listing and case-study references remain unchanged.
 
 Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local links. The final WebP was visually inspected at full size.
+
+## Mini Pupper and gimbal cover cache refresh — 2026-11-11
+
+Checkpoint: `cd2f889`. Versioned the active Mini Pupper and face-tracking gimbal cover URLs as `*-cover-v2.png` without altering their owner-supplied pixels. Their project metadata and build regression assertions now use the new permanent paths so browsers and GitHub Pages fetch the intended artwork rather than a prior cached response. `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local links; both new paths occur in the built Home and Projects card markup.

@@ -42,8 +42,8 @@ console.log(`Verified ${required.length} required pages and ${links} local asset
 const expectedCovers = {
  'rocket-airbrake':'/images/projects/covers/rocket.webp',
  'embedded-iot':'/images/projects/covers/chamber-spools.webp',
- 'face-tracking-laser-gimbal':'/images/projects/covers/face-tracking-laser-gimbal-concept.png',
- 'autonomous-mini-pupper':'/images/projects/covers/autonomous-mini-pupper-concept.png',
+ 'face-tracking-laser-gimbal':'/images/projects/covers/face-tracking-laser-gimbal-cover-v2.png',
+ 'autonomous-mini-pupper':'/images/projects/covers/autonomous-mini-pupper-cover-v2.png',
  'rube-goldberg-machine':'/images/projects/covers/rube-goldberg-technical.webp',
  'electrochemical-machining':'/images/projects/covers/ecm.webp',
 };

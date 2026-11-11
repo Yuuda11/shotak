@@ -7,7 +7,7 @@ filters: ["Hardware", "Controls"]
 tools: ["Python", "Raspberry Pi", "OpenCV", "Servo Actuation", "Flask", "IoT", "Mechanical Design", "Manufacturing"]
 previewTools: ["Python", "OpenCV", "Raspberry Pi", "Flask", "Mechanical Design"]
 illustration:
-  src: /images/projects/covers/face-tracking-laser-gimbal-concept.png
+  src: /images/projects/covers/face-tracking-laser-gimbal-cover-v2.png
   alt: Concept illustration of a red camera gimbal with a Raspberry Pi, ribbon cable, and multicolored wiring; representative artwork, not project photography
 cover: "/images/projects/face-tracking-laser-gimbal/prototype.webp"
 gallery:

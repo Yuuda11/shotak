@@ -7,7 +7,7 @@ filters: ["Hardware", "Controls"]
 tools: ["OpenCV"]
 previewTools: ["Robotics", "Autonomy", "OpenCV", "System Integration"]
 illustration:
-  src: /images/projects/covers/autonomous-mini-pupper-concept.png
+  src: /images/projects/covers/autonomous-mini-pupper-cover-v2.png
   alt: Concept illustration of a yellow quadruped robot dog with a top-mounted sensor; representative artwork, not project photography
 cover: "/images/projects/autonomous-mini-pupper/platform.webp"
 gallery:

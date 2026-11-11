@@ -3,6 +3,10 @@
 ## ECM cover replacement — 2026-11-11
 
 - `npm run verify` passed: zero Astro diagnostics, 14 generated pages, and 187 checked local asset/navigation links.
+
+## Mini Pupper and gimbal cover cache refresh — 2026-11-11
+
+- Project metadata and listing-cover regression assertions use versioned `*-cover-v2.png` paths to force fresh cover fetches after deployment. `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local asset/navigation links; both paths occur in built Home and Projects card markup.
 - Regression assertions confirm `covers/ecm.webp` is the ECM listing image in both Home and Projects. The built ECM case-study route also references the new WebP.
 - The 1536 × 1024 optimized WebP was visually inspected directly and preserves the supplied concept illustration. A local preview server did not remain available for fresh desktop/390px page screenshots.
 
