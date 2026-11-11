@@ -4,14 +4,14 @@ All live website dependencies must use repository paths under `public/`. Do not 
 
 ## Listing covers
 
-Homepage and Projects cards use `illustration` in each project Markdown entry (except ECM, whose original SVG is itself the cover). The component labels these images “concept illustration”. These images are representative artwork, never documentary evidence.
+Homepage and Projects cards use `illustration` in each project Markdown entry. The component labels these images “concept illustration”. These images are representative artwork, never documentary evidence.
 
 - Rocket: `public/images/projects/covers/rocket.webp` — generated full slender rocket concept with pointed nose and aft fins. It does not yet match the ECM line-art style; see STATUS.
 - Environmental chamber: `public/images/projects/covers/chamber-spools.webp` — generated enclosure and monitor concept.
 - Face-tracking gimbal: `public/images/projects/covers/face-tracking-laser-gimbal-concept.png` — owner-supplied red camera-gimbal concept illustration. The baked caption and arrow were removed from the repository copy so the card's HTML controls remain the only caption and arrow.
 - Mini Pupper: `public/images/projects/covers/autonomous-mini-pupper-concept.png` — owner-supplied yellow quadruped concept illustration. The baked caption and arrow were removed from the repository copy so the card's HTML controls remain the only caption and arrow.
 - Rube Goldberg machine: `public/images/projects/covers/rube-goldberg-technical.webp` — generated connected mechanism concept.
-- Electrochemical machining: `public/images/projects/ecm.svg` — original simplified technical illustration, preserved.
+- Electrochemical machining: `public/images/projects/covers/ecm.webp` — owner-supplied pale technical concept illustration. The original `public/images/projects/ecm.svg` remains preserved as a style reference.
 
 Earlier `public/images/projects/covers/*.webp` images and `public/images/projects/*.svg` files remain in the repository; only paths referenced by current project content are active listing media. Generation prompts and limitations are recorded in `technical-cover-generation.json` and `media-sources.md`.
 

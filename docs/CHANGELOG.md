@@ -10,6 +10,8 @@ The checkpoint bundle begins on 2026-11-10; no original repository history exist
 
 ## Newly recorded in this handoff
 
+- **2026-11-11 — ECM cover replacement** — Replaced the active ECM listing and case-study cover with the owner-supplied optimized `covers/ecm.webp`; preserved the original ECM SVG as a style reference and updated cover verification.
+
 - **2026-11-10 — Documentation system** — Added root contributor/agent instructions and consolidated design, approved public content, asset provenance, project status, decisions, and change history. Added project setup and repository-map guidance to README. Captured current document state in the checkpoint bundle.
 
 - **2026-11-10 — Chamber engineering story** — Reused existing concept artwork, added a responsive five-stage monitoring flow and three concise supporting cards, and removed unconfirmed integrations from public copy. Desktop/390px review and existing verification passed.

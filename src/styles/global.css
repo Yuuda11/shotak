@@ -270,7 +270,7 @@ body:has(.hero) main { overflow: clip; }
 .case-cover { position: relative; height: 490px; border-radius: var(--radius); overflow: hidden; background: var(--blue); }
 .case-cover img { width: 100%; height: 100%; object-fit: contain; }
 .case-study:has(img[src$="iot.svg"]) .case-cover { background: var(--sage); }
-.case-study:has(img[src$="ecm.svg"]) .case-cover { background: var(--lavender); }
+.case-study:has(img[src$="covers/ecm.webp"]) .case-cover { background: var(--lavender); }
 .project-facts { display: flex; gap: 45px; border-bottom: 1px solid var(--border); padding-block: 32px; margin: 0; }
 .project-facts>div { flex: 1; }
 .project-facts>div:last-child { flex: 2; }

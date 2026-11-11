@@ -58,4 +58,4 @@ All listing covers now use generated representative concept illustrations, label
 
 ## Outstanding cover request
 
-The four technical-style replacements and original ECM illustration are connected. A matching thin-outline rocket illustration is still needed: built-in image generation rejected both attempts. The listing currently uses the existing generated complete slender rocket, clearly labeled concept illustration, never the mechanism CAD.
+The owner-supplied ECM cover is connected; the original ECM SVG remains preserved as a style reference. A matching thin-outline rocket illustration is still needed: built-in image generation rejected both attempts. The listing currently uses the existing generated complete slender rocket, clearly labeled concept illustration, never the mechanism CAD.

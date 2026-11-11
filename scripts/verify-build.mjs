@@ -45,7 +45,7 @@ const expectedCovers = {
  'face-tracking-laser-gimbal':'/images/projects/covers/face-tracking-laser-gimbal-concept.png',
  'autonomous-mini-pupper':'/images/projects/covers/autonomous-mini-pupper-concept.png',
  'rube-goldberg-machine':'/images/projects/covers/rube-goldberg-technical.webp',
- 'electrochemical-machining':'/images/projects/ecm.svg',
+ 'electrochemical-machining':'/images/projects/covers/ecm.webp',
 };
 for (const page of ['index.html','projects/index.html']) {
  const html=await readFile(join(root,page),'utf8');

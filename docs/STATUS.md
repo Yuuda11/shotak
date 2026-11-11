@@ -20,7 +20,7 @@ Documentation was committed as `1078224`. Subsequent implementation checkpoints 
 - `/resume/` preview with real resume PDF, mobile first-page fallback, Open PDF, and separate Download PDF.
 - Rocket report and poster copied intact to `public/documents/` and linked through preview pages.
 - Rocket case study separates simulations, ground tests, flights, and team contribution. Existing airbrake CAD and report evidence remain in the case study.
-- ECM original SVG is preserved and active as its cover; four new projects use pale technical generated illustrations. Rocket cover uses the existing complete slender rocket illustration.
+- ECM uses the owner-supplied `covers/ecm.webp` concept illustration; its original SVG is preserved as a style reference. Rocket cover uses the existing complete slender rocket illustration.
 - Latest verification before this documentation-only task: `npm run verify` passed Astro diagnostics, built 14 pages, checked 187 local links, required routes, drafts, all six listing illustrations, rocket evidence/document links, and resume viewer. GitHub Pages subpath check passed with temporary example variables.
 - Native Safari inspection covered desktop hero/project artwork/resume viewer and 390px Home, Projects, Resume, rocket case study, and document preview routes. All six project listing images loaded. Poster Open PDF opened Safari’s viewer. Mobile filtering and Escape/menu navigation were exercised.
 
@@ -74,3 +74,9 @@ Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated 
 ## Public email removal — 2026-11-10
 
 Removed the email address and email links from public page components, central site configuration, and public content documentation at the owner's request. Verification pending. Existing resume PDF remains a public document and may itself contain contact information; review or replace it locally if it should also be removed before publishing.
+
+## ECM cover replacement — 2026-11-11
+
+Checkpoint: `085e9fd`. Replaced the active ECM listing and case-study cover with the owner-supplied electrochemical-machining concept image at `public/images/projects/covers/ecm.webp`, optimized from its supplied 1536 × 1024 PNG. The original `public/images/projects/ecm.svg` remains preserved as a style reference. Project metadata, the ECM case-cover background selector, and the build regression expectation now use the permanent WebP path. The unrelated untracked `Shota_Kakiuchi_Recruit_Personal_Statement.pdf` was not changed or included.
+
+Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local links. Built Home/Projects card and ECM case-study HTML reference the new WebP; the optimized asset was visually inspected at its full 1536 × 1024 dimensions. A local browser preview could not remain running in this environment, so fresh desktop/390px page-level browser screenshots are not available.

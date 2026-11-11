@@ -6,10 +6,10 @@ category: "Manufacturing"
 filters: ["Manufacturing"]
 tools: ["Process Design", "Electrochemistry", "CNC", "Manufacturing"]
 illustration:
-  src: /images/projects/ecm.svg
-  alt: Original pale technical concept illustration of an electrochemical machining system; not project photography
-cover: /images/projects/ecm.svg
-coverAlt: "Illustrative ECM engineering line drawing; not a project photograph"
+  src: /images/projects/covers/ecm.webp
+  alt: Pale technical concept illustration of an electrochemical machining system; not project photography
+cover: /images/projects/covers/ecm.webp
+coverAlt: "Illustrative electrochemical machining system concept; not a project photograph"
 status: published
 documentation: complete
 order: 6
