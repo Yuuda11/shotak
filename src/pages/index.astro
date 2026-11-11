@@ -3,6 +3,7 @@ import {getCollection} from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import HomeGlance from '../components/HomeGlance.astro';
 import Icon from '../components/Icon.astro';
 import {url} from '../lib/paths';
 const projects=(await getCollection('projects',({data})=>data.status==='published' && data.featured !== undefined)).sort((a,b)=>(a.data.featured ?? 99)-(b.data.featured ?? 99)).slice(0,3);
@@ -17,6 +18,7 @@ const projects=(await getCollection('projects',({data})=>data.status==='publishe
     </div>
     <div class="project-grid selected-grid">{projects.map(project=><ProjectCard project={project}/>)}</div>
   </section>
+  <HomeGlance/>
   <section class="home-outro wrap" data-reveal>
     <p class="eyebrow">curiosity, from idea to implementation</p>
     <h2>there's always more<br/>to figure out.</h2>

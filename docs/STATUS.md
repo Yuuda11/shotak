@@ -94,3 +94,11 @@ Checkpoint: `cd2f889`. Versioned the active Mini Pupper and face-tracking gimbal
 ## Wide Mini Pupper and gimbal covers — 2026-11-11
 
 Checkpoint: `0a6bfae`. Replaced the pixels at the active `*-cover-v2.png` paths with the latest owner-supplied 1536 × 1024 versions, giving the clickable Projects-card artwork the intended 3:2 framing. `npm run verify` passed with zero Astro diagnostics, 14 generated pages, and 187 checked local links.
+
+## Portfolio UI/UX refinement — 2026-11-11
+
+Checkpoint: `a4cf736`. The homepage now shortens the desktop hero enough to reveal the Selected Work transition at common desktop viewport heights while retaining the name-first composition and mobile’s natural flow. Selected Work remains first, followed by a concise, linked four-card At a Glance bento overview for education, experience, engineering focus, and U.S./Japan background. The full About-page bento is unchanged.
+
+The Projects collection now uses 80–96px desktop row spacing, 32–40px column spacing, larger readable summaries, and a steadier metadata-to-tags rhythm. Shared `.prose` rules standardize list indentation, wrapped-line alignment, list spacing, and nested lists across case studies without one-off page fixes.
+
+Verification: `npm run check`, `npm run build`, and `node scripts/verify-build.mjs` passed with zero Astro diagnostics, 14 generated pages, and 188 checked local links. The built site was served locally and Home/Projects route responses were checked. Chrome’s automation bridge did not render localhost for a screenshot, so fresh visual captures at the requested breakpoints remain unavailable. No deployment or push is authorized for this refinement.

@@ -10,6 +10,8 @@ The checkpoint bundle begins on 2026-11-10; no original repository history exist
 
 ## Newly recorded in this handoff
 
+- **2026-11-11 — Portfolio UI/UX refinement** — Improved Projects-card scanability and case-study list alignment; adjusted the name-first hero to reveal the Selected Work transition; added a concise four-card homepage At a Glance overview after Selected Work. No deployment or push was made for this local refinement.
+
 - **2026-11-11 — Wide Mini Pupper and gimbal covers** — Replaced the pixels at the active versioned cover paths with the owner-supplied 1536 × 1024 card artwork and verified the build.
 
 - **2026-11-11 — Mini Pupper and gimbal cover cache refresh** — Versioned their active cover URLs as `*-cover-v2.png` and updated project metadata and listing-cover verification so cached older paths cannot mask the owner-supplied artwork.

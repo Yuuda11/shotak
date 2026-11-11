@@ -1,0 +1,29 @@
+---
+import BentoCard from './BentoCard.astro';
+import {url} from '../lib/paths';
+---
+<section class="home-glance wrap" aria-labelledby="glance-heading">
+  <div class="section-heading" data-reveal>
+    <p class="eyebrow">at a glance</p>
+    <h2 id="glance-heading">a few things I bring<br/>to the work.</h2>
+  </div>
+  <div class="home-glance-grid">
+    <BentoCard href={url('/about/#education')} class="glance-education" label="EDUCATION">
+      <h3>Columbia University</h3>
+      <p>M.S. Mechanical Engineering</p>
+      <span class="mini-label">EXPECTED MAY 2027</span>
+    </BentoCard>
+    <BentoCard href={url('/about/#experience')} class="glance-experience" label="EXPERIENCE">
+      <h3>Apple · Medtronic · Deloitte</h3>
+      <p>Hardware, manufacturing, and consulting experience.</p>
+    </BentoCard>
+    <BentoCard href={url('/about/#expertise')} class="glance-focus" label="ENGINEERING FOCUS">
+      <h3>Optics · Robotics · Controls · Manufacturing</h3>
+      <p>Multidisciplinary thinking from concept through implementation.</p>
+    </BentoCard>
+    <BentoCard href={url('/about/')} class="glance-background" label="BACKGROUND">
+      <h3>Engineering across the U.S. and Japan.</h3>
+      <p>Bilingual English/Japanese perspective across teams and disciplines.</p>
+    </BentoCard>
+  </div>
+</section>
