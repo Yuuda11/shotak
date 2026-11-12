@@ -1,6 +1,8 @@
 ---
 title: "Environmental Chamber for 3D Printing Filaments"
-subtitle: "An IoT-enabled prototype for 3D-printing filament drying and storage."
+subtitle: "An IoT-enabled prototype for filament drying, storage, and environmental monitoring."
+highlightPhrase: "environmental monitoring"
+highlightTone: "sage"
 summary: "Developing a prototype environmental chamber for 3D printing filaments, integrating IoT monitoring, data pipelines, and analysis to support performance optimization."
 category: "Research / IoT / Data Systems"
 filters: ["Research", "Hardware"]

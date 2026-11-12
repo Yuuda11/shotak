@@ -1,6 +1,8 @@
 ---
 title: "Autonomous Robot Dog — Mini Pupper"
-subtitle: "An autonomous detect–navigate–retrieve–return mission built on the Mini Pupper platform."
+subtitle: "An autonomous navigation mission—detect, navigate, retrieve, and return—built on the Mini Pupper platform."
+highlightPhrase: "autonomous navigation"
+highlightTone: "sage"
 summary: "Developed an autonomous Mini Pupper robot that detects a target, navigates to it, retrieves it, and returns to base."
 category: "Robotics / Autonomy"
 filters: ["Hardware", "Controls"]

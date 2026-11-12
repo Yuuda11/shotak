@@ -1,15 +1,9 @@
----
-import TechnicalFigure from './TechnicalFigure.astro';
----
 <section id="flight-results" class="rocket-section rocket-results" aria-labelledby="rocket-results-heading">
   <div class="rocket-section-heading"><p class="eyebrow">FLIGHT RESULTS</p><h2 id="rocket-results-heading">measured in flight.</h2><p>Two flights from the project test program; comparison is reported as observed, not as a controlled experiment.</p></div>
-  <div class="rocket-flight-results-layout">
-    <div class="rocket-result-grid">
-      <div><p>BASELINE · APRIL 11, 2026</p><strong>5,867 <small>ft</small></strong></div>
-      <div><p>FULL DEPLOYMENT · APRIL 12, 2026</p><strong>5,597 <small>ft</small></strong></div>
-      <div class="rocket-result-delta"><p>REPORTED COMPARISON</p><strong>4.6% <small>lower apogee</small></strong></div>
-    </div>
-    <TechnicalFigure src="/images/projects/rocket-airbrake/media/rocket-in-flight.webp" alt="Rocket ascending under motor thrust against a blue sky." caption="Rocket during powered ascent · flight photo" width={174} height={662} enlarge={false} className="rocket-flight-photo"/>
+  <div class="rocket-result-grid" aria-label="Flight metrics">
+    <div><p>BASELINE FLIGHT</p><time datetime="2026-04-11">April 11, 2026</time><strong>5,867 <small>ft</small></strong></div>
+    <div><p>FULL-DEPLOYMENT FLIGHT</p><time datetime="2026-04-12">April 12, 2026</time><strong>5,597 <small>ft</small></strong></div>
+    <div class="rocket-result-delta"><p>REPORTED COMPARISON</p><strong>4.6% <small>lower apogee</small></strong></div>
   </div>
-  <p class="rocket-result-caveat">The flight demonstrated full airbrake deployment and measurable apogee reduction; predictive closed-loop target accuracy remained unvalidated in flight.</p>
+  <p class="rocket-result-caveat">Full airbrake deployment was demonstrated in flight. Predictive closed-loop target accuracy was not validated.</p>
 </section>

@@ -1,6 +1,8 @@
 ---
 title: "Electrochemical Machining System"
-subtitle: "Investigating manufacturing through electrochemistry and process design."
+subtitle: "Exploring electrochemical machining through electrochemistry and process design."
+highlightPhrase: "electrochemical machining"
+highlightTone: "blue"
 summary: "An exploration of electrochemical machining and manufacturing process design."
 category: "Manufacturing"
 filters: ["Manufacturing"]

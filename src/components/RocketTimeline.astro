@@ -6,15 +6,19 @@ const milestones = [
   {date:'March 2026',title:'Rebuild & Refine',text:'Recovery revisions, hardware integration, software, and simulation work.',tone:'lavender'},
   {date:'April 11, 2026',title:'Baseline Flight',text:'5,867 ft; airbrakes did not actuate.',tone:'cream'},
   {date:'April 12, 2026',title:'Full-Deployment Flight',text:'5,597 ft with full deployment; reported apogee was 4.6% lower than baseline.',tone:'sage'},
-  {date:'May 2026',title:'Best Senior Design Project',text:'Department of Mechanical and Aerospace Engineering team award.',tone:'blue'},
+  {date:'May 2026',title:'Best Senior Design Project',text:'GW Department of Mechanical & Aerospace Engineering',tone:'cream',recognition:true},
 ];
 ---
 <section id="development-timeline" class="rocket-section rocket-timeline" aria-labelledby="rocket-timeline-heading">
   <div class="rocket-section-heading"><p class="eyebrow">PROJECT DEVELOPMENT</p><h2 id="rocket-timeline-heading">from concept to flight.</h2></div>
   <ol class="rocket-milestones">
-    {milestones.map(milestone=><li class={`rocket-milestone tone-${milestone.tone}`}>
+    {milestones.map(milestone=><li class={`rocket-milestone tone-${milestone.tone} ${milestone.recognition?'rocket-milestone-recognition':''}`}>
       <time class="rocket-milestone-date">{milestone.date}</time><span class="rocket-milestone-dot" aria-hidden="true"></span>
-      <div class="rocket-milestone-content"><h3>{milestone.title}</h3><p>{milestone.text}</p></div>
+      {milestone.recognition?<div class="rocket-milestone-content rocket-award-panel">
+        <div class="rocket-award-kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m9 12-1 9 4-2 4 2-1-9"/><path d="m12 5 .8 1.6 1.8.3-1.3 1.2.3 1.8-1.6-.9-1.6.9.3-1.8-1.3-1.2 1.8-.3z"/></svg><span>Team recognition</span></div>
+        <h3>{milestone.title}</h3><p>{milestone.text}</p>
+        <a href="https://engineering.gwu.edu/undergraduates-celebrate-academic-achievements-and-professional-commitment" target="_blank" rel="noopener noreferrer">GW announcement <span aria-hidden="true">↗</span></a>
+      </div>:<div class="rocket-milestone-content"><h3>{milestone.title}</h3><p>{milestone.text}</p></div>}
     </li>)}
   </ol>
 </section>

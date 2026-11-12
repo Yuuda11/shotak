@@ -1,6 +1,8 @@
 ---
 title: "Face Tracking Laser Gimbal"
-subtitle: "Computer vision, mechanical design, and servo actuation integrated into a tracking demonstration."
+subtitle: "A real-time face tracking demonstration integrating computer vision, mechanical design, and servo actuation."
+highlightPhrase: "real-time face tracking"
+highlightTone: "lavender"
 summary: "Developed a face-tracking gimbal combining OpenCV, Raspberry Pi, servo actuation, and Flask controls for real-time tracking."
 category: "Computer Vision / Mechatronics"
 filters: ["Hardware", "Controls"]

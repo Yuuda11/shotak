@@ -14,14 +14,19 @@ import RocketActuationComparison from '../components/RocketActuationComparison.a
 import RocketSimulation from '../components/RocketSimulation.astro';
 interface Props{project:CollectionEntry<'projects'>;headings:{depth:number;slug:string;text:string}[];}
 const {project,headings}=Astro.props;const p=project.data;
+const projectTitle=p.title.replace(/\.$/,'');
+const projectTitleSplit=projectTitle.lastIndexOf(' ');
+const projectTitlePrefix=projectTitleSplit>=0?projectTitle.slice(0,projectTitleSplit+1):'';
+const projectTitleFinal=projectTitle.slice(projectTitleSplit+1);
+const subtitleHighlightIndex=p.highlightPhrase?p.subtitle.indexOf(p.highlightPhrase):-1;
 ---
 <BaseLayout title={p.title} description={p.summary}>
 <article class="case-study wrap" data-project={project.id} data-media-kind={p.mediaKind}>
 <a class="back-link" href={url('/projects/')}>← all projects</a>
 <header class="case-header">
 <p class="eyebrow">{p.category}{p.year&&` / ${p.year}`}</p>
-<h1>{p.title}</h1>
-<p>{p.subtitle}</p>
+<h1>{projectTitlePrefix}<span class="project-title-final">{projectTitleFinal}<span class="project-title-dot">.</span></span></h1>
+<p>{subtitleHighlightIndex>=0&&p.highlightPhrase?<>{p.subtitle.slice(0,subtitleHighlightIndex)}<span class={`project-subtitle-highlight tone-${p.highlightTone??'blue'}`}>{p.highlightPhrase}</span>{p.subtitle.slice(subtitleHighlightIndex+p.highlightPhrase.length)}</>:p.subtitle}</p>
 </header>
 <div class="case-cover">
 <img src={url(p.cover)} alt={p.coverAlt} width="1200" height="750" fetchpriority="high"/>

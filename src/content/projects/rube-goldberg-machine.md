@@ -1,6 +1,8 @@
 ---
 title: "Rube Goldberg Machine"
-subtitle: "A collaborative mechanical build transporting a ball through a sequence of mechanisms."
+subtitle: "A collaborative build transporting a ball through a sequence of mechanical mechanisms."
+highlightPhrase: "mechanical mechanisms"
+highlightTone: "cream"
 summary: "Designed and built a collaborative Rube Goldberg machine that transported a ball through 40 sections demonstrating different mechanisms and engineering principles."
 category: "Mechanical Design / Collaboration"
 filters: ["Hardware", "Manufacturing"]

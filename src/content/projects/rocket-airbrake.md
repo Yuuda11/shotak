@@ -1,6 +1,8 @@
 ---
 title: "High-Powered Altitude-Targeting Rocket System"
 subtitle: "A four-person team built and flew a high-powered rocket with a custom airbrake system developed to investigate apogee targeting."
+highlightPhrase: "airbrake system"
+highlightTone: "blue"
 summary: "Developed the electronics and software for a team-built high-powered rocket with a custom airbrake system."
 category: "Rocketry / Controls / Hardware"
 filters: ["Controls", "Hardware"]

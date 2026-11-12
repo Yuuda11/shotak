@@ -40,6 +40,36 @@ Documentation was committed as `1078224`. Subsequent implementation checkpoints 
 
 No deployment, publication, or remote push was performed.
 
+## Rocket Real Vehicle photo layout — 2026-11-11
+
+Reworked the Rocket Airbrake Real Vehicle intro into three desktop columns (team/launchpad photo, existing project facts and award link, powered-ascent image). The existing launch photo now has a transparent, zero-padding frame, keeps its original portrait ratio and enlarge link, and is capped at its source width. The full supplied team-photo frame is shown without additional crop or frame padding. The duplicate launch-photo block was removed from Technical Evidence; the report and poster remain.
+
+Verification: `npm run verify` passed (58 Astro files, zero diagnostics, 14 generated pages, 228 local links/assets). Safari screenshots checked the intro at 1440px desktop and 390px mobile; desktop uses three columns, while mobile stacks photo, copy, then launch photo. The mobile capture confirmed the source team photo and all four people stay in frame. The source team image itself cuts off the rocket above its top edge, so the missing nose cannot be shown without another source image. The launch photo is linked to its original-size file for enlargement. No commit, push, or deployment was performed.
+
+## Project subtitle highlights — 2026-11-11
+
+Added optional phrase/tone metadata to the project collection schema and a shared, data-driven subtitle renderer. All six published project subtitles have a matching short phrase and pastel marker; absent or mismatched metadata falls back to the plain subtitle. Mini Pupper, gimbal, ECM, environmental-chamber, and Rube Goldberg subtitle wording was adjusted to include concise phrases supported by each existing project description. Rocket subtitle wording is unchanged. Marker treatment is static, so it adds no typing effect or motion and the phrase wraps naturally.
+
+Verification: `npm run verify` passed. The generated output contains exactly one phrase highlight on each of the six published project detail pages. A Safari visual spot-check at 390px confirmed the rocket title and wrapped highlighted subtitle remain visible without clipping; other viewport sizes were not individually screenshot-tested. No commit, push, or deployment was performed.
+
+## Project subtitle highlight visibility fix — 2026-11-11
+
+Browser inspection showed that the metadata and inline phrase span were rendered correctly, but the pastel marker colors were too close to the warm-white page background to read clearly. The shared marker palette is now stronger while remaining pastel, and the inline gradient paints the lower third of each highlighted phrase. The CSS uses `box-decoration-break: clone` for wrapped phrases; there is no negative-z pseudo-element or animation state to hide the marker.
+
+Verification: Actual Safari renders were checked for all six published project routes. The Rocket page was captured at desktop and inside a 390px-wide mobile viewport; the blue marker is visible under “airbrake system” and remains aligned across the wrapped phrase. Other project subtitles rendered their matching phrases in browser accessibility output. `npm run verify` passed: Astro check reported zero diagnostics, 14 pages were built, and 228 local links/assets plus rocket evidence and resume checks passed. `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Project title punctuation — 2026-11-11
+
+Shared `ProjectLayout.astro` now renders one muted blue-gray terminal period after every project detail-page title, stripping an existing trailing period before rendering to avoid duplicates. The final word and period stay together when titles wrap. Project metadata, listing cards, navigation, and other page headings are unchanged.
+
+Verification: `npm run verify` passed after implementation. All six generated project pages were checked for exactly one terminal period and the existing titles remain unchanged in the content collection. The final word and period share a nonbreaking inline group for narrow layouts; no per-route screenshot matrix was captured. Changes remain local; no commit, push, or deployment was performed.
+
+## Rocket timeline award and flight results — 2026-11-11
+
+Final timeline milestone now presents the May 2026 team award in a small pale-cream panel, while retaining its date, timeline dot, and a link to GW's official announcement. Flight Results no longer includes the low-resolution launch photo; its three metrics are full-width and closely follow the section introduction, with dates grouped under each flight and the 4.6% comparison softly emphasized. The required qualification and observational-comparison caveat remain. The existing flight image stays intact and appears at a modest contained size in the Technical Evidence section.
+
+Verification: `npm run verify` passed. Safari screenshots reviewed the full-width three-metric results at desktop and 390px; the 390px render stacks the metrics legibly. The award content, link, and retained supporting photo were also checked in the rendered page. Other widths were checked against responsive CSS breakpoints rather than captured individually. Other project pages are unchanged. No commit, push, or deployment was performed.
+
 ## Resumed visual refinement — 2026-11-10
 
 Checkpoint: `e988be5`. Chamber listing artwork updated to `chamber-spools.webp` from the approved screenshot; technology section now labels the screenshot stack as an initial architecture. DigitalOcean deployment and Home Assistant role remain unconfirmed. Rocket shortening was rejected by image generation and remains incomplete. No private proposal was accessed or added. Build verification is recorded in the completion message; new desktop/390px browser inspection remains Not verified until performed.
@@ -154,6 +184,10 @@ Verification: `npm run verify` passed with zero Astro diagnostics, 14 generated 
 
 Changes remain local and uncommitted. The unrelated untracked `Shota_Kakiuchi_Recruit_Personal_Statement.pdf` was left untouched.
 
+## Rocket intro launch photo height — 2026-11-11
+
+Matched the visible rocket-in-flight photograph height to the team photo at desktop, tablet, and mobile breakpoints by shrinking its width in proportion to each grid layout. It keeps its original 174:662 aspect ratio, is capped at its source width, and is not cropped or edited.
+
 ## Rocket case-study layout repair — 2026-11-11
 
 Reworked the rocket-only case-study grid so its project outline is the single sticky sidebar and the technical involvement panel now sits alongside the six team disciplines. The sidebar has a viewport-bounded scroll area when needed; it leaves sticky positioning below tablet widths. The Rocket content column no longer inherits the narrow generic prose max-width. Removed the previous calendar-like three-column timeline and replaced it with one chronological vertical axis, aligned date column, event content, and connected markers. The four-stage control flow now uses naturally sized rows with separate downward connectors; its seven-stage signal path remains in a disclosure.
@@ -161,3 +195,9 @@ Reworked the rocket-only case-study grid so its project outline is the single st
 Added `TechnicalFigure.astro` for rocket-specific semantic figure, frame, enlargement link, and caption markup. Captions now follow the image frame in normal document flow, fixing the shared prose negative caption margin for this page. Unified frame padding and image containment; aligned CAD/workbench frames, balanced FEA/CFD comparison sizing, and constrained the ground actuation pair to the frame content area at mobile widths.
 
 Visual review used native Safari screenshots of the rendered desktop Engineering Systems, control architecture, CAD/physical comparison, and timeline sections, plus a 390px-wide responsive harness for mobile Engineering Systems and actuation. The desktop captures showed no sticky-panel collision, clipped stages, caption overlap, or disconnected timeline markers. The mobile capture exposed an image sizing rule losing to a more specific shared selector; after lowering the base figure rule's specificity and moving the mobile arrow into normal flow, a refreshed 390px screenshot confirmed the image stays inside its frame and the downward arrow sits below its caption. Exact six-viewport and 200% zoom testing was not available. `npm run verify` passed after the final changes: zero Astro diagnostics, 14 generated pages, and 227 local asset/navigation links. `git diff --check` passed. Changes remain local and uncommitted; no deployment or push.
+
+## Rocket real-vehicle infographic — 2026-11-11
+
+Replaced the paragraph in the middle column of “The Real Vehicle” with a compact editorial infographic: a highlighted “from design to flight.” heading, project descriptor, 4-person and 11.12-foot scale metrics, three documented primary contribution areas (Electronics, PCB Design, Software), and a linked team-award row. The existing team and launch photographs, their source files, displayed aspect ratios, placement, captions, and enlarge links were left unchanged for this update.
+
+Visual review in the local browser confirmed the three-column desktop composition, visible powder-blue marker, metrics, contribution icons, and award link. A 390px mobile view was also reviewed; the contribution items wrap into a readable two-column arrangement with the final item spanning the row. `npm run verify` passed with zero Astro diagnostics; `git diff --check` passed. No commit, push, or deployment was performed.
