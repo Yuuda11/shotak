@@ -15,6 +15,8 @@ import RocketSimulation from '../components/RocketSimulation.astro';
 import ProjectFacts from '../components/ProjectFacts.astro';
 import GimbalProjectStory from '../components/GimbalProjectStory.astro';
 import MiniPupperProjectStory from '../components/MiniPupperProjectStory.astro';
+import RubeGoldbergProjectStory from '../components/RubeGoldbergProjectStory.astro';
+import EcmProjectStory from '../components/EcmProjectStory.astro';
 interface Props{project:CollectionEntry<'projects'>;headings:{depth:number;slug:string;text:string}[];}
 const {project,headings}=Astro.props;const p=project.data;
 const projectTitle=p.title.replace(/\.$/,'');
@@ -52,6 +54,10 @@ const mediaLabels={concept:'concept illustration',diagram:'functional diagram',p
 <a href="#the-project">The project</a><a href="#face-tracking">Face tracking</a><a href="#camera-stabilization">Camera stabilization</a><a href="#mechanical-design">Mechanical design</a><a href="#system-integration">System integration</a><a href="#development-process">Development process</a><a href="#technical-contribution">Technical contribution</a><a href="#results-and-lessons">Results &amp; lessons</a>
 </>:project.id==='autonomous-mini-pupper'?<>
 <a href="#platform-transition">Platform to mission</a><a href="#mission">Mission sequence</a><a href="#computer-vision">Computer vision</a><a href="#navigation-controls">Navigation &amp; controls</a><a href="#development-process">Development process</a><a href="#technical-implementation">Technical implementation</a><a href="#course-context">Course context</a>
+</>:project.id==='rube-goldberg-machine'?<>
+<a href="#challenge">The challenge</a><a href="#mechanical-design">Mechanical design</a><a href="#electronics-control">Electronics &amp; control</a><a href="#design-fabrication">Design &amp; fabrication</a><a href="#team-integration">Systems integration</a><a href="#technical-skills">Skills &amp; concepts</a>
+</>:project.id==='electrochemical-machining'?<>
+<a href="#challenge">The challenge</a><a href="#manufacturing-principles">Manufacturing principles</a><a href="#machine-architecture">Machine architecture</a><a href="#fluid-delivery">Fluid delivery</a><a href="#electrical-systems">Power &amp; protection</a><a href="#automated-feed">Automated feed</a><a href="#design-build">Design &amp; build</a><a href="#current-progress">Current progress</a><a href="#technical-involvement">Skills &amp; concepts</a>
 </>:<>{headings.filter(h=>h.depth===2).map(h=>
 <a href={`#${h.slug}`}>{h.text}</a>)}{p.documents.length>0&&<a href="#report-poster">Technical evidence · report &amp; poster</a>}</>}
 </nav>
@@ -62,12 +68,18 @@ const mediaLabels={concept:'concept illustration',diagram:'functional diagram',p
 </>}
 {project.id==='face-tracking-laser-gimbal'&&<GimbalProjectStory/>}
 {project.id==='autonomous-mini-pupper'&&<MiniPupperProjectStory/>}
+{project.id==='rube-goldberg-machine'&&<RubeGoldbergProjectStory/>}
+{project.id==='electrochemical-machining'&&<EcmProjectStory/>}
 {project.id==='rocket-airbrake'?<>
 {p.documents.length>0&&<ProjectDocuments ids={p.documents}/>}
 <slot/>
 </>:project.id==='face-tracking-laser-gimbal'?<>
 <slot/>
 </>:project.id==='autonomous-mini-pupper'?<>
+<slot/>
+</>:project.id==='rube-goldberg-machine'?<>
+<slot/>
+</>:project.id==='electrochemical-machining'?<>
 <slot/>
 </>:<>
 <slot/>{p.documents.length>0&&<ProjectDocuments ids={p.documents}/>}

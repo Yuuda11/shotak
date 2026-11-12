@@ -2,6 +2,14 @@
 
 Last updated: 2026-11-12.
 
+## Rube Goldberg Machine case study — 2026-11-12
+
+Replaced the generic case-study copy with a focused account of Shota’s individual Archimedean spiral mechanism and its integration into the class-wide 40-section golf-ball chain. Updated project metadata for the built-and-integrated class project, mechanical design/fabrication/electronics role, disciplines, and documented CAD, printing, Arduino, IR sensor, motor, gearing, transistor-switching, and PWM technologies. Added a case-study story with existing annotated CAD and workbench imagery, concise mechanism concepts, a functional (not circuit-level) electronics overview, two line-and-dot build processes, a shared-interface diagram, and aligned skill grids. The class-wide count is explicitly not attributed as Shota’s individual design. The CAD software name and measured performance remain unspecified; no component model, circuit values, or unsupported performance claim was added. The Projects/Home listing illustration is unchanged. Browser review used Chrome DevTools at 1440, 1366, 1024, 768, and 390px; document width matched every viewport. Representative desktop/mobile captures are in `/private/tmp/rube-review/visual-qa/` (`rube-mechanical-1440.png`, `rube-electronics-390.png`, `rube-integration-390.png`, `rube-skills-390.png`). `npm run verify` and `git diff --check` passed; 14 routes and 245 local asset/navigation links were checked.
+
+## Electrochemical Drilling Machine case study — 2026-11-12
+
+Updated the project metadata to show its in-progress design-and-build status and Shota’s primary fluid-systems and electrical-integration responsibilities, with motorized feed as a related subsystem. Added an ECM case-study story covering conceptual electrochemical principles, four machine subsystems, fluid-delivery considerations, functional electrical blocks, proposed open-loop electrode feed, a progress-aware development timeline, BOM-development categories, and related skills. The repository contains no ECM-specific CAD, wiring, or build photos, so the diagrams are native conceptual illustrations. The electrolyte return/collection route, subsystem completion, installed protection, final BOM, and test/results state remain unverified; no drilling result or safety validation is claimed. The supplied cover art is unchanged. Browser review used Chrome DevTools at 1440, 1366, 1024, 768, and 390px; document width matched every viewport. Representative captures are in `/private/tmp/rube-review/visual-qa/` (`ecm-science-1440.png`, `ecm-fluid-390.png`, `ecm-electrical-390.png`, `ecm-build-390.png`). `npm run verify` and `git diff --check` passed.
+
 ## Mini Pupper preview tag — 2026-11-12
 
 Added ROS to the data-driven project-card preview list. Left ROS out of the shared Tools & Technologies field because the current case study documents it as course exposure rather than an implemented integration; it remains visible as coursework on the detail page.

@@ -1,0 +1,367 @@
+---
+import ProcessTimeline from './ProcessTimeline.astro';
+
+const buildStages = [
+  { number: '01', title: 'Research & Calculations', detail: 'Electrochemical theory and design calculations', tone: 'blue' as const },
+  { number: '02', title: 'Initial Design', detail: 'Machine architecture, fluid routing, and electrical design', tone: 'sage' as const },
+  { number: '03', title: 'Bill of Materials', detail: 'Component selection, cost evaluation, and sourcing', tone: 'lavender' as const },
+  { number: '04', title: 'Fabrication & Assembly', detail: 'Build and integrate the mechanical, fluid, and electrical systems', tone: 'cream' as const },
+  { number: '05', title: 'Testing & Iteration', detail: 'Planned evaluation of flow, current, machining, and feed behavior', tone: 'blue' as const },
+];
+
+const designConsiderations = [
+  { title: 'Electrolyte', text: 'Selection, concentration, and conductivity.' },
+  { title: 'Electrical conditions', text: 'Voltage, current, and current density.' },
+  { title: 'Material removal', text: 'Electrochemical dissolution and theoretical removal rate.' },
+  { title: 'Machining gap', text: 'Tool positioning and spacing at the active region.' },
+  { title: 'Fluid transport', text: 'Electrolyte renewal and reaction-product removal.' },
+  { title: 'Feed rate', text: 'Coordinate material removal with electrode advance.' },
+];
+
+const systemAreas = [
+  { number: '01', title: 'Electrochemistry', detail: 'Electrolyte chemistry · machining gap · current density', tone: 'blue' },
+  { number: '02', title: 'Fluid management', detail: 'Pump · routing · shutoff · byproduct removal', tone: 'sage' },
+  { number: '03', title: 'Electrical systems', detail: 'DC power · current monitoring · protection requirements', tone: 'lavender' },
+  { number: '04', title: 'Automated feed', detail: 'Arduino · motor control · lead-screw electrode movement', tone: 'cream' },
+];
+
+const bomAreas = [
+  { title: 'Mechanical & feed', detail: 'Structure, electrode positioning, motor, and lead screw' },
+  { title: 'Fluid delivery', detail: 'Pump, tubing, valves, and collection considerations' },
+  { title: 'Power & monitoring', detail: 'DC supply, current measurement, and protection needs' },
+  { title: 'Controls', detail: 'Arduino and motor-control components' },
+];
+
+const primaryInvolvement = [
+  'Fluid Systems Design', 'Pump & Valve Integration', 'Electrical Integration',
+  'DC Power Distribution', 'Current Monitoring', 'Electrical Protection',
+  'Manufacturing System Integration',
+];
+
+const supportingInvolvement = [
+  'CAD & Mechanical Design', 'Arduino', 'Motor Control', 'Lead-Screw Feed',
+  'BOM Development', 'Prototyping & Assembly',
+];
+
+const engineeringConcepts = [
+  'Electrochemical Material Removal', 'Current Density', 'Electrolyte Conductivity',
+  'Material Removal Rate', 'Machining Gap', 'Flow & Pressure Loss', 'Process Design',
+];
+---
+
+<div class="ecm-story">
+  <section class="ecm-section" id="challenge" aria-labelledby="ecm-challenge-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">the challenge</p>
+      <h2 id="ecm-challenge-title">machining without mechanical contact.</h2>
+      <p>Electrochemical machining removes conductive material through controlled dissolution rather than conventional cutting forces. Designing a drilling system means coordinating electrical conditions, electrolyte transport, tool spacing, electrode feed, and the removal of reaction products.</p>
+    </header>
+    <div class="ecm-intro-fact" aria-label="Project status">
+      <span class="ecm-status-dot" aria-hidden="true"></span>
+      <div><span class="ecm-kicker">CURRENT STATUS</span><strong>In progress · Design &amp; Build</strong></div>
+    </div>
+  </section>
+
+  <section class="ecm-section" id="manufacturing-principles" aria-labelledby="ecm-science-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">manufacturing principles</p>
+      <h2 id="ecm-science-title">understanding the material removal process.</h2>
+      <p>In ECM, the tool is the cathode and the workpiece is the anode. Electrolyte occupies the narrow interelectrode gap as electrical conditions drive dissolution at the workpiece surface.</p>
+    </header>
+
+    <figure class="ecm-principle-figure">
+      <div class="ecm-principle-diagram" role="img" aria-label="Conceptual ECM cross-section. A cathodic tool electrode faces an anodic workpiece across the electrolyte-filled interelectrode gap. Material is removed at the workpiece surface; electrolyte renewal and reaction-product removal are process requirements.">
+        <div class="ecm-electrode ecm-tool-electrode"><strong>Tool electrode</strong><span>Cathode (−)</span></div>
+        <div class="ecm-electrolyte-gap">
+          <div class="ecm-electrolyte-label"><span>Electrolyte</span><small>Interelectrode gap</small></div>
+          <div class="ecm-flow-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="ecm-gap-needs"><span>Electrolyte renewal</span><span>Material removal region</span><span>Product removal</span></div>
+        </div>
+        <div class="ecm-electrode ecm-material-anode"><strong>Workpiece</strong><span>Anode (+)</span></div>
+        <p>Conceptual process cross-section · not a machine drawing</p>
+      </div>
+      <figcaption>Electrochemical material removal · conceptual cross-section</figcaption>
+    </figure>
+
+    <ul class="ecm-considerations" aria-label="ECM design considerations">
+      {designConsiderations.map((item, index) => <li>
+        <span class="ecm-row-number">{String(index + 1).padStart(2, '0')}</span>
+        <div><h3>{item.title}</h3><p>{item.text}</p></div>
+      </li>)}
+    </ul>
+    <p class="ecm-note">Engineering relationships and theoretical calculations inform the design. No experimental removal rate, electrolyte concentration, achieved tolerance, or machining result is presented as measured performance.</p>
+  </section>
+
+  <section class="ecm-section" id="machine-architecture" aria-labelledby="ecm-architecture-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">machine architecture</p>
+      <h2 id="ecm-architecture-title">four subsystems. one machining process.</h2>
+      <p>The design brings process science together with fluid delivery, electrical monitoring and protection, and controlled electrode movement.</p>
+    </header>
+    <ol class="ecm-system-grid" aria-label="Machine subsystems">
+      {systemAreas.map((system) => <li class={`tone-${system.tone}`}>
+        <span class="ecm-system-number">{system.number}</span>
+        <h3>{system.title}</h3>
+        <p>{system.detail}</p>
+      </li>)}
+    </ol>
+  </section>
+
+  <section class="ecm-section" id="fluid-delivery" aria-labelledby="ecm-fluid-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">fluid delivery</p>
+      <h2 id="ecm-fluid-title">bringing electrolyte to the machining gap.</h2>
+      <p>My fluid-systems work focuses on evaluating how electrolyte can be delivered to the active electrode face and how reaction products can be carried away.</p>
+    </header>
+    <div class="ecm-contribution-grid">
+      <div>
+        <p class="ecm-kicker">DESIGN CONSIDERATIONS</p>
+        <ul class="ecm-check-list">
+          <li>Evaluate the delivery path and pump selection.</li>
+          <li>Consider tubing, valves, capacity, and pressure losses.</li>
+          <li>Provide shutoff capability and account for byproduct removal.</li>
+        </ul>
+      </div>
+      <div class="ecm-flow-concept">
+        <p class="ecm-kicker">FUNCTIONAL DELIVERY CONCEPT · ROUTING IN DEVELOPMENT</p>
+        <ol aria-label="Conceptual electrolyte delivery sequence">
+          <li>Electrolyte source</li><li>Pump</li><li>Valve arrangement</li><li>Machining gap</li>
+        </ol>
+        <p class="ecm-small-note">This shows delivery intent only. The final collection and return arrangement is not documented here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ecm-section" id="electrical-systems" aria-labelledby="ecm-electrical-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">power &amp; protection</p>
+      <h2 id="ecm-electrical-title">controlling electrical energy safely.</h2>
+      <p>My electrical-integration responsibilities include DC power distribution, current measurement, circuit protection, emergency interruption, wiring, and isolation around conductive hardware and electrolyte.</p>
+    </header>
+    <div class="ecm-electrical-layout">
+      <div class="ecm-functional-path" role="img" aria-label="Functional block-level electrical design: DC supply and distribution support the ECM process circuit, with current measurement and planned protection and emergency interruption requirements. This does not represent a verified installed circuit.">
+        <div class="ecm-electrical-block tone-blue"><span>01</span><strong>DC supply</strong><small>Power distribution</small></div>
+        <span class="ecm-path-link" aria-hidden="true"></span>
+        <div class="ecm-electrical-block tone-lavender"><span>02</span><strong>Measurement</strong><small>Current monitoring</small></div>
+        <span class="ecm-path-link" aria-hidden="true"></span>
+        <div class="ecm-electrical-block tone-sage"><span>03</span><strong>ECM circuit</strong><small>Electrode · workpiece</small></div>
+      </div>
+      <aside class="ecm-protection-note">
+        <span class="ecm-kicker">DESIGN REQUIREMENTS</span>
+        <p>Protection, isolation, and emergency shutdown are design concerns; installed components and safety validation are not documented as complete. A current shunt, where used, is a measurement element rather than overcurrent protection.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="ecm-section" id="automated-feed" aria-labelledby="ecm-feed-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">motion control</p>
+      <h2 id="ecm-feed-title">controlling the electrode feed.</h2>
+      <p>The proposed Arduino-driven motor and lead screw convert rotation into vertical electrode movement. Feed rate and tool position must be considered alongside the machining conditions.</p>
+    </header>
+    <div class="ecm-feed-diagram" role="img" aria-label="Conceptual vertical electrode feed: Arduino motor control turns a motor and lead screw to move the electrode toward the machining gap. This does not show a closed-loop gap controller.">
+      <div class="ecm-feed-controller"><span>Arduino</span><small>Motor control</small></div>
+      <span class="ecm-feed-signal" aria-hidden="true"></span>
+      <div class="ecm-feed-mechanism">
+        <div class="ecm-feed-motor">Motor</div>
+        <div class="ecm-lead-screw" aria-hidden="true"></div>
+        <span class="ecm-electrode-label">Electrode</span>
+        <div class="ecm-feed-electrode" aria-hidden="true"></div>
+        <span class="ecm-gap-label">Machining gap</span>
+        <div class="ecm-workpiece" aria-hidden="true"></div>
+        <span class="ecm-workpiece-label">Workpiece</span>
+      </div>
+      <p class="ecm-feed-caveat">Conceptual feed arrangement · open-loop positioning only; no closed-loop gap control is claimed.</p>
+    </div>
+  </section>
+
+  <section class="ecm-section" id="design-build" aria-labelledby="ecm-build-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">design &amp; build</p>
+      <h2 id="ecm-build-title">from theory to a working machine.</h2>
+      <p>The development spans research, design, sourcing, fabrication, and planned testing. The project remains in progress; individual milestone completion is not detailed in the available project record.</p>
+      <div class="ecm-progress-key"><span><i aria-hidden="true"></i> Current stage · Design &amp; Build</span><span>Testing &amp; iteration · Planned</span></div>
+    </header>
+    <ProcessTimeline steps={buildStages} label="Electrochemical drilling machine development stages" className="ecm-build-timeline" stackAt="tablet" />
+    <div class="ecm-bom-block">
+      <div>
+        <p class="ecm-kicker">BOM DEVELOPMENT</p>
+        <h3>engineering choices, component by component.</h3>
+      </div>
+      <ul aria-label="Bill of materials development areas">
+        {bomAreas.map((area, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><div><strong>{area.title}</strong><p>{area.detail}</p></div></li>)}
+      </ul>
+      <p class="ecm-small-note">A finalized bill of materials, vendor list, prices, and procurement status are not included because those details are not available for verification.</p>
+    </div>
+  </section>
+
+  <section class="ecm-section" id="current-progress" aria-labelledby="ecm-progress-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">current progress</p>
+      <h2 id="ecm-progress-title">engineering in progress.</h2>
+      <p>The machine is in the design-and-build stage. No successful drilling trial, machining-performance result, or safety-validation outcome is presented as complete; flow, current behavior, and feed performance remain areas for testing and iteration.</p>
+    </header>
+  </section>
+
+  <section class="ecm-section" id="technical-involvement" aria-labelledby="ecm-skills-title">
+    <header class="ecm-heading">
+      <p class="eyebrow">skills &amp; engineering concepts</p>
+      <h2 id="ecm-skills-title">manufacturing science meets machine design.</h2>
+    </header>
+    <div class="ecm-skill-groups">
+      <section class="ecm-skill-group tone-blue" aria-labelledby="ecm-primary-title">
+        <h3 id="ecm-primary-title">Primary involvement</h3>
+        <ul>{primaryInvolvement.map((skill) => <li>{skill}</li>)}</ul>
+      </section>
+      <section class="ecm-skill-group tone-sage" aria-labelledby="ecm-supporting-title">
+        <h3 id="ecm-supporting-title">Supporting involvement</h3>
+        <ul>{supportingInvolvement.map((skill) => <li>{skill}</li>)}</ul>
+      </section>
+      <section class="ecm-skill-group tone-lavender" aria-labelledby="ecm-concepts-title">
+        <h3 id="ecm-concepts-title">Engineering concepts</h3>
+        <ul>{engineeringConcepts.map((skill) => <li>{skill}</li>)}</ul>
+      </section>
+    </div>
+  </section>
+</div>
+
+<style>
+  .ecm-story { --ecm-blue: #e7f0fa; --ecm-sage: #e7eee7; --ecm-lavender: #f1edf5; --ecm-cream: #f5eee3; min-width: 0; }
+  .ecm-section { min-width: 0; margin: 0 0 var(--case-section-gap, 58px); scroll-margin-top: 110px; }
+  .ecm-heading { max-width: 810px; }
+  .ecm-story .ecm-heading .eyebrow { margin: 0 0 9px; color: var(--muted, #73766f); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+  .ecm-story .ecm-heading h2 { margin: 0; color: var(--text, #202124); font-size: clamp(25px, 2.8vw, 34px); line-height: 1.18; letter-spacing: -.035em; }
+  .ecm-story .ecm-heading > p:last-of-type { max-width: 730px; margin: 16px 0 0; color: var(--description, #666b63); font-size: 14px; line-height: 1.75; }
+  .ecm-intro-fact { display: inline-flex; align-items: center; gap: 12px; margin-top: 25px; padding: 12px 15px; border: 1px solid var(--border, #e2e3df); border-radius: 9px; background: #fffefa; }
+  .ecm-status-dot { width: 9px; height: 9px; border-radius: 50%; background: #a6bba5; box-shadow: 0 0 0 4px #e7eee7; }
+  .ecm-intro-fact div { display: grid; gap: 3px; }
+  .ecm-kicker { margin: 0; color: #707a7d; font-size: 9px; font-weight: 600; letter-spacing: .11em; line-height: 1.4; }
+  .ecm-intro-fact strong { color: var(--text, #202124); font-size: 12px; font-weight: 550; }
+  .ecm-principle-figure { margin: 34px 0 0; padding: 20px 22px 15px; border: 1px solid var(--border, #e2e3df); border-radius: 12px; background: #fff; }
+  .ecm-principle-diagram { display: grid; gap: 0; max-width: 680px; margin-inline: auto; text-align: center; }
+  .ecm-electrode { display: grid; justify-items: center; gap: 3px; padding: 15px; border: 1px solid #aebfce; border-radius: 6px; color: #303a3d; }
+  .ecm-electrode strong { font-size: 13px; font-weight: 550; }
+  .ecm-electrode span { color: #626b67; font-size: 11px; }
+  .ecm-tool-electrode { background: #e7f0fa; }
+  .ecm-material-anode { border-color: #aebfae; background: #e7eee7; }
+  .ecm-electrolyte-gap { display: grid; align-content: center; gap: 11px; min-height: 108px; padding: 14px; border-inline: 1px solid #d9e0e3; background: #f8fbfc; }
+  .ecm-electrolyte-label { display: grid; gap: 2px; color: #39434a; font-size: 12px; }
+  .ecm-electrolyte-label small { color: #68716b; font-size: 10px; }
+  .ecm-flow-dots { display: flex; justify-content: center; gap: 12px; }
+  .ecm-flow-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #93a9b8; }
+  .ecm-gap-needs { display: flex; justify-content: space-between; gap: 10px; color: #68716b; font-size: 9px; line-height: 1.35; }
+  .ecm-gap-needs span:nth-child(2) { color: #776a58; }
+  .ecm-principle-diagram > p { margin: 12px 0 0; color: #828b8b; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+  .ecm-story .ecm-principle-figure figcaption { margin: 12px 0 0; color: var(--muted, #73766f); font-size: 11px; line-height: 1.5; }
+  .ecm-considerations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; margin: 25px 0 0; padding: 0; list-style: none; }
+  .ecm-story .ecm-considerations li { display: grid; grid-template-columns: 28px minmax(0,1fr); align-items: start; column-gap: 11px; margin: 0; padding: 15px 0; border-bottom: 1px solid var(--border, #e2e3df); }
+  .ecm-row-number, .ecm-system-number { color: #71879a; font-size: 10px; font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+  .ecm-story .ecm-considerations h3 { margin: 0; color: var(--text, #202124); font-size: 13px; font-weight: 550; line-height: 1.4; text-transform: none; letter-spacing: 0; }
+  .ecm-story .ecm-considerations p { margin: 4px 0 0; color: var(--description, #666b63); font-size: 12px; line-height: 1.55; }
+  .ecm-note, .ecm-small-note { color: var(--muted, #73766f); font-size: 11px !important; line-height: 1.65 !important; }
+  .ecm-note { margin: 18px 0 0 !important; }
+  .ecm-system-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; margin: 30px 0 0; padding: 0; list-style: none; }
+  .ecm-story .ecm-system-grid li { display: grid; grid-template-rows: auto auto 1fr; align-content: start; min-width: 0; min-height: 142px; margin: 0; padding: 18px 16px; border: 1px solid var(--border, #e2e3df); border-top: 2px solid #bccbd5; border-radius: 8px; background: #fff; }
+  .ecm-system-grid .tone-sage { border-top-color: #b7c7b6 !important; }
+  .ecm-system-grid .tone-lavender { border-top-color: #c9bfd0 !important; }
+  .ecm-system-grid .tone-cream { border-top-color: #d5c7ac !important; }
+  .ecm-story .ecm-system-grid h3 { margin: 8px 0 0; color: var(--text, #202124); font-size: 15px; font-weight: 550; line-height: 1.35; letter-spacing: -.01em; }
+  .ecm-story .ecm-system-grid p { margin: 8px 0 0; color: var(--description, #666b63); font-size: 11px; line-height: 1.55; }
+  .ecm-contribution-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); align-items: start; gap: 36px; margin-top: 28px; }
+  .ecm-contribution-grid .ecm-kicker { margin-bottom: 12px; }
+  .ecm-check-list { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; }
+  .ecm-story .ecm-check-list li { position: relative; margin: 0; padding: 0 0 0 18px; color: #555c57; font-size: 12px; line-height: 1.6; }
+  .ecm-check-list li::before { position: absolute; top: .62em; left: 0; width: 5px; height: 5px; border-radius: 50%; background: #93a8b8; content: ''; }
+  .ecm-flow-concept { min-width: 0; padding: 19px 20px 15px; border: 1px solid var(--border, #e2e3df); border-radius: 9px; background: #fff; }
+  .ecm-flow-concept ol { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); align-items: center; gap: 12px; margin: 17px 0 0; padding: 0; list-style: none; }
+  .ecm-flow-concept li { position: relative; min-width: 0; margin: 0; padding: 11px 8px; border-top: 1px solid #c7d4dc; background: #f9fbfc; color: #39434a; font-size: 11px; line-height: 1.4; text-align: center; }
+  .ecm-flow-concept li:not(:last-child)::after { position: absolute; top: 50%; right: -11px; width: 10px; height: 1px; background: #9eacb4; content: ''; }
+  .ecm-story .ecm-flow-concept .ecm-small-note { margin: 13px 0 0; }
+  .ecm-electrical-layout { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(210px,.65fr); align-items: stretch; gap: 22px; margin-top: 30px; }
+  .ecm-functional-path { display: grid; grid-template-columns: minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr); align-items: center; min-width: 0; padding: 22px; border: 1px solid var(--border, #e2e3df); border-radius: 9px; background: #fff; }
+  .ecm-electrical-block { display: grid; align-content: start; min-width: 0; min-height: 100px; padding: 14px 12px; border-top: 2px solid #bacbd9; background: #f8fbfd; }
+  .ecm-electrical-block.tone-lavender { border-color: #cabed1; background: #faf8fb; }
+  .ecm-electrical-block.tone-sage { border-color: #b6c7b6; background: #f8faf8; }
+  .ecm-electrical-block span { color: #73879a; font-size: 9px; letter-spacing: .08em; }
+  .ecm-electrical-block strong { margin-top: 8px; color: var(--text, #202124); font-size: 12px; font-weight: 550; line-height: 1.35; }
+  .ecm-electrical-block small { margin-top: 4px; color: var(--muted, #73766f); font-size: 10px; line-height: 1.4; }
+  .ecm-path-link { width: 100%; height: 1px; background: #aab8c0; }
+  .ecm-protection-note { align-self: stretch; padding: 17px 18px; border-left: 2px solid #d1c6da; background: #f8f6fa; }
+  .ecm-story .ecm-protection-note p { margin: 9px 0 0; color: #626562; font-size: 11px; line-height: 1.65; }
+  .ecm-feed-diagram { display: grid; grid-template-columns: minmax(140px,.7fr) 70px minmax(190px,1.3fr); align-items: center; gap: 16px; margin-top: 28px; padding: 24px; border: 1px solid var(--border, #e2e3df); border-radius: 9px; background: #fff; }
+  .ecm-feed-controller { display: grid; justify-items: start; gap: 4px; padding: 16px; border-top: 2px solid #c9bed0; background: #faf8fb; }
+  .ecm-feed-controller span { color: var(--text, #202124); font-size: 14px; font-weight: 550; }
+  .ecm-feed-controller small { color: var(--muted, #73766f); font-size: 10px; }
+  .ecm-feed-signal { height: 1px; background: #aab8c0; }
+  .ecm-feed-mechanism { position: relative; display: grid; justify-items: center; min-height: 220px; padding: 5px 20px 25px; }
+  .ecm-feed-motor { display: grid; width: 105px; min-height: 33px; place-items: center; border: 1px solid #aebfce; border-radius: 5px; background: var(--ecm-blue); color: #39434a; font-size: 11px; }
+  .ecm-lead-screw { width: 3px; height: 40px; background: repeating-linear-gradient(to bottom,#8597a5 0 4px,transparent 4px 7px); }
+  .ecm-electrode-label { position: absolute; top: 70px; right: calc(50% + 23px); color: #66717a; font-size: 10px; }
+  .ecm-feed-electrode { width: 10px; height: 72px; border: 1px solid #8799a4; background: #eef2f3; }
+  .ecm-gap-label { margin-top: 4px; color: #73879a; font-size: 9px; }
+  .ecm-workpiece { width: 170px; height: 22px; border: 1px solid #afc0af; border-radius: 3px; background: var(--ecm-sage); }
+  .ecm-workpiece-label { margin-top: 5px; color: #687168; font-size: 10px; }
+  .ecm-story .ecm-feed-caveat { grid-column: 1/-1; margin: 0; color: var(--muted, #73766f); font-size: 10px; line-height: 1.5; text-align: center; }
+  .ecm-progress-key { display: flex; flex-wrap: wrap; gap: 9px 22px; margin-top: 16px; color: #68716b; font-size: 10px; line-height: 1.5; }
+  .ecm-progress-key span { display: inline-flex; align-items: center; gap: 7px; }
+  .ecm-progress-key i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #9db29c; }
+  .ecm-build-timeline { --timeline-count: 5; }
+  .ecm-bom-block { display: grid; grid-template-columns: minmax(180px,.65fr) minmax(0,1.35fr); gap: 22px 30px; margin-top: var(--process-outro-gap,48px); padding-top: 22px; border-top: 1px solid var(--border, #e2e3df); }
+  .ecm-bom-block h3 { margin: 7px 0 0; color: var(--text, #202124); font-size: 17px; font-weight: 500; line-height: 1.35; }
+  .ecm-bom-block ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 24px; margin: 0; padding: 0; list-style: none; }
+  .ecm-story .ecm-bom-block li { display: grid; grid-template-columns: 25px minmax(0,1fr); column-gap: 10px; align-items: start; margin: 0; padding: 11px 0; border-bottom: 1px solid var(--border, #e2e3df); }
+  .ecm-bom-block li > span { color: #71879a; font-size: 9px; font-variant-numeric: tabular-nums; }
+  .ecm-bom-block li strong { color: var(--text, #202124); font-size: 11px; font-weight: 550; line-height: 1.4; }
+  .ecm-story .ecm-bom-block li p { margin: 4px 0 0; color: var(--muted, #73766f); font-size: 10px; line-height: 1.5; }
+  .ecm-story .ecm-bom-block > .ecm-small-note { grid-column: 2; margin: -7px 0 0; }
+  .ecm-skill-groups { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin-top: 26px; }
+  .ecm-skill-group { min-width: 0; }
+  .ecm-skill-group h3 { margin: 0 0 11px; color: #48504a; font-size: 12px; font-weight: 550; }
+  .ecm-skill-group ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: minmax(50px,1fr); gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .ecm-story .ecm-skill-group li { display: flex; align-items: center; min-width: 0; min-height: 50px; margin: 0; padding: 10px 11px; border: 1px solid var(--border, #e2e3df); border-top: 2px solid #c0cfda; border-radius: 6px; color: #515b5d; font-size: 10px; line-height: 1.45; }
+  .ecm-skill-group.tone-sage li { border-top-color: #bfcebe; }
+  .ecm-skill-group.tone-lavender li { border-top-color: #cdc3d4; }
+  @media (max-width: 1100px) {
+    .ecm-system-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .ecm-contribution-grid { grid-template-columns: 1fr; gap: 24px; }
+    .ecm-skill-groups { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .ecm-skill-group:last-child { grid-column: 1/-1; }
+  }
+  @media (max-width: 800px) {
+    .ecm-principle-figure { padding: 12px 10px; }
+    .ecm-electrical-layout { grid-template-columns: 1fr; }
+    .ecm-feed-diagram { grid-template-columns: minmax(90px,.7fr) 34px minmax(150px,1.3fr); gap: 10px; padding: 16px 12px; }
+    .ecm-feed-workpiece { max-width: 100%; }
+    .ecm-bom-block { grid-template-columns: 1fr; gap: 13px; }
+    .ecm-story .ecm-bom-block > .ecm-small-note { grid-column: 1; margin-top: 0; }
+  }
+  @media (max-width: 600px) {
+    .ecm-story .ecm-heading h2 { font-size: clamp(24px, 7vw, 30px); }
+    .ecm-story .ecm-heading > p:last-of-type { font-size: 13px; line-height: 1.7; }
+    .ecm-considerations { grid-template-columns: 1fr; }
+    .ecm-system-grid { grid-template-columns: 1fr; gap: 10px; }
+    .ecm-story .ecm-system-grid li { min-height: 0; grid-template-columns: 28px minmax(0,1fr); grid-template-rows: auto auto; padding: 13px 14px; }
+    .ecm-system-grid .ecm-system-number { grid-row: 1/3; }
+    .ecm-story .ecm-system-grid h3 { margin: 0; }
+    .ecm-story .ecm-system-grid p { margin: 4px 0 0; }
+    .ecm-flow-concept { padding: 16px 12px 13px; }
+    .ecm-flow-concept ol { gap: 8px; }
+    .ecm-flow-concept li { padding: 9px 5px; font-size: 10px; }
+    .ecm-electrical-layout { gap: 13px; }
+    .ecm-functional-path { grid-template-columns: 1fr; gap: 8px; padding: 13px; }
+    .ecm-electrical-block { min-height: 0; grid-template-columns: 24px minmax(0,1fr); grid-template-rows: auto auto; padding: 11px; }
+    .ecm-electrical-block span { grid-row: 1/3; }
+    .ecm-electrical-block strong { margin-top: 0; }
+    .ecm-electrical-block small { margin-top: 2px; }
+    .ecm-path-link { width: 1px; height: 12px; margin: 0 auto; }
+    .ecm-feed-diagram { grid-template-columns: minmax(0,1fr); }
+    .ecm-feed-controller { justify-self: stretch; }
+    .ecm-feed-signal { width: 1px; height: 18px; justify-self: center; }
+    .ecm-feed-mechanism { min-height: 210px; }
+    .ecm-progress-key { display: grid; gap: 6px; }
+    .ecm-bom-block ul { grid-template-columns: 1fr; }
+    .ecm-skill-groups { grid-template-columns: 1fr; gap: 20px; }
+    .ecm-skill-group:last-child { grid-column: auto; }
+    .ecm-skill-group ul { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  }
+</style>

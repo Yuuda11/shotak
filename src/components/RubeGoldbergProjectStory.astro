@@ -1,0 +1,193 @@
+---
+import ProcessTimeline from './ProcessTimeline.astro';
+import TechnicalFigure from './TechnicalFigure.astro';
+
+const electronicsSteps = [
+  { number: '01', title: 'Detect', detail: 'An IR sensor detects the golf ball.', tone: 'blue' as const },
+  { number: '02', title: 'Process', detail: 'Arduino responds to the sensor input.', tone: 'sage' as const },
+  { number: '03', title: 'Drive', detail: 'Transistor switching and PWM control the motor.', tone: 'lavender' as const },
+  { number: '04', title: 'Transfer', detail: 'The motor-driven mechanism moves the ball through the module.', tone: 'cream' as const },
+];
+
+const buildSteps = [
+  { number: '01', title: 'Design', detail: 'Develop the mechanism and interfaces in CAD.', tone: 'blue' as const },
+  { number: '02', title: 'Fabricate', detail: '3D-print the designed components.', tone: 'sage' as const },
+  { number: '03', title: 'Assemble', detail: 'Integrate bearings, linkages, gearing, motor, and structure.', tone: 'lavender' as const },
+  { number: '04', title: 'Integrate', detail: 'Connect electrical controls and neighboring modules.', tone: 'cream' as const },
+];
+
+const primarySkills = [
+  'Mechanical Design & CAD', '3D Printing', 'Gear & Linkage Integration', 'Arduino Programming',
+  'IR Sensor Integration', 'DC Motor Control', 'Transistor Switching', 'PWM',
+];
+
+const engineeringConcepts = [
+  'Rotational Mechanisms', 'Bearings', 'Worm Gears', 'Universal Joints',
+  'Sensor-Triggered Control', 'Mechanical Interfaces', 'Systems Integration', 'Team Collaboration',
+];
+---
+
+<div class="rube-story">
+  <section class="rube-section rube-challenge" id="challenge" aria-labelledby="rube-challenge-title">
+    <p class="eyebrow">the challenge</p>
+    <h2 id="rube-challenge-title">one mechanism. one connected system.</h2>
+    <div class="rube-challenge-grid">
+      <p>Each student designed an individual mechanism that had to connect with neighboring modules. Together, the class created a chain reaction transferring a golf ball through the larger system.</p>
+      <div class="rube-class-fact" aria-label="40 sections across the full class-wide machine">
+        <strong>40</strong>
+        <span>sections across the full class-wide machine</span>
+      </div>
+    </div>
+    <p class="rube-note">My responsibility was one mechanism within the shared build; the 40-section count describes the class-wide system.</p>
+  </section>
+
+  <section class="rube-section" id="mechanical-design" aria-labelledby="rube-mechanical-title">
+    <p class="eyebrow">mechanical design</p>
+    <h2 id="rube-mechanical-title">a deliberately complex transmission.</h2>
+    <p class="rube-section-intro">The individual module used a rotating Archimedean spiral and a bearing-supported assembly, with a worm gear, universal joint, DC motor, and supporting structure.</p>
+    <div class="rube-figure-grid">
+      <TechnicalFigure
+        src="/images/projects/rube-goldberg-machine/cad.webp"
+        alt="Annotated CAD view of the Archimedean spiral mechanism, showing the spiral, bearing supports, worm gear, universal joint, and motor assembly."
+        caption="CAD design · spiral, bearings, worm gear, and linkage"
+        width={1190}
+        height={1190}
+        className="rube-cad-figure"
+      />
+      <TechnicalFigure
+        src="/images/projects/rube-goldberg-machine/mechanism.webp"
+        alt="Photograph of the connected class Rube Goldberg machine on a workbench, including the spiral mechanism among neighboring modules."
+        caption="Physical assembly · mechanism within the class-wide system"
+        width={1280}
+        height={1280}
+        className="rube-assembly-figure"
+      />
+    </div>
+    <ul class="rube-concept-tags" aria-label="Mechanical concepts">
+      <li>Rotary motion</li><li>Gear reduction</li><li>Mechanical linkages</li><li>Bearing support</li><li>Ball transfer</li>
+    </ul>
+    <p class="rube-note">The annotated model documents the mechanism concept; no gear ratio, torque, or measured performance is claimed here.</p>
+  </section>
+
+  <section class="rube-section" id="electronics-control" aria-labelledby="rube-electronics-title">
+    <p class="eyebrow">embedded electronics</p>
+    <h2 id="rube-electronics-title">detect. switch. drive.</h2>
+    <p class="rube-section-intro">An IR sensor detects the ball, Arduino handles the input, and an NPN transistor switches the motor circuit. PWM is used to control motor speed.</p>
+    <div class="rube-control-facts" aria-label="Functional electronics architecture">
+      <div><span>01 / INPUT</span><strong>IR Sensors</strong><p>Detect the golf ball.</p></div>
+      <div><span>02 / CONTROL</span><strong>Arduino</strong><p>Respond to sensor input.</p></div>
+      <div><span>03 / SWITCHING</span><strong>NPN Transistor · PWM</strong><p>Switch and control the motor drive.</p></div>
+      <div><span>04 / OUTPUT</span><strong>DC Motor</strong><p>Power the mechanical transmission.</p></div>
+    </div>
+    <p class="rube-note">Functional overview only; no circuit values, pin assignments, transistor model, or power-supply details are represented.</p>
+    <ProcessTimeline steps={electronicsSteps} label="Electronics and ball-transfer process" className="rube-process" stackAt="tablet" />
+  </section>
+
+  <section class="rube-section" id="design-fabrication" aria-labelledby="rube-build-title">
+    <p class="eyebrow">design to fabrication</p>
+    <h2 id="rube-build-title">from CAD to physical mechanism.</h2>
+    <p class="rube-section-intro">The mechanism moved from a designed assembly to printed parts, mechanical integration, and connection with the electrical controls and surrounding modules.</p>
+    <ProcessTimeline steps={buildSteps} label="Rube Goldberg mechanism design and build stages" className="rube-process" stackAt="tablet" />
+  </section>
+
+  <section class="rube-section" id="team-integration" aria-labelledby="rube-team-title">
+    <p class="eyebrow">systems integration</p>
+    <h2 id="rube-team-title">individual designs. shared interfaces.</h2>
+    <p class="rube-section-intro">Each student owned an individual module, while the class coordinated incoming and outgoing transfers so the golf ball could continue through the larger build.</p>
+    <ol class="rube-interface" aria-label="Ball transfer between neighboring student mechanisms">
+      <li><span class="rube-interface-label">previous mechanism</span><strong>Incoming ball transfer</strong></li>
+      <li class="rube-interface-connector" aria-hidden="true"><span class="rube-ball"></span></li>
+      <li class="rube-interface-focus"><span class="rube-interface-label">my mechanism</span><strong>Sensor-triggered spiral</strong></li>
+      <li class="rube-interface-connector" aria-hidden="true"><span class="rube-ball"></span></li>
+      <li><span class="rube-interface-label">next mechanism</span><strong>Outgoing ball transfer</strong></li>
+    </ol>
+    <p class="rube-note">Neighboring mechanisms are represented as interfaces; their individual designs are not specified.</p>
+  </section>
+
+  <section class="rube-section rube-skills" id="technical-skills" aria-labelledby="rube-skills-title">
+    <p class="eyebrow">skills &amp; technical concepts</p>
+    <h2 id="rube-skills-title">mechanics meets control.</h2>
+    <div class="rube-skill-groups">
+      <div class="rube-skill-group rube-skill-group--blue">
+        <h3>Primary Implementation</h3>
+        <ul>{primarySkills.map((skill) => <li>{skill}</li>)}</ul>
+      </div>
+      <div class="rube-skill-group rube-skill-group--sage">
+        <h3>Engineering Concepts</h3>
+        <ul>{engineeringConcepts.map((skill) => <li>{skill}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .rube-story { --rube-blue: #e7f0fa; --rube-sage: #e7eee7; --rube-lavender: #f1edf5; --rube-cream: #f5eee3; }
+  .rube-section { padding-block: 48px; border-bottom: 1px solid var(--border,#e8e8e6); scroll-margin-top: 115px; }
+  .rube-section:first-child { padding-top: 0; }
+  .rube-section .eyebrow { margin-bottom: 10px; }
+  .rube-section h2 { margin: 0 0 20px; color: #202124; font-size: clamp(27px,3.2vw,36px); line-height: 1.2; letter-spacing: -.045em; }
+  .rube-section-intro { max-width: 720px; margin: 0; color: #686c63; font-size: 14px; line-height: 1.8; }
+  .rube-challenge-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(150px,.42fr); align-items: center; gap: 30px; }
+  .rube-challenge-grid > p { margin: 0; color: #686c63; font-size: 14px; line-height: 1.85; }
+  .rube-class-fact { display: flex; align-items: center; gap: 13px; padding-left: 20px; border-left: 1px solid var(--border,#e8e8e6); }
+  .rube-class-fact strong { color: #303832; font-size: 45px; font-weight: 500; letter-spacing: -.06em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .rube-class-fact span { max-width: 130px; color: #70766f; font-size: 11px; line-height: 1.5; }
+  .rube-note { margin: 14px 0 0; color: #7a7f77!important; font-size: 11px!important; line-height: 1.6!important; }
+  .rube-figure-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 22px; margin-top: 28px; }
+  .rube-figure-grid .technical-figure { min-width: 0; margin: 0; }
+  .rube-figure-grid :global(.technical-figure-frame) { height: 310px; padding: 16px; background: #fff; }
+  .rube-figure-grid :global(.technical-figure-frame img) { width: 100%; height: 100%; object-fit: contain; }
+  .rube-figure-grid :global(.technical-figure figcaption) { margin: 12px 0 0; color: #6d736b; font-size: 11px; line-height: 1.55; }
+  .rube-concept-tags { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 22px 0 0!important; padding: 0!important; border-top: 1px solid var(--border,#e8e8e6); border-bottom: 1px solid var(--border,#e8e8e6); list-style: none!important; }
+  .rube-concept-tags li { margin: 0!important; padding: 12px 0!important; color: #58645b; font-size: 11px!important; line-height: 1.4!important; }
+  .rube-control-facts { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0 18px; margin-top: 26px; border-top: 1px solid var(--border,#e8e8e6); }
+  .rube-control-facts > div { display: grid; grid-template-rows: auto auto 1fr; align-content: start; min-width: 0; padding: 15px 0; border-bottom: 1px solid var(--border,#e8e8e6); }
+  .rube-control-facts span { color: #698098; font-size: 9px; letter-spacing: .08em; }
+  .rube-control-facts strong { margin-top: 8px; color: #303832; font-size: 12px; font-weight: 550; line-height: 1.45; }
+  .rube-control-facts p { margin: 5px 0 0!important; color: #70766f!important; font-size: 11px!important; line-height: 1.55!important; }
+  .rube-process { margin-top: 0; }
+  .rube-interface { display: grid; grid-template-columns: minmax(0,1fr) 34px minmax(0,1fr) 34px minmax(0,1fr); align-items: stretch; gap: 0; margin: var(--process-intro-gap,48px) 0 0!important; padding: 0!important; list-style: none!important; }
+  .rube-interface > li { display: flex; min-width: 0; flex-direction: column; justify-content: center; gap: 8px; min-height: 100px; margin: 0!important; padding: 18px!important; border-block: 1px solid var(--border,#e8e8e6); }
+  .rube-interface > li:not(.rube-interface-connector) { border-inline-start: 1px solid var(--border,#e8e8e6); }
+  .rube-interface > li:not(.rube-interface-connector):last-child { border-inline-end: 1px solid var(--border,#e8e8e6); }
+  .rube-interface-label { color: #72786f; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+  .rube-interface > li strong { color: #353c36; font-size: 12px; font-weight: 550; line-height: 1.5; }
+  .rube-interface-focus { background: var(--rube-lavender); border-color: #d8d0df!important; }
+  .rube-interface-connector { align-items: center; padding: 0!important; border-block: 0!important; }
+  .rube-interface-connector::before { width: 100%; height: 1px; background: #c8cec8; content: ''; }
+  .rube-ball { position: absolute; width: 9px; height: 9px; border: 1px solid #b6a98e; border-radius: 50%; background: var(--rube-cream); }
+  .rube-interface-connector { position: relative; }
+  .rube-skill-groups { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; margin-top: 25px; }
+  .rube-skill-group { min-width: 0; padding-top: 15px; border-top: 1px solid var(--border,#e8e8e6); }
+  .rube-skill-group h3 { margin: 0 0 13px; color: #303832; font-size: 15px; font-weight: 550; }
+  .rube-skill-group ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: minmax(54px,1fr); gap: 8px; margin: 0!important; padding: 0!important; list-style: none!important; }
+  .rube-skill-group li { display: flex; align-items: center; min-width: 0; margin: 0!important; padding: 11px 12px!important; border: 1px solid #e8e8e6; border-radius: 7px; background: #fff; color: #565d55!important; font-size: 11px!important; line-height: 1.45!important; }
+  .rube-skill-group--blue li { border-color: #e1e8ef; background: #f8fbfe; }
+  .rube-skill-group--sage li { border-color: #e3e9e2; background: #fafcf9; }
+  @media (max-width: 900px) {
+    .rube-control-facts { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .rube-figure-grid :global(.technical-figure-frame) { height: 270px; }
+  }
+  @media (max-width: 800px) {
+    .rube-interface { grid-template-columns: minmax(0,1fr); margin-top: var(--process-intro-gap,32px)!important; }
+    .rube-interface > li { min-height: auto; padding: 14px 16px!important; }
+    .rube-interface-connector { min-height: 25px!important; }
+    .rube-interface-connector::before { width: 1px; height: 100%; }
+    .rube-ball { width: 8px; height: 8px; }
+  }
+  @media (max-width: 600px) {
+    .rube-section { padding-block: 34px; scroll-margin-top: 90px; }
+    .rube-section:first-child { padding-top: 0; }
+    .rube-section h2 { margin-bottom: 15px; }
+    .rube-challenge-grid { grid-template-columns: minmax(0,1fr); gap: 18px; }
+    .rube-class-fact { padding-left: 14px; }
+    .rube-figure-grid { grid-template-columns: minmax(0,1fr); gap: 22px; }
+    .rube-figure-grid :global(.technical-figure-frame) { height: min(82vw,320px); }
+    .rube-control-facts { gap: 0 14px; }
+    .rube-skill-groups { grid-template-columns: minmax(0,1fr); gap: 22px; }
+    .rube-skill-group ul { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rube-story *, .rube-story *::before, .rube-story *::after { scroll-behavior: auto!important; }
+  }
+</style>
