@@ -48,6 +48,14 @@ This is an editor checklist, not a public project page. Public copy uses only th
 - Retained from the existing portfolio. The existing scope and supplied tags are preserved.
 - Supply your actual contribution, dates, team context, design records, validation, results, and media before expanding the short project note.
 
+## Undergraduate Research — `/projects/undergraduate-research-fluid-mechanics/`
+
+- Supply source viscosity-vs-shear-rate datasets with concentrations, units, and experimental conditions; approved measured plots may then be added.
+- Supply the final modified Cross-type model equation, fitted parameters, valid concentration range, and actual goodness-of-fit statistics before any equation, comparison curve, or concentration explorer is published.
+- Supply gear-pump voltage-to-flow calibration data and distinct commanded-voltage and measured-flow time series before plotting pump behavior or claiming waveform reproduction.
+- A real rheometer or laboratory photograph would improve the case-study cover; the current cover is a conceptual illustration, not a photograph or data plot.
+- Current illustrative DSP plots are synthetic examples and clearly labeled; replace them with source figures only if those research artifacts are available.
+
 ## Media labeling
 
 Reused existing public media for the portrait, rocket CAD/team photograph, gimbal photograph, Mini Pupper platform photograph, and Rube Goldberg mechanism/CAD. The chamber cover and supporting mission diagrams are high-level functional diagrams. The Mini Pupper image is labeled as the platform, not evidence of autonomous mission validation. Chamber mechanism images remain excluded pending approval. See `docs/media-sources.md` for provenance.

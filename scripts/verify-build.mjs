@@ -2,7 +2,7 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import { join, resolve, extname } from 'node:path';
 import assert from 'node:assert/strict';
 const root = resolve('dist');
-const required = ['index.html','about/index.html','projects/index.html','contact/index.html','projects/rocket-airbrake/index.html','projects/embedded-iot/index.html','projects/electrochemical-machining/index.html','projects/face-tracking-laser-gimbal/index.html','projects/autonomous-mini-pupper/index.html','projects/rube-goldberg-machine/index.html','resume/index.html','documents/rocket-final-report/index.html','documents/rocket-poster/index.html','404.html'];
+const required = ['index.html','about/index.html','projects/index.html','contact/index.html','projects/rocket-airbrake/index.html','projects/embedded-iot/index.html','projects/electrochemical-machining/index.html','projects/face-tracking-laser-gimbal/index.html','projects/autonomous-mini-pupper/index.html','projects/rube-goldberg-machine/index.html','projects/undergraduate-research-fluid-mechanics/index.html','resume/index.html','documents/rocket-final-report/index.html','documents/rocket-poster/index.html','404.html'];
 for(const page of required) assert((await stat(join(root,page))).isFile(),`Missing ${page}`);
 const files=[];
 async function walk(dir){for(const file of await readdir(dir,{withFileTypes:true})){const path=join(dir,file.name);if(file.isDirectory())await walk(path);else files.push(path);}}
@@ -46,11 +46,12 @@ const expectedCovers = {
  'autonomous-mini-pupper':'/images/projects/covers/autonomous-mini-pupper-cover-v2.png',
  'rube-goldberg-machine':'/images/projects/covers/rube-goldberg-technical.webp',
  'electrochemical-machining':'/images/projects/covers/ecm.webp',
+ 'undergraduate-research-fluid-mechanics':'/images/projects/covers/undergraduate-research-fluid-mechanics.svg',
 };
 for (const page of ['index.html','projects/index.html']) {
  const html=await readFile(join(root,page),'utf8');
  const cards=[...html.matchAll(/<article\b[^>]*data-project="([^"]+)"[\s\S]*?<\/article>/g)];
- assert.equal(cards.length,page==='index.html'?3:6,`Unexpected project count in ${page}`);
+ assert.equal(cards.length,page==='index.html'?3:7,`Unexpected project count in ${page}`);
  for(const [card,id] of cards){
   assert(card.includes(`src="${base}${expectedCovers[id]}"`),`Wrong listing cover for ${id} in ${page}`);
   assert(card.includes('concept illustration'),`Missing concept label for ${id}`);
@@ -64,4 +65,4 @@ const resume=await readFile(join(root,'resume/index.html'),'utf8');
 assert(/<object[^>]*type="application\/pdf"/.test(resume),'Missing embedded PDF preview');
 assert(/<a[^>]*href="[^"]+\.pdf"[^>]*>Open PDF/.test(resume),'Missing direct PDF fallback');
 assert(!/<a[^>]*download[^>]*>Open PDF/.test(resume),'Primary PDF action forces download');
-console.log('Verified all six listing illustrations, selected-work covers, rocket evidence, document links and resume viewer.');
+console.log('Verified all seven listing illustrations, selected-work covers, rocket evidence, document links and resume viewer.');

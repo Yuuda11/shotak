@@ -17,5 +17,6 @@
 - **Content source of truth.** Profile arrays and site/contact values live in `src/data/`; project facts and case studies live in Markdown collection entries; document metadata lives in `src/data/documents.ts`. Avoid redundant hard-coded copies.
 - **Static hosting.** Keep Astro static output and existing GitHub Pages workflow. No backend or paid runtime is needed; do not publish or push without authorization.
 - **Draft handling.** Preserve collection `status` behavior so drafts do not gain public routes.
+- **Undergraduate research case study.** Keep the fluid-mechanics/DSP/rheometry/gear-pump work as a separate project page from the Environmental Chamber Fellowship and any research award. Do not publish unprovided measurement data, fitted equations or parameters, concentration limits, or numerical fit metrics. Clearly label synthetic DSP examples as illustrative only; show measured research plots only from source records.
 
 If a new request conflicts with these decisions, follow the site owner’s explicit instruction and update this record. The unresolved rocket cover request is documented as incomplete rather than treated as an approved visual change.

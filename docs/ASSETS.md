@@ -12,6 +12,7 @@ Homepage and Projects cards use `illustration` in each project Markdown entry. T
 - Mini Pupper: `public/images/projects/covers/autonomous-mini-pupper-cover-v2.png` — owner-supplied yellow quadruped concept illustration. The baked caption and arrow were removed from the repository copy so the card's HTML controls remain the only caption and arrow.
 - Rube Goldberg machine: `public/images/projects/covers/rube-goldberg-technical.webp` — generated connected mechanism concept.
 - Electrochemical machining: `public/images/projects/covers/ecm.webp` — owner-supplied pale technical concept illustration. The original `public/images/projects/ecm.svg` remains preserved as a style reference.
+- Undergraduate research: `public/images/projects/covers/undergraduate-research-fluid-mechanics.svg` — native conceptual illustration of DSP, rheometry, and gear-pump workstreams; explicitly labeled as conceptual and containing no research measurements. Its waveform motifs are not actual experimental figures.
 
 Earlier `public/images/projects/covers/*.webp` images and `public/images/projects/*.svg` files remain in the repository; only paths referenced by current project content are active listing media. Generation prompts and limitations are recorded in `technical-cover-generation.json` and `media-sources.md`.
 

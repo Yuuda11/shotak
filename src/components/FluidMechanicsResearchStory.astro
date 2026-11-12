@@ -1,0 +1,165 @@
+---
+import ProcessTimeline from './ProcessTimeline.astro';
+
+const n = 128;
+const sampleRate = 64;
+const time = Array.from({ length: n }, (_, i) => i / sampleRate);
+// Illustrative synthetic signal only: integer-bin sinusoids make a clean, reproducible one-sided DFT.
+const signal = time.map((t) => 0.6 * Math.sin(2 * Math.PI * 4 * t) + 0.3 * Math.sin(2 * Math.PI * 12 * t));
+const spectrum = Array.from({ length: n / 2 + 1 }, (_, k) => {
+  let re = 0; let im = 0;
+  for (let i = 0; i < n; i++) { const angle = 2 * Math.PI * k * i / n; re += signal[i] * Math.cos(angle); im -= signal[i] * Math.sin(angle); }
+  return { f: k * sampleRate / n, magnitude: Math.sqrt(re * re + im * im) * (k === 0 || k === n / 2 ? 1 : 2) / n };
+});
+const plot = (values: number[], min: number, max: number, width = 454, height = 190) => values.map((value, index) => `${(index / (values.length - 1) * width).toFixed(1)},${(height - (value - min) / (max - min) * height).toFixed(1)}`).join(' ');
+const single = (v: number[]) => plot(v, -1, 1);
+const spectrumPoints = plot(spectrum.map((p) => p.magnitude), 0, 0.75);
+const areas = [
+  { n: '01', title: 'Digital Signal Processing', verb: 'Generate & analyze', detail: 'Waveform synthesis · FFT · scientific programming', tone: 'blue' },
+  { n: '02', title: 'Experimental Rheometry', verb: 'Measure & model', detail: 'Experimental data · viscosity · predictive equations', tone: 'sage' },
+  { n: '03', title: 'Gear-Pump Experiments', verb: 'Control & evaluate', detail: 'Voltage waveforms · flow calibration · pulsatile motion', tone: 'lavender' },
+];
+const considerations = [
+  ['Experimental data', 'Measurements across materials and formulations, organized for analysis.'],
+  ['Statistical analysis', 'Compare observed trends and evaluate fitted behavior.'],
+  ['Model development', 'A concentration-dependent modified Cross-type rheological model.'],
+  ['Prediction scope', 'Interpolation is meaningful only within the model’s supported range.'],
+];
+const skills = [
+  ['Experimental methods', 'Rheometry · material characterization · experimental design · tensile testing · data acquisition'],
+  ['Data analytics', 'Python · NumPy · Pandas · data cleaning · statistics · visualization · curve fitting'],
+  ['Engineering principles', 'Rheology · viscosity · shear behavior · fluid mechanics · mathematical modeling · validation'],
+];
+const outcomes = [
+  'Built reusable digital signal-processing and scientific-programming tools.',
+  'Conducted material characterization and analyzed rheological datasets.',
+  'Developed a modified, concentration-dependent Cross-type modeling approach.',
+  'Connected waveform generation with gear-pump calibration experiments.',
+];
+const rheometrySteps = [
+  { title: 'Experiment', detail: 'Collect rheological measurements.', tone: 'blue' as const },
+  { title: 'Process', detail: 'Clean and organize datasets.', tone: 'sage' as const },
+  { title: 'Analyze', detail: 'Investigate material-property trends.', tone: 'lavender' as const },
+  { title: 'Model', detail: 'Fit a modified Cross-type model.', tone: 'cream' as const },
+  { title: 'Evaluate', detail: 'Assess fit and prediction behavior.', tone: 'blue' as const },
+];
+const pumpBlocks = [
+  ['Waveform generation', 'Scientific code · DSP'],
+  ['Electrical drive', 'Voltage command'],
+  ['Gear pump', 'Fluid actuation'],
+  ['Flow measurement', 'Calibration · evaluation'],
+];
+---
+
+<div class="fluid-research-story">
+  <section id="research-overview" class="fr-section" aria-labelledby="fr-overview-title">
+    <header class="fr-heading"><p class="eyebrow">undergraduate research</p><h2 id="fr-overview-title">from experimental data to predictive models.</h2><p>Across approximately two years, I developed experimental fluid-mechanics and scientific-computing skills to measure, analyze, and model material behavior. Related workstreams spanned digital signal processing, laboratory rheometry, mathematical modeling, and programmable fluid-flow experiments.</p></header>
+    <ol class="fr-overview" aria-label="Three research workstreams">
+      {areas.map((area) => <li class={`tone-${area.tone}`}><span class="fr-number">{area.n}</span><h3>{area.title}</h3><strong>{area.verb}</strong><p>{area.detail}</p></li>)}
+    </ol>
+  </section>
+
+  <section id="signal-processing" class="fr-section" aria-labelledby="fr-dsp-title">
+    <header class="fr-heading"><p class="eyebrow">01 / scientific computing</p><h2 id="fr-dsp-title">understanding signals through code.</h2><p>I built reusable DSP functions for waveform generation and signal analysis: composing sinusoidal and square waves, inspecting time-domain behavior, and using the Fast Fourier Transform to examine frequency content. This programming foundation also supported later pump-control experiments.</p></header>
+    <div class="fr-dsp-grid" aria-label="Illustrative synthetic DSP examples">
+      <figure class="fr-plot"><figcaption><span>01 / WAVEFORM GENERATION</span><strong>Sinusoidal + square components</strong></figcaption><svg viewBox="0 0 520 250" role="img" aria-labelledby="fr-wave-title fr-wave-desc"><title id="fr-wave-title">Synthetic sinusoidal and square wave components</title><desc id="fr-wave-desc">Illustrative normalized signals plotted over two seconds. This is generated example data, not a research measurement.</desc><path d="M46 22V212H500M46 117H500" class="fr-axis"/><polyline points={single(time.map(t => 0.6 * Math.sin(2 * Math.PI * 4 * t)))} transform="translate(46 22)" class="fr-line-blue"/><polyline points={plot(time.map(t => 0.3 * (Math.sin(2 * Math.PI * 12 * t) >= 0 ? 1 : -1)), -1, 1)} transform="translate(46 22)" class="fr-line-sage"/><text x="46" y="238" class="fr-axis-label">0 s</text><text x="455" y="238" class="fr-axis-label">2 s</text><text x="3" y="25" class="fr-axis-label">+1</text><text x="11" y="210" class="fr-axis-label">−1</text><text x="220" y="246" class="fr-axis-label">Time · seconds</text></svg><p class="fr-plot-note">Synthetic illustration · normalized amplitude</p></figure>
+      <figure class="fr-plot"><figcaption><span>02 / SUPERPOSITION</span><strong>Combined signal</strong></figcaption><svg viewBox="0 0 520 250" role="img" aria-labelledby="fr-combined-title fr-combined-desc"><title id="fr-combined-title">Synthetic combined waveform</title><desc id="fr-combined-desc">A mathematically generated combination of a four-hertz sine wave and a twelve-hertz sine wave, shown over two seconds; not research data.</desc><path d="M46 22V212H500M46 117H500" class="fr-axis"/><polyline points={single(signal)} transform="translate(46 22)" class="fr-line-sage"/><text x="46" y="238" class="fr-axis-label">0 s</text><text x="455" y="238" class="fr-axis-label">2 s</text><text x="3" y="25" class="fr-axis-label">+1</text><text x="11" y="210" class="fr-axis-label">−1</text><text x="220" y="246" class="fr-axis-label">Time · seconds</text></svg><p class="fr-plot-note">Synthetic illustration · normalized amplitude</p></figure>
+      <figure class="fr-plot"><figcaption><span>03 / FREQUENCY ANALYSIS</span><strong>One-sided FFT magnitude</strong></figcaption><svg viewBox="0 0 520 250" role="img" aria-labelledby="fr-fft-title fr-fft-desc"><title id="fr-fft-title">FFT of the synthetic combined signal</title><desc id="fr-fft-desc">The one-sided discrete Fourier transform contains peaks at 4 and 12 hertz by construction. This is an illustrative DSP example, not measured data.</desc><path d="M46 22V212H500M46 212H500" class="fr-axis"/><polyline points={spectrumPoints} transform="translate(46 22)" class="fr-line-lavender"/><text x="46" y="238" class="fr-axis-label">0 Hz</text><text x="455" y="238" class="fr-axis-label">32 Hz</text><text x="192" y="246" class="fr-axis-label">Frequency · Hz</text><text x="4" y="25" class="fr-axis-label">0.75</text><text x="13" y="210" class="fr-axis-label">0</text><text x="92" y="55" class="fr-axis-label">4 Hz</text><text x="212" y="85" class="fr-axis-label">12 Hz</text></svg><p class="fr-plot-note">Synthetic illustration · magnitude per normalized unit</p></figure>
+    </div>
+    <p class="fr-callout"><span class="fr-kicker">KEY CONTRIBUTION</span><strong>Custom reusable scientific codebase</strong><span>Signal processing · mathematical foundations · research software</span></p>
+  </section>
+
+  <section id="rheometry" class="fr-section fr-featured" aria-labelledby="fr-rheo-title">
+    <header class="fr-heading"><p class="eyebrow">02 / experimental research</p><h2 id="fr-rheo-title">measuring materials. discovering patterns.</h2><p>Rheometry was the main research effort. Laboratory measurements across materials and formulations supported investigation of viscosity, shear behavior, and how measured properties changed with experimental conditions. I organized datasets, used statistical analysis to identify trends, and developed fitted mathematical models to interpret them.</p></header>
+    <ul class="fr-rheo-methods" aria-label="Rheometry research activities">{considerations.map(([title, detail], i) => <li><span>{String(i + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{detail}</p></div></li>)}</ul>
+  </section>
+
+  <section id="rheometry-workflow" class="fr-section" aria-labelledby="fr-workflow-title">
+    <header class="fr-heading"><p class="eyebrow">experimental workflow</p><h2 id="fr-workflow-title">from measurement to model evaluation.</h2></header>
+    <ProcessTimeline className="fr-workflow process-heading-following" steps={rheometrySteps} label="Rheometry research workflow" stackAt="tablet" />
+  </section>
+
+  <section id="research-figures" class="fr-section" aria-labelledby="fr-figures-title">
+    <header class="fr-heading"><p class="eyebrow">experimental data visualization</p><h2 id="fr-figures-title">the measurements belong in the story.</h2><p>Measured viscosity and pump-response figures are intentionally omitted until the source data and conditions can be verified.</p></header>
+    <div class="fr-evidence-note"><span class="fr-kicker">SOURCE DATA NEEDED</span><ul><li>Viscosity vs. shear-rate data with concentration and test conditions.</li><li>Approved model equation, parameters, supported concentration range, and fit statistics.</li><li>Pump voltage–flow calibration and separate commanded-voltage / measured-flow time series.</li></ul><p>No measured curves, fitted values, or experimental outcomes are represented by the synthetic DSP examples above.</p></div>
+  </section>
+
+  <section id="mathematical-modeling" class="fr-section fr-model" aria-labelledby="fr-model-title">
+    <header class="fr-heading"><p class="eyebrow">mathematical modeling</p><h2 id="fr-model-title">turning experimental trends into equations.</h2><p>Different concentrations produced different viscosity curves, while recurring behavior motivated a concentration-dependent modified Cross-type rheological model. Fitted parameters and statistical evaluation, including R-squared assessment where available, were used to investigate how the model represented the measurements and could estimate behavior within its supported range.</p></header>
+    <ol class="fr-model-steps" aria-label="Model development and evaluation"><li><span>01</span><strong>Measured rheology</strong><small>Experimental observations</small></li><li><span>02</span><strong>Parameter fitting</strong><small>Concentration-dependent model</small></li><li><span>03</span><strong>Statistical evaluation</strong><small>Goodness-of-fit assessment</small></li><li><span>04</span><strong>In-range estimates</strong><small>Supported interpolation only</small></li></ol>
+    <p class="fr-caveat">The source equation, fitted coefficients, concentration limits, and numerical fit statistics are not available in this repository, so no equation or predicted curve is published here. No neural-network method is claimed.</p>
+  </section>
+
+  <section id="gear-pump" class="fr-section" aria-labelledby="fr-pump-title">
+    <header class="fr-heading"><p class="eyebrow">03 / experimental control</p><h2 id="fr-pump-title">turning signals into fluid motion.</h2><p>Gear-pump work connected scientific programming to a physical flow experiment. I generated controlled voltage waveforms, integrated pump-control electronics, investigated voltage-to-flow calibration, and explored heartbeat-inspired commands for pulsatile motion.</p></header>
+    <ol class="fr-pump-architecture" aria-label="Gear-pump experimental architecture">{pumpBlocks.map(([title, detail], i) => <li><span>{String(i + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{detail}</p></li>)}</ol>
+    <p class="fr-caveat">Commanded voltage, measured flow, and a target profile are distinct quantities. The available records do not establish that actual pump flow reproduced the commanded heartbeat-inspired waveform.</p>
+  </section>
+
+  <section id="research-skills" class="fr-section" aria-labelledby="fr-skills-title">
+    <header class="fr-heading"><p class="eyebrow">methods &amp; techniques</p><h2 id="fr-skills-title">experimental practice meets scientific computing.</h2></header>
+    <div class="fr-skill-groups">{skills.map(([title, detail]) => <section><h3>{title}</h3><p>{detail}</p></section>)}</div>
+  </section>
+
+  <section id="research-outcomes" class="fr-section" aria-labelledby="fr-outcomes-title">
+    <header class="fr-heading"><p class="eyebrow">research outcomes</p><h2 id="fr-outcomes-title">measure. analyze. model. test.</h2></header>
+    <ul class="fr-outcomes">{outcomes.map((outcome, i) => <li><span>{String(i + 1).padStart(2, '0')}</span>{outcome}</li>)}</ul>
+    <p class="fr-separation-note">This research case study is independent of the Environmental Chamber for 3D Printing Filaments and its Undergraduate Research Fellowship.</p>
+  </section>
+</div>
+
+<style>
+  .fluid-research-story { --fr-line: #e5e7e3; --fr-space: var(--case-section-gap, 58px); }
+  .fr-section { padding-block: var(--fr-space); border-top: 1px solid var(--fr-line); }
+  .fr-section:first-child { padding-top: 0; border-top: 0; }
+  .fluid-research-story li + li { margin-top: 0; }
+  .fr-heading { max-width: 780px; }
+  .fr-heading .eyebrow { margin-bottom: 12px; }
+  .fr-heading h2 { margin: 0; color: var(--text); font-size: clamp(28px, 3.2vw, 42px); }
+  .fr-heading > p:last-child { margin: 16px 0 0; max-width: 70ch; color: var(--muted); font-size: 14px; line-height: 1.8; }
+  .fluid-research-story p { margin-bottom: 0; }
+  .fluid-research-story h3 { margin: 0; }
+  .fr-overview { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 28px; margin: 38px 0 0; padding: 0; list-style: none; }
+  .fr-overview li { min-width: 0; padding: 19px 0 0; border-top: 2px solid var(--fr-tone); }
+  .tone-blue { --fr-tone: #b9cee3; }.tone-sage { --fr-tone: #c0d2c1; }.tone-lavender { --fr-tone: #d3c7df; }.tone-cream { --fr-tone: #e2d1b5; }
+  .fr-number, .fr-rheo-methods li > span, .fr-model-steps li > span, .fr-pump-architecture li > span, .fr-outcomes li > span { color: var(--title-period); font-size: 11px; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .fr-overview h3 { margin-top: 14px; color: var(--text); font-size: 18px; letter-spacing: -.025em; }
+  .fr-overview strong { display: block; margin-top: 7px; font-size: 12px; font-weight: 500; }
+  .fr-overview p { margin-top: 7px; font-size: 12px; line-height: 1.7; }
+  .fr-dsp-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: var(--process-intro-gap); }
+  .fr-plot { min-width: 0; margin: 0; padding: 14px; background: #fff; border: 1px solid var(--border); border-radius: 12px; }
+  .fr-plot figcaption { margin: 0; }
+  .fr-plot figcaption span { display: block; color: var(--title-period); font-size: 9px; letter-spacing: .08em; }
+  .fr-plot figcaption strong { display: block; margin-top: 4px; font-size: 12px; font-weight: 500; }
+  .fr-plot svg { display: block; width: 100%; margin-top: 12px; overflow: visible; }
+  .fr-axis { fill: none; stroke: #d8dcd8; stroke-width: 1.3; }
+  .fr-line-blue,.fr-line-sage,.fr-line-lavender { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+  .fr-line-blue { stroke: #698098; }.fr-line-sage { stroke: #829d85; }.fr-line-lavender { stroke: #94829f; }
+  .fr-axis-label { fill: #777d77; font-family: var(--font); font-size: 15px; }
+  .fr-plot-note { margin-top: 3px; font-size: 10px; }
+  .fr-callout { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 24px; padding-left: 16px; border-left: 2px solid #bfd5ee; }
+  .fr-kicker { color: var(--title-period); font-size: 9px; letter-spacing: .1em; }
+  .fr-callout strong { font-size: 17px; font-weight: 500; }.fr-callout > span:last-child { color: var(--muted); font-size: 12px; }
+  .fr-rheo-methods { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 30px; margin: 32px 0 0; padding: 0; list-style: none; }
+  .fr-rheo-methods li { display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 12px; padding: 16px 0; border-top: 1px solid var(--fr-line); }
+  .fr-rheo-methods h3 { color: var(--text); font-size: 14px; letter-spacing: -.02em; }.fr-rheo-methods p { margin-top: 4px; font-size: 12px; line-height: 1.65; }
+  .fr-workflow { margin-top: var(--process-intro-gap); }
+  .fr-evidence-note { margin-top: 28px; padding: 22px 24px; background: #fff; border: 1px solid var(--fr-line); border-radius: 12px; }
+  .fr-evidence-note ul { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin: 16px 0 0; padding-left: 17px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+  .fr-evidence-note > p { margin-top: 13px; font-size: 11px; }
+  .fr-model { background: linear-gradient(90deg,transparent 0%,rgba(231,238,231,.28) 100%); }
+  .fr-model-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0 18px; margin: 34px 0 0; padding: 0; list-style: none; }
+  .fr-model-steps li { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 7px; padding: 16px 12px 0 0; border-top: 1px solid #cad6c9; }
+  .fr-model-steps strong { font-size: 12px; font-weight: 500; }.fr-model-steps small { color: var(--muted); font-size: 11px; }
+  .fr-caveat { margin-top: 22px; padding-left: 14px; border-left: 2px solid #d8e2d8; font-size: 11px; line-height: 1.7; }
+  .fr-pump-architecture { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; margin: 30px 0 0; padding: 0; list-style: none; }
+  .fr-pump-architecture li { min-width: 0; padding: 14px 12px 0 0; border-top: 1px solid #d7cce0; }
+  .fr-pump-architecture h3 { margin-top: 8px; font-size: 13px; letter-spacing: -.02em; }.fr-pump-architecture p { margin-top: 5px; font-size: 11px; }
+  .fr-skill-groups { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin-top: 28px; }
+  .fr-skill-groups section { padding-top: 14px; border-top: 1px solid var(--fr-line); }.fr-skill-groups h3 { font-size: 13px; letter-spacing: -.02em; }.fr-skill-groups p { margin-top: 8px; font-size: 11px; line-height: 1.75; }
+  .fr-outcomes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 28px; margin: 26px 0 0; padding: 0; list-style: none; }
+  .fr-outcomes li { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding: 13px 0; border-top: 1px solid var(--fr-line); color: var(--muted); font-size: 12px; }
+  .fr-separation-note { margin-top: 22px; font-size: 11px; }
+  @media (max-width: 900px) { .fr-dsp-grid { grid-template-columns: 1fr; }.fr-plot svg { max-height: 240px; }.fr-overview { gap: 18px; }.fr-evidence-note ul { grid-template-columns: 1fr; gap: 7px; }.fr-skill-groups { grid-template-columns: 1fr; gap: 15px; } }
+  @media (max-width: 700px) { .fr-section { padding-block: 38px; }.fr-overview,.fr-rheo-methods,.fr-model-steps,.fr-pump-architecture,.fr-outcomes { grid-template-columns: 1fr; }.fr-overview { gap: 18px; margin-top: 28px; }.fr-overview li { padding-top: 12px; }.fr-rheo-methods { margin-top: 20px; }.fr-model-steps,.fr-pump-architecture { gap: 14px; }.fr-model-steps li,.fr-pump-architecture li { padding-top: 11px; }.fr-outcomes { gap: 0; }.fr-heading > p:last-child { font-size: 13px; }.fr-plot { padding: 11px; }.fr-evidence-note { padding: 17px; } }
+</style>
