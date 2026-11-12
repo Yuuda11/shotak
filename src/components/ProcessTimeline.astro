@@ -1,0 +1,22 @@
+---
+import HorizontalProcessTimeline from './HorizontalProcessTimeline.astro';
+
+interface Step {
+  number?: string;
+  title: string;
+  detail?: string;
+  tone?: 'blue' | 'sage' | 'lavender' | 'cream';
+  emphasize?: boolean;
+}
+
+interface Props {
+  steps: Step[];
+  label: string;
+  className?: string;
+  stackAt?: 'mobile' | 'tablet';
+}
+
+const { steps, label, className, stackAt } = Astro.props;
+---
+
+<HorizontalProcessTimeline steps={steps} label={label} className={className} stackAt={stackAt} />

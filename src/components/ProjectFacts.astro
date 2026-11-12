@@ -1,0 +1,29 @@
+---
+interface Props {
+  status?: string;
+  role?: string;
+  discipline: string;
+  tools: string[];
+}
+
+const { status, role, discipline, tools } = Astro.props;
+---
+
+<dl class="project-facts" aria-label="Project information">
+  <div>
+    <dt>Status</dt>
+    <dd>{status || 'Needs confirmation'}</dd>
+  </div>
+  <div>
+    <dt>Role</dt>
+    <dd>{role || 'Needs confirmation'}</dd>
+  </div>
+  <div>
+    <dt>Discipline</dt>
+    <dd>{discipline}</dd>
+  </div>
+  <div>
+    <dt>Tools &amp; Technologies</dt>
+    <dd>{tools.length ? tools.join(' · ') : 'Needs confirmation'}</dd>
+  </div>
+</dl>

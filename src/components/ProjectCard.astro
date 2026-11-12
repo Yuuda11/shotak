@@ -17,7 +17,7 @@ const mediaLabel=illustration?'concept illustration':{concept:'concept illustrat
       <span class="art-caption">{mediaLabel}</span>
     </div>
     <div class="project-copy">
-      <div class="project-meta"><span>{p.category}</span>{p.projectStatus&&<span class="project-status">{p.projectStatus}</span>}{p.year&&<span>{p.year}</span>}</div>
+      <div class="project-meta"><span>{p.category}</span>{p.cardStatus&&<span class="project-status">{p.cardStatus}</span>}{p.year&&<span>{p.year}</span>}</div>
       <h3 id={`title-${project.id}`}>{p.title}</h3>
       <p>{p.summary}</p>
       {p.cardNote&&<p class="project-evidence">{p.cardNote}</p>}

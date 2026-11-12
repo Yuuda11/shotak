@@ -3,11 +3,12 @@ title: "Environmental Chamber for 3D Printing Filaments"
 subtitle: "An IoT-enabled prototype for filament drying, storage, and environmental monitoring."
 highlightPhrase: "environmental monitoring"
 highlightTone: "sage"
-summary: "Developing a prototype environmental chamber for 3D printing filaments, integrating IoT monitoring, data pipelines, and analysis to support performance optimization."
+summary: "Built and initially presented an IoT-enabled environmental chamber prototype for filament drying, storage, and monitoring; further development is pending funding."
 category: "Research / IoT / Data Systems"
 filters: ["Research", "Hardware"]
 role: "Undergraduate Research Fellow"
-projectStatus: "In development"
+projectStatus: "Prototype built · Initial presentation complete · Further development pending funding"
+cardStatus: "Prototype built · funding pending"
 tools: ["Raspberry Pi", "Python", "Debian", "MQTT", "Mosquitto", "Node-RED", "InfluxDB", "Grafana", "Docker", "Portainer"]
 previewTools: ["Python", "MQTT", "Docker", "Grafana", "Data Analysis"]
 illustration:
@@ -18,23 +19,30 @@ coverAlt: "Concept illustration of a framed transparent filament chamber with sp
 mediaKind: "concept"
 order: 2
 featured: 2
-cardNote: "Undergraduate Research Fellow · prototype in development."
+cardNote: "Initial project presentation complete; further development needs funding."
 status: "published"
 documentation: "complete"
 ---
 
-<p class="chamber-intro">The project brings chamber sensing, data logging, and dashboard visualization into one system so environmental conditions can be tracked over time. The prototype is in development; the flow below describes its monitoring architecture, without claiming completed validation.</p>
+<p class="chamber-intro">The physical prototype has been built and its initial project presentation is complete. Further development is pending funding. The system brings chamber sensing, data logging, and dashboard visualization together so environmental conditions can be reviewed over time; this does not claim completed validation or deployment.</p>
 
 <div class="chamber-bento">
 <section class="chamber-card chamber-architecture" aria-labelledby="system-architecture">
 <h2 id="system-architecture">System architecture</h2>
 <p>From a chamber observation to a readable history.</p>
-<ol class="chamber-flow" aria-label="Sensor-to-dashboard data flow">
-<li><span class="flow-step">01 · Collect</span><h3>Raspberry Pi + sensors</h3><p>Python on a Debian-based Raspberry Pi reads chamber conditions such as temperature and humidity.</p></li>
-<li><span class="flow-step">02 · Transmit</span><h3>MQTT / Mosquitto</h3><p>The device publishes readings through MQTT; Mosquitto acts as the message broker.</p></li>
-<li><span class="flow-step">03 · Process</span><h3>Node-RED</h3><p>JSON messages are parsed and readings are prepared for storage.</p></li>
-<li><span class="flow-step">04 · Store</span><h3>InfluxDB</h3><p>Timestamped readings are kept as time-series data.</p></li>
-<li><span class="flow-step">05 · Visualize</span><h3>Grafana</h3><p>Charts show readings over time so the team can review conditions during storage and drying.</p></li>
+<ol class="horizontal-process-timeline chamber-flow" style="--timeline-count:5" aria-label="Sensor-to-dashboard data flow">
+<li class="horizontal-process-step tone-blue"><span class="horizontal-process-dot" aria-hidden="true"></span><span class="horizontal-process-number">01</span><strong>Collect</strong><p>Raspberry Pi + sensors</p></li>
+<li class="horizontal-process-step tone-sage"><span class="horizontal-process-dot" aria-hidden="true"></span><span class="horizontal-process-number">02</span><strong>Transmit</strong><p>MQTT / Mosquitto</p></li>
+<li class="horizontal-process-step tone-lavender"><span class="horizontal-process-dot" aria-hidden="true"></span><span class="horizontal-process-number">03</span><strong>Process</strong><p>Node-RED</p></li>
+<li class="horizontal-process-step tone-blue"><span class="horizontal-process-dot" aria-hidden="true"></span><span class="horizontal-process-number">04</span><strong>Store</strong><p>InfluxDB</p></li>
+<li class="horizontal-process-step tone-sage"><span class="horizontal-process-dot" aria-hidden="true"></span><span class="horizontal-process-number">05</span><strong>Visualize</strong><p>Grafana</p></li>
+</ol>
+<ol class="chamber-architecture-notes" aria-label="Architecture details">
+<li><span class="chamber-note-number">01</span><strong>Collect</strong><span>Python on a Debian-based Raspberry Pi reads chamber conditions such as temperature and humidity.</span></li>
+<li><span class="chamber-note-number">02</span><strong>Transmit</strong><span>The device publishes readings through MQTT; Mosquitto acts as the message broker.</span></li>
+<li><span class="chamber-note-number">03</span><strong>Process</strong><span>JSON messages are parsed in Node-RED and readings are prepared for storage.</span></li>
+<li><span class="chamber-note-number">04</span><strong>Store</strong><span>InfluxDB keeps timestamped readings as time-series data.</span></li>
+<li><span class="chamber-note-number">05</span><strong>Visualize</strong><span>Grafana charts show readings over time for review during storage and drying.</span></li>
 </ol>
 <p class="chamber-services">Docker runs services in separate containers; Portainer helps manage them.</p>
 </section>

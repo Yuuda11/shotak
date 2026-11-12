@@ -1,0 +1,311 @@
+---
+import HorizontalProcessTimeline from './HorizontalProcessTimeline.astro';
+
+const faceFlow = ['Camera Frame', 'Face Detection', 'Image-Position Error', 'Servo Commands', 'Pan/Tilt Motion'];
+const stabilizationFlow = ['MPU Motion Data', 'Orientation Estimate', 'PID Correction', 'Servo Motion'];
+const developmentStages = [
+  { title: 'Mechanical Design', detail: 'CAD, servo placement, mounting geometry.', tone: 'blue' as const },
+  { title: 'Fabrication', detail: '3D-printed structure and assembly.', tone: 'lavender' as const },
+  { title: 'Electronics', detail: 'Raspberry Pi, sensing, wiring, servos.', tone: 'sage' as const },
+  { title: 'Computer Vision', detail: 'OpenCV face detection and image position.', tone: 'blue' as const },
+  { title: 'Motion Control', detail: 'Translate target or orientation error to motion.', tone: 'lavender' as const },
+  { title: 'Stabilization', detail: 'Inertial sensing with PID feedback.', tone: 'sage' as const },
+];
+const mechanicalStages = [
+  { title: 'Plan Components', detail: 'Raspberry Pi · camera or MPU · servos · frame · wiring', tone: 'blue' as const },
+  { title: 'Design Structure', detail: 'Mounting geometry · two degrees of freedom · clearance', tone: 'sage' as const },
+  { title: '3D Print', detail: 'Fabricate the designed structural components.', tone: 'lavender' as const },
+  { title: 'Integrate', detail: 'Assemble the frame, sensors, servos, and wiring.', tone: 'cream' as const },
+];
+const contributionGroups = [
+  { title: 'Primary implementation', items: ['Mechanical design & CAD', '3D printing & prototyping', 'Raspberry Pi programming', 'Electronics integration', 'OpenCV computer vision', 'Servo actuation', 'PID control', 'Sensor integration'] },
+  { title: 'Engineering concepts', items: ['Pan / tilt kinematics', 'Image-coordinate errors', 'UART / I²C integration', 'Inertial measurements', 'Feedback systems'] },
+];
+---
+
+<div class="gimbal-story">
+  <section class="gimbal-section gimbal-project-intro" id="the-project" aria-labelledby="gimbal-project-title">
+    <p class="eyebrow">THE PROJECT</p>
+    <h2 id="gimbal-project-title">one platform. two control modes.</h2>
+    <p>Developed as a final project for an Internet of Things course, this gimbal explores two ways to control physical motion: visual target tracking and inertial stabilization.</p>
+  </section>
+
+  <section class="gimbal-platform" aria-labelledby="gimbal-platform-title">
+    <div class="gimbal-platform-icon" aria-hidden="true">
+      <svg viewBox="0 0 40 40" focusable="false">
+        <path d="M8 12h24v16H8zM14 8v4m12-4v4m-12 16v4m12-4v4M4 17h4m-4 6h4m24-6h4m-4 6h4" />
+        <circle cx="20" cy="20" r="4" />
+      </svg>
+    </div>
+    <div>
+      <p class="eyebrow">SHARED HARDWARE PLATFORM</p>
+      <h2 id="gimbal-platform-title">one two-axis platform.</h2>
+      <p>Raspberry Pi · Two-axis servo gimbal · Two servos · 3D-printed mechanical frame</p>
+    </div>
+  </section>
+  <p class="gimbal-platform-branch"><span aria-hidden="true">↓</span> Different sensing configurations</p>
+
+  <div class="gimbal-mode-grid">
+    <section class="gimbal-section gimbal-mode gimbal-mode-vision" id="face-tracking" aria-labelledby="gimbal-vision-title">
+      <header class="gimbal-mode-heading">
+        <p class="eyebrow">MODE 01 / VISION</p>
+        <h2 id="gimbal-vision-title">see. detect. follow.</h2>
+      </header>
+      <p class="gimbal-purpose">Keep a detected face near the center of the camera frame.</p>
+      <div class="gimbal-sensing gimbal-sensing-vision">
+        <span>Sensor configuration</span>
+        <strong>Camera module + attached laser</strong>
+      </div>
+
+      <figure class="gimbal-diagram gimbal-frame-diagram">
+        <svg viewBox="0 0 360 205" role="img" aria-labelledby="face-frame-title face-frame-desc">
+          <title id="face-frame-title">Illustrative face position within a camera frame</title>
+          <desc id="face-frame-desc">A face bounding box sits to the right of the frame center, showing horizontal and vertical image-position error.</desc>
+          <rect class="frame-outline" x="22" y="18" width="316" height="166" rx="12" />
+          <path class="frame-crosshair" d="M180 30v142M34 101h292" />
+          <circle class="frame-center" cx="180" cy="101" r="6" />
+          <rect class="face-box" x="231" y="55" width="58" height="78" rx="9" />
+          <circle class="face-dot" cx="260" cy="80" r="10" />
+          <path class="error-line" d="M180 101H260M260 101V80" />
+          <text x="192" y="92">ex</text>
+          <text x="267" y="96">ey</text>
+          <text class="frame-label" x="22" y="201">IMAGE-POSITION ERROR · ILLUSTRATIVE</text>
+        </svg>
+        <figcaption>Image offsets: <code>ex = target_x − center_x</code> · <code>ey = target_y − center_y</code>. Axis sign convention depends on implementation.</figcaption>
+      </figure>
+
+      <ol class="gimbal-mode-timeline gimbal-mode-timeline-vision" aria-label="Face tracking stages">
+        {faceFlow.map((title, index) => (
+          <li class="gimbal-mode-timeline-step">
+            <span class="gimbal-mode-timeline-dot" aria-hidden="true"></span>
+            <span class="gimbal-mode-timeline-number">{String(index + 1).padStart(2, '0')}</span>
+            <strong>{title}</strong>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="gimbal-section gimbal-mode gimbal-mode-stabilization" id="camera-stabilization" aria-labelledby="gimbal-stabilization-title">
+      <header class="gimbal-mode-heading">
+        <p class="eyebrow">MODE 02 / INERTIAL</p>
+        <h2 id="gimbal-stabilization-title">sense. correct. stabilize.</h2>
+      </header>
+      <p class="gimbal-purpose">Compensate for detected motion to maintain the desired gimbal orientation.</p>
+      <div class="gimbal-sensing gimbal-sensing-stabilization">
+        <span>Sensor configuration</span>
+        <strong>MPU inertial sensor</strong>
+      </div>
+
+      <figure class="gimbal-diagram gimbal-tilt-diagram">
+        <svg viewBox="0 0 360 205" role="img" aria-labelledby="tilt-title tilt-desc">
+          <title id="tilt-title">Conceptual orientation stabilization</title>
+          <desc id="tilt-desc">A tilted base and a camera platform held closer to level illustrate corrective gimbal motion; the drawing is conceptual and not to scale.</desc>
+          <path class="base-axis" d="M42 153 167 116" />
+          <path class="base-body" d="m73 153 72-22 16 20-72 22z" />
+          <circle class="pivot" cx="167" cy="116" r="8" />
+          <path class="gimbal-arm" d="M167 116 206 57" />
+          <path class="camera-platform" d="M199 49h105v34H199z" />
+          <rect class="camera-lens" x="285" y="58" width="18" height="16" rx="4" />
+          <path class="level-line" d="M184 91h137" />
+          <path class="motion-arc" d="M91 126a51 51 0 0 1 44-45" />
+          <path class="motion-arc" d="M225 111a43 43 0 0 1 35-29" />
+          <text x="45" y="112">base motion</text>
+          <text x="198" y="38">corrective gimbal motion</text>
+          <text class="frame-label" x="22" y="198">ORIENTATION STABILIZATION · CONCEPT ONLY · NOT TO SCALE</text>
+        </svg>
+        <figcaption>Orientation stabilization is distinct from absolute position holding; an IMU does not provide reliable absolute position from gravity and angular velocity alone.</figcaption>
+      </figure>
+
+      <ol class="gimbal-mode-timeline gimbal-mode-timeline-stabilization" aria-label="Inertial stabilization stages">
+        {stabilizationFlow.map((title, index) => (
+          <li class="gimbal-mode-timeline-step">
+            <span class="gimbal-mode-timeline-dot" aria-hidden="true"></span>
+            <span class="gimbal-mode-timeline-number">{String(index + 1).padStart(2, '0')}</span>
+            <strong>{title}</strong>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </div>
+
+  <section class="gimbal-comparison-section" aria-labelledby="gimbal-comparison-title">
+    <p class="eyebrow">SOFTWARE / CONTROL</p>
+    <h2 id="gimbal-comparison-title">two sensing paths. two control responses.</h2>
+    <table class="gimbal-comparison">
+      <caption class="sr-only">Software and control approaches for the two gimbal configurations</caption>
+      <thead>
+        <tr>
+          <th scope="col">Configuration</th>
+          <th scope="col">Face Tracking</th>
+          <th scope="col">Stabilization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Software</th>
+          <td>Python · OpenCV · Face Detection</td>
+          <td>Python · Motion Sensing · Orientation Estimation</td>
+        </tr>
+        <tr>
+          <th scope="row">Control</th>
+          <td>Image-Position Error → Pan/Tilt Servo Tracking</td>
+          <td>Orientation Error → PID Correction → Servo Movement</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="gimbal-section gimbal-process-section" id="mechanical-design" aria-labelledby="gimbal-mechanical-title">
+    <p class="eyebrow">MECHANICAL DESIGN / FABRICATION</p>
+    <h2 id="gimbal-mechanical-title">from CAD to physical hardware.</h2>
+    <p class="gimbal-section-lede">The mechanical structure was designed around component fit, pan/tilt movement, and clearance, then fabricated and assembled as the shared actuation platform.</p>
+    <HorizontalProcessTimeline steps={mechanicalStages} label="Mechanical design and integration sequence" className="gimbal-build-flow" />
+  </section>
+
+  <section class="gimbal-section" id="system-integration" aria-labelledby="gimbal-integration-title">
+    <p class="eyebrow">ELECTRONICS / COMMUNICATION</p>
+    <h2 id="gimbal-integration-title">connecting the system.</h2>
+    <div class="gimbal-integration-grid">
+      <div><h3>Controller</h3><p>Raspberry Pi for computation, sensor processing, and servo command generation.</p></div>
+      <div><h3>Sensing</h3><p>Camera module for visual feedback; MPU motion and gravity-related readings for inertial feedback.</p></div>
+      <div><h3>Actuation</h3><p>Two servos drive the gimbal's pan and tilt axes.</p></div>
+      <div><h3>Communication</h3><p>UART and I²C are included as integration interfaces; this page does not assign either bus to a specific peripheral.</p></div>
+    </div>
+    <p class="gimbal-note">Servo control signals are represented separately from sensor communication. The available project files do not document pin assignments or peripheral-to-bus mapping.</p>
+  </section>
+
+  <section class="gimbal-section gimbal-process-section" id="development-process" aria-labelledby="gimbal-process-title">
+    <p class="eyebrow">DEVELOPMENT PROCESS</p>
+    <h2 id="gimbal-process-title">design. build. connect. control.</h2>
+    <HorizontalProcessTimeline steps={developmentStages} label="Project development stages" className="process-heading-following" stackAt="tablet" />
+  </section>
+
+  <section class="gimbal-section" id="technical-contribution" aria-labelledby="gimbal-contribution-title">
+    <p class="eyebrow">MY TECHNICAL CONTRIBUTION</p>
+    <h2 id="gimbal-contribution-title">mechanics, sensing, and control.</h2>
+    <div class="gimbal-contribution-grid">
+      {contributionGroups.map((group) => <div><h3>{group.title}</h3><ul class="gimbal-skill-tiles">{group.items.map((item) => <li>{item}</li>)}</ul></div>)}
+    </div>
+  </section>
+
+  <section class="gimbal-section gimbal-lessons" id="results-and-lessons" aria-labelledby="gimbal-results-title">
+    <p class="eyebrow">RESULTS / LESSONS</p>
+    <h2 id="gimbal-results-title">connect the estimate to motion.</h2>
+    <ul>
+      <li>Implemented OpenCV face detection and translated image-position error into servo movement.</li>
+      <li>Developed an MPU-based orientation-stabilization configuration using PID control.</li>
+      <li>Designed and 3D-printed a two-axis platform integrating sensing, computation, and actuation.</li>
+    </ul>
+    <p>Mechanical fit, sensor feedback, communication timing, and control logic all shape how software decisions become physical movement. No quantitative tracking or stabilization measurements are documented here.</p>
+  </section>
+</div>
+
+<style>
+  .gimbal-story { --gimbal-blue: #e7f0fa; --gimbal-sage: #e7eee7; color: var(--text, #202124); }
+  .gimbal-section { padding-block: clamp(36px,4.25vw,54px); border-top: 1px solid var(--border, #e8e8e6); scroll-margin-top: 110px; }
+  .gimbal-process-section { padding-bottom: var(--process-outro-gap,48px); }
+  .gimbal-section .eyebrow { margin: 0 0 13px; color: #70766f; font-size: 10px; letter-spacing: .13em; }
+  .gimbal-section h2 { margin: 0; color: var(--text, #202124); font-size: clamp(25px,3vw,36px); line-height: 1.13; letter-spacing: -.045em; text-wrap: balance; }
+  .gimbal-section>p:not(.eyebrow) { max-width: 680px; margin: 16px 0 0; color: #51574f; font-size: 14px; line-height: 1.75; }
+  .gimbal-project-intro { padding-top: 0; border-top: 0; }
+  .gimbal-platform { display: grid; grid-template-columns: 44px minmax(0,1fr); align-items: center; gap: 16px; margin: 30px 0 4px; padding: 20px 22px; border: 1px solid var(--border,#e8e8e6); border-radius: 14px; background: #fffdfa; }
+  .gimbal-platform-icon { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 11px; background: #f1edf5; color: #73879a; }
+  .gimbal-platform-icon svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .gimbal-platform .eyebrow { margin: 0 0 6px; color: #70766f; font-size: 9px; letter-spacing: .12em; }
+  .gimbal-platform h2 { margin: 0; color: var(--text,#202124); font-size: 21px; line-height: 1.2; letter-spacing: -.035em; }
+  .gimbal-platform>div:last-child>p:last-child { margin: 7px 0 0; color: #51574f; font-size: 13px; line-height: 1.55; }
+  .gimbal-platform-branch { display: flex; justify-content: center; align-items: center; gap: 9px; margin: 0 0 5px; color: #73786f; font-size: 11px; }
+  .gimbal-platform-branch span { color: #87968c; font-size: 16px; line-height: 1; }
+  .gimbal-mode-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: repeat(5,auto); column-gap: clamp(28px,4vw,52px); align-items: stretch; }
+  .gimbal-mode { grid-row: 1 / span 5; display: grid; grid-template-rows: subgrid; min-width: 0; padding: 24px 0 var(--process-outro-gap,48px); border-top: 1px solid var(--border,#e8e8e6); }
+  .gimbal-mode-vision { grid-column: 1; border-top-color: #cfdeed; }
+  .gimbal-mode-stabilization { grid-column: 2; border-top-color: #d2dfd2; }
+  .gimbal-mode-heading { min-width: 0; }
+  .gimbal-purpose { min-width: 0; align-self: start; margin: 13px 0 20px; color: #51574f; font-size: 13px; line-height: 1.6; }
+  .gimbal-sensing { display: grid; align-content: center; gap: 5px; min-width: 0; padding: 12px 14px; border-radius: 9px; }
+  .gimbal-sensing-vision { background: #e7f0fa; }
+  .gimbal-sensing-stabilization { background: #e7eee7; }
+  .gimbal-sensing span { color: #73786f; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+  .gimbal-sensing strong { min-width: 0; color: #323a34; font-size: 12px; font-weight: 550; line-height: 1.45; }
+  .gimbal-diagram { margin: 0; padding: 9px; border-radius: 12px; }
+  .gimbal-frame-diagram { background: #f7fafe; }
+  .gimbal-diagram svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .gimbal-diagram svg text { fill: #57665d; font: 10px var(--font, -apple-system,BlinkMacSystemFont,Arial,sans-serif); }
+  .gimbal-diagram svg .frame-label { fill: #72776f; font-size: 8px; letter-spacing: .09em; }
+  .gimbal-frame-diagram .frame-outline { fill: #f7fafe; stroke: #afc4dc; stroke-width: 1.5; }
+  .gimbal-frame-diagram .frame-crosshair { fill: none; stroke: #bdcbd8; stroke-width: 1; stroke-dasharray: 4 4; }
+  .gimbal-frame-diagram .frame-center { fill: #fff; stroke: #6b8299; stroke-width: 2; }
+  .gimbal-frame-diagram .face-box { fill: #e7f0fa7a; stroke: #698098; stroke-width: 2; }
+  .gimbal-frame-diagram .face-dot { fill: #698098; fill-opacity: .22; stroke: #698098; stroke-width: 1; }
+  .gimbal-frame-diagram .error-line { fill: none; stroke: #698098; stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .gimbal-tilt-diagram { background: #f4f7f3; }
+  .gimbal-tilt-diagram .base-axis { stroke: #758277; stroke-width: 5; stroke-linecap: round; }
+  .gimbal-tilt-diagram .base-body { fill: #e0e8df; stroke: #758277; stroke-width: 1.5; }
+  .gimbal-tilt-diagram .pivot { fill: #fff; stroke: #698068; stroke-width: 2; }
+  .gimbal-tilt-diagram .gimbal-arm { stroke: #698068; stroke-width: 5; stroke-linecap: round; }
+  .gimbal-tilt-diagram .camera-platform { fill: #e7eee7; stroke: #698068; stroke-width: 1.5; }
+  .gimbal-tilt-diagram .camera-lens { fill: #fff; stroke: #698068; stroke-width: 1.5; }
+  .gimbal-tilt-diagram .level-line { stroke: #a8b9a8; stroke-width: 1; stroke-dasharray: 4 4; }
+  .gimbal-tilt-diagram .motion-arc { fill: none; stroke: #7b8e79; stroke-width: 1.4; stroke-dasharray: 3 3; }
+  .gimbal-diagram figcaption { margin-top: 10px; color: #70766f; font-size: 10px; line-height: 1.6; }
+  .gimbal-diagram code { font: 10px ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .gimbal-comparison-section { margin-top: 10px; padding: 29px 0 41px; border-top: 1px solid var(--border,#e8e8e6); }
+  .gimbal-comparison-section .eyebrow { margin: 0 0 10px; color: #70766f; font-size: 10px; letter-spacing: .13em; }
+  .gimbal-comparison-section h2 { margin: 0 0 22px; color: var(--text,#202124); font-size: clamp(22px,2.5vw,29px); line-height: 1.2; letter-spacing: -.04em; }
+  .gimbal-comparison { width: 100%; table-layout: fixed; border-collapse: collapse; border-top: 1px solid var(--border,#e8e8e6); border-bottom: 1px solid var(--border,#e8e8e6); }
+  .gimbal-comparison th,.gimbal-comparison td { min-width: 0; padding: 14px 16px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+  .gimbal-comparison thead th { color: #73786f; font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
+  .gimbal-comparison thead th+th { color: #323a34; }
+  .gimbal-comparison tbody tr:first-child { border-top: 1px solid var(--border,#e8e8e6); border-bottom: 1px solid var(--border,#e8e8e6); }
+  .gimbal-comparison tbody th { width: 20%; color: #73786f; font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
+  .gimbal-comparison tbody td { color: #51574f; font-size: 12px; line-height: 1.65; }
+  .gimbal-mode-timeline { --gimbal-timeline-gap: 24px; position: relative; display: grid; gap: var(--gimbal-timeline-gap); min-width: 0; margin: 42px 0 0; padding: 0; list-style: none; }
+  .gimbal-mode-timeline-vision { --gimbal-timeline-line: #bfd0df; --gimbal-timeline-dot: #e7f0fa; --gimbal-timeline-dot-border: #9eb6cc; }
+  .gimbal-mode-timeline-stabilization { --gimbal-timeline-line: #c3d1c1; --gimbal-timeline-dot: #e7eee7; --gimbal-timeline-dot-border: #9caf99; }
+  .gimbal-mode-timeline-step { position: relative; display: grid; grid-template-columns: 12px minmax(0,1fr); grid-template-rows: auto auto; align-items: start; column-gap: 12px; row-gap: 6px; min-width: 0; margin: 0; padding: 0; }
+  .gimbal-mode-timeline-step:not(:last-child)::after { position: absolute; top: 6px; bottom: calc(-1 * var(--gimbal-timeline-gap) - 6px); left: 5.5px; width: 1px; background: var(--gimbal-timeline-line); content: ''; }
+  .gimbal-mode-timeline-dot { z-index: 1; grid-column: 1; grid-row: 1 / span 2; justify-self: center; width: 10px; height: 10px; margin-top: 1px; border: 1px solid var(--gimbal-timeline-dot-border); border-radius: 50%; background: var(--gimbal-timeline-dot); }
+  .gimbal-mode-timeline-number { grid-column: 2; grid-row: 1; color: #73879a; font-size: 9px; line-height: 1.3; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .gimbal-mode-timeline-step strong { grid-column: 2; grid-row: 2; min-width: 0; color: #323a34; font-size: 13px; font-weight: 550; line-height: 1.4; overflow-wrap: anywhere; }
+  .gimbal-section-lede { margin-bottom: 0!important; }
+  .gimbal-integration-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 28px; margin-top: 23px; border-top: 1px solid var(--border, #e8e8e6); }
+  .gimbal-integration-grid>div { padding: 16px 0; border-bottom: 1px solid var(--border, #e8e8e6); }
+  .gimbal-integration-grid h3,.gimbal-contribution-grid h3 { margin: 0 0 6px; color: #323a34; font-size: 13px; font-weight: 550; }
+  .gimbal-integration-grid p { margin: 0; color: #61675f; font-size: 11px; line-height: 1.65; }
+  .gimbal-contribution-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; margin-top: 23px; }
+  .gimbal-contribution-grid .gimbal-skill-tiles { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: minmax(68px,1fr); align-items: stretch; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .gimbal-contribution-grid .gimbal-skill-tiles li { box-sizing: border-box; display: flex; width: 100%; height: 100%; min-width: 0; min-height: 68px; align-items: center; margin: 0; padding: 13px 14px; border: 1px solid #d6e1ec; border-radius: 7px; background: #f2f6fa; color: #4f6274; font-size: 11px; line-height: 1.45; overflow-wrap: anywhere; }
+  .gimbal-contribution-grid>div:nth-child(2) .gimbal-skill-tiles li { border-color: #d7e1d6; background: #f2f6f1; color: #526252; }
+  .gimbal-lessons ul { display: grid; gap: 8px; margin: 19px 0 0; padding-left: 19px; color: #51574f; font-size: 12px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .gimbal-mode-grid { display: block; }
+    .gimbal-mode { grid-row: auto; grid-column: auto; display: grid; grid-template-rows: auto auto auto auto auto; padding-block: 24px var(--process-outro-gap,32px); }
+    .gimbal-mode + .gimbal-mode { border-top: 1px solid var(--border,#e8e8e6); }
+  }
+  @media (max-width: 600px) {
+    .gimbal-section { padding-block: 32px; scroll-margin-top: 90px; }
+    .gimbal-process-section { padding-bottom: var(--process-outro-gap,32px); }
+    .gimbal-project-intro { padding-top: 0; }
+    .gimbal-section h2 { font-size: 27px; }
+    .gimbal-section>p:not(.eyebrow) { font-size: 13px; }
+    .gimbal-mode { padding-top: 26px; }
+    .gimbal-mode-timeline { margin-top: 30px; }
+    .gimbal-platform { grid-template-columns: 36px minmax(0,1fr); gap: 12px; margin-top: 24px; padding: 15px; }
+    .gimbal-platform-icon { width: 36px; height: 36px; border-radius: 9px; }
+    .gimbal-platform-icon svg { width: 23px; height: 23px; }
+    .gimbal-platform h2 { font-size: 19px; }
+    .gimbal-platform>div:last-child>p:last-child { font-size: 12px; }
+    .gimbal-comparison-section { margin-top: 4px; padding-block: 25px 34px; }
+    .gimbal-comparison th,.gimbal-comparison td { padding: 12px 8px; }
+    .gimbal-comparison thead th { font-size: 9px; letter-spacing: .06em; }
+    .gimbal-comparison tbody th { width: 19%; font-size: 9px; letter-spacing: .06em; }
+    .gimbal-comparison tbody td { font-size: 11px; line-height: 1.55; }
+    .gimbal-integration-grid,.gimbal-contribution-grid { grid-template-columns: 1fr; }
+    .gimbal-integration-grid { gap: 0; }
+    .gimbal-contribution-grid { gap: 20px; }
+    .gimbal-contribution-grid .gimbal-skill-tiles { grid-auto-rows: minmax(64px,1fr); }
+    .gimbal-contribution-grid .gimbal-skill-tiles li { min-height: 64px; }
+    .gimbal-frame-diagram svg text { font-size: 8px; }
+    .gimbal-frame-diagram svg .frame-label { font-size: 7px; }
+  }
+</style>

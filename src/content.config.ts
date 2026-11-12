@@ -4,11 +4,11 @@ import { glob } from 'astro/loaders';
 const projects = defineCollection({
  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
  schema: z.object({
-   title: z.string(), subtitle: z.string(), summary: z.string(), category: z.string(),
+   title: z.string(), subtitle: z.string(), summary: z.string(), category: z.string(), discipline: z.string().optional(),
    highlightPhrase: z.string().optional(), highlightTone: z.enum(['blue','sage','lavender','cream']).optional(),
    filters: z.array(z.enum(['Hardware','Manufacturing','Controls','Research'])),
    year: z.string().optional(), role: z.string().optional(),
-   teamContext: z.string().optional(), projectStatus: z.string().optional(),
+   teamContext: z.string().optional(), projectStatus: z.string().optional(), cardStatus: z.string().optional(),
    cardNote: z.string().optional(), featured: z.number().optional(), previewTools: z.array(z.string()).optional(),
    mediaKind: z.enum(['concept','diagram','photo','cad','platform']).default('concept'), tools: z.array(z.string()).default([]),
    illustration: z.object({src:z.string(),alt:z.string()}).optional(),

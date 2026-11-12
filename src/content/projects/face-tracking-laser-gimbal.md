@@ -1,39 +1,25 @@
 ---
-title: "Face Tracking Laser Gimbal"
-subtitle: "A real-time face tracking demonstration integrating computer vision, mechanical design, and servo actuation."
-highlightPhrase: "real-time face tracking"
-highlightTone: "lavender"
-summary: "Developed a face-tracking gimbal combining OpenCV, Raspberry Pi, servo actuation, and Flask controls for real-time tracking."
+title: "Dual-Mode Face Tracking & Stabilization Gimbal"
+subtitle: "Designed and 3D-printed a two-axis gimbal integrating Raspberry Pi, computer vision, motion sensing, and servo control for face tracking and camera stabilization."
+highlightPhrase: "face tracking and camera stabilization"
+highlightTone: "blue"
+summary: "An IoT course final project developing a two-axis gimbal platform for computer-vision face tracking and MPU-based camera orientation stabilization with PID control."
 category: "Computer Vision / Mechatronics"
+discipline: "Mechatronics / Robotics / Computer Vision / Controls"
 filters: ["Hardware", "Controls"]
-tools: ["Python", "Raspberry Pi", "OpenCV", "Servo Actuation", "Flask", "IoT", "Mechanical Design", "Manufacturing"]
-previewTools: ["Python", "OpenCV", "Raspberry Pi", "Flask", "Mechanical Design"]
+role: "Mechanical Design, Electronics & Embedded Software"
+projectStatus: "IoT course final project — prototype developed"
+tools: ["Raspberry Pi", "Python", "OpenCV", "MPU", "PID Control", "3D Printing", "CAD", "Servos", "UART", "I²C", "Flask"]
+previewTools: ["Python", "OpenCV", "Raspberry Pi", "PID Control", "CAD"]
 illustration:
   src: /images/projects/covers/face-tracking-laser-gimbal-cover-v2.png
   alt: Concept illustration of a red camera gimbal with a Raspberry Pi, ribbon cable, and multicolored wiring; representative artwork, not project photography
 cover: "/images/projects/face-tracking-laser-gimbal/prototype.webp"
-gallery:
-  - src: /images/projects/gimbal.svg
-    alt: Camera to OpenCV detection to servo actuation, with a Flask controls interface
-    caption: High-level functional diagram.
+gallery: []
 coverAlt: "Face-tracking gimbal prototype with Raspberry Pi, camera, wiring, and servo assembly"
 mediaKind: "photo"
 order: 3
-cardNote: "Integrated vision, servo actuation, and Flask controls."
+cardNote: "One two-axis platform for vision tracking and inertial stabilization."
 status: "published"
 documentation: "complete"
 ---
-
-## Problem and constraints
-
-The project brings computer vision into a physical tracking system: a gimbal responds to face position using camera input and servo actuation.
-
-## My contribution
-
-I developed the face-tracking gimbal, combining OpenCV, Raspberry Pi, servo actuation, and Flask controls. The work includes mechanical design, manufacturing, and system integration.
-
-## System design and implementation
-
-Camera input is processed with OpenCV, and detected face position informs servo actuation. Raspberry Pi provides the computing platform, while Flask provides the controls interface. These elements connect the camera-to-detection-to-servo flow with the mechanical assembly.
-
-The laser is a demonstration pointer. Portfolio demonstrations should use a face-position overlay or a non-person target rather than directing the pointer at a person.

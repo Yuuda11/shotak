@@ -1,0 +1,297 @@
+---
+import ProcessTimeline from './ProcessTimeline.astro';
+import TechnicalFigure from './TechnicalFigure.astro';
+
+const platformImage = '/images/projects/autonomous-mini-pupper/platform.webp';
+
+const mission = [
+  { title: 'Detect', detail: 'Identify the target with OpenCV.' },
+  { title: 'Navigate', detail: 'Follow a preplanned route.' },
+  { title: 'Retrieve', detail: 'Execute the target-retrieval step.' },
+  { title: 'Return', detail: 'Navigate back to the starting location.' },
+];
+
+const development = [
+  { title: 'Assemble', detail: 'Build the purchased quadruped platform.' },
+  { title: 'Test Movement', detail: 'Check the robot’s existing movement commands.' },
+  { title: 'Integrate Vision', detail: 'Add OpenCV-based target detection.' },
+  { title: 'Develop Controls', detail: 'Connect the target and route sequence to movement commands.' },
+  { title: 'Execute Mission', detail: 'Run the defined target-retrieval mission.', tone: 'sage' as const, emphasize: true },
+];
+
+const architecture = [
+  { title: 'Camera / OpenCV', detail: 'Identify the target.' },
+  { title: 'Mission controller', detail: 'Select the mission state.' },
+  { title: 'Preplanned route', detail: 'Follow the defined sequence.' },
+  { title: 'Movement commands', detail: 'Direct the robot’s movement.' },
+  { title: 'Mini Pupper', detail: 'Commercial quadruped platform.' },
+];
+
+const visionStages = [
+  { number: '01', title: 'Camera Input', detail: 'Acquire a scene.' },
+  { number: '02', title: 'Object Detection', detail: 'Identify the target using OpenCV.' },
+  { number: '03', title: 'Target Identification', detail: 'Pass detection output to the mission controller.' },
+];
+
+const implementation = [
+  { number: '01', title: 'Hardware', detail: 'MangDang Mini Pupper · assembly · movement testing' },
+  { number: '02', title: 'Computer Vision', detail: 'OpenCV · object detection' },
+  { number: '03', title: 'Navigation', detail: 'Preplanned route · movement commands' },
+  { number: '04', title: 'Controls', detail: 'Mission logic · robot actuation' },
+];
+---
+
+<div class="mini-pupper-story">
+  <section class="mini-pupper-section mini-pupper-intro" id="platform-transition" aria-labelledby="mini-pupper-intro-title">
+    <div class="mini-pupper-intro-grid">
+      <div class="mini-pupper-intro-visual">
+        <TechnicalFigure
+          src={platformImage}
+          alt="Assembled MangDang Mini Pupper quadruped used for the robotics class project"
+          caption="Assembled MangDang Mini Pupper · project photograph"
+          width={545}
+          height={545}
+          className="mini-pupper-platform-photo"
+        />
+      </div>
+      <div class="mini-pupper-intro-copy">
+        <p class="eyebrow">THE ENGINEERING CHALLENGE</p>
+        <h2 id="mini-pupper-intro-title">from basic movement to mission control.</h2>
+        <p>We assembled and tested a MangDang Mini Pupper, then extended its basic movement capabilities with OpenCV-based object detection and mission-control software.</p>
+        <ul class="mini-pupper-tags" aria-label="Project technologies">
+          <li>OpenCV</li><li>Robot Controls</li><li>Robotics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mini-pupper-platform-comparison" aria-label="Stock platform and project implementation">
+      <section aria-labelledby="mini-pupper-stock-title">
+        <p class="mini-pupper-comparison-label">STOCK PLATFORM</p>
+        <h3 id="mini-pupper-stock-title">Commercial quadruped</h3>
+        <ul>
+          <li>Basic movement commands</li>
+          <li>Manual command execution</li>
+        </ul>
+      </section>
+      <section class="mini-pupper-added-work" aria-labelledby="mini-pupper-added-title">
+        <p class="mini-pupper-comparison-label">OUR IMPLEMENTATION</p>
+        <h3 id="mini-pupper-added-title">Software added for the mission</h3>
+        <ul>
+          <li>OpenCV object detection</li>
+          <li>Preplanned route execution</li>
+          <li>Mission-control logic</li>
+          <li>Retrieve-and-return sequence</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <section class="mini-pupper-section mini-pupper-process-section" id="mission" aria-labelledby="mini-pupper-mission-title">
+    <p class="eyebrow">THE MISSION</p>
+    <h2 id="mini-pupper-mission-title">detect. navigate. retrieve. return.</h2>
+    <p class="mini-pupper-lede">A completed robotics class assignment: identify a target, follow a predefined route, retrieve it, and return to the starting point.</p>
+    <ProcessTimeline steps={mission} label="Four stages of the robot mission" />
+  </section>
+
+  <section class="mini-pupper-section" id="computer-vision" aria-labelledby="mini-pupper-vision-title">
+    <p class="eyebrow">COMPUTER VISION / OPENCV</p>
+    <h2 id="mini-pupper-vision-title">teaching the robot to see.</h2>
+    <div class="mini-pupper-vision-grid">
+      <figure class="mini-pupper-vision-concept">
+        <svg viewBox="0 0 440 250" role="img" aria-labelledby="mini-pupper-vision-svg-title mini-pupper-vision-svg-desc">
+          <title id="mini-pupper-vision-svg-title">Conceptual camera input and target identification</title>
+          <desc id="mini-pupper-vision-svg-desc">An illustrative camera view with a target symbol and a separate target signal. This is a conceptual diagram, not a recorded detection screen.</desc>
+          <rect class="vision-frame" x="22" y="20" width="280" height="190" rx="10" />
+          <path class="vision-horizon" d="M35 153h254M54 62h90M175 62h102" />
+          <path class="vision-object" d="m91 150 35-48 35 48z" />
+          <circle class="vision-target" cx="227" cy="104" r="20" />
+          <circle class="vision-target-center" cx="227" cy="104" r="5" />
+          <path class="vision-signal" d="M248 104h54" />
+          <rect class="vision-signal-box" x="316" y="75" width="102" height="58" rx="9" />
+          <circle class="vision-signal-dot" cx="334" cy="94" r="4" />
+          <path class="vision-signal-line" d="M345 94h58M329 111h64" />
+          <text x="22" y="237">CONCEPTUAL VISION FLOW · NOT A SCREEN CAPTURE</text>
+        </svg>
+        <figcaption>Illustrative view of target information moving from camera input to mission logic.</figcaption>
+      </figure>
+      <ol class="mini-pupper-vision-stages" aria-label="Computer vision steps">
+        {visionStages.map((stage) => (
+          <li>
+            <span>{stage.number}</span>
+            <div><h3>{stage.title}</h3><p>{stage.detail}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="mini-pupper-section" id="navigation-controls" aria-labelledby="mini-pupper-controls-title">
+    <p class="eyebrow">NAVIGATION / CONTROLS</p>
+    <h2 id="mini-pupper-controls-title">from perception to movement.</h2>
+    <p class="mini-pupper-section-lede">Target detection informed mission logic, which issued movement commands along a preplanned route before the retrieval and return steps.</p>
+
+    <ol class="mini-pupper-architecture" aria-label="Mini Pupper mission-control system architecture">
+      {architecture.map((stage, index) => (
+        <>
+          <li style={`grid-column:${index * 2 + 1}`}>
+            <span class="mini-pupper-architecture-number">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{stage.title}</h3>
+            <p>{stage.detail}</p>
+          </li>
+          {index < architecture.length - 1 && <li class="mini-pupper-architecture-connector" style={`grid-column:${index * 2 + 2}`} aria-hidden="true"><span>→</span></li>}
+        </>
+      ))}
+    </ol>
+
+    <div class="mini-pupper-route-grid">
+      <div>
+        <p class="mini-pupper-diagram-label">MISSION ROUTE / SCHEMATIC</p>
+        <p class="mini-pupper-route-note">Illustrative only · route geometry not to scale</p>
+      </div>
+      <svg viewBox="0 0 500 180" role="img" aria-labelledby="mini-pupper-route-title mini-pupper-route-desc">
+        <title id="mini-pupper-route-title">Illustrative outbound and return route</title>
+        <desc id="mini-pupper-route-desc">A simple schematic connects the starting point to a target and back, representing preplanned route execution without measured coordinates or obstacle layout.</desc>
+        <path class="route-outbound" d="M72 112H250Q282 112 282 82H407" />
+        <path class="route-return" d="M407 94H282Q270 94 270 124H72" />
+        <circle class="route-start" cx="72" cy="112" r="11" />
+        <circle class="route-target" cx="407" cy="88" r="11" />
+        <text class="route-label" x="52" y="151">START</text>
+        <text class="route-label" x="377" y="151">TARGET</text>
+        <text class="route-direction" x="164" y="98">OUTBOUND</text>
+        <text class="route-direction" x="164" y="143">RETURN</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="mini-pupper-section mini-pupper-process-section" id="development-process" aria-labelledby="mini-pupper-development-title">
+    <p class="eyebrow">DEVELOPMENT PROCESS</p>
+    <h2 id="mini-pupper-development-title">assemble. see. control. complete.</h2>
+    <ProcessTimeline steps={development} label="Project development sequence" className="process-heading-following" stackAt="tablet" />
+  </section>
+
+  <section class="mini-pupper-section mini-pupper-implementation" id="technical-implementation" aria-labelledby="mini-pupper-implementation-title">
+    <p class="eyebrow">TECHNICAL IMPLEMENTATION</p>
+    <h2 id="mini-pupper-implementation-title">the system, in four parts.</h2>
+    <div class="mini-pupper-implementation-grid">
+      {implementation.map((area) => (
+        <article>
+          <span>{area.number}</span>
+          <h3>{area.title}</h3>
+          <p>{area.detail}</p>
+        </article>
+      ))}
+    </div>
+    <aside class="mini-pupper-course" id="course-context">
+      <p class="mini-pupper-comparison-label">COURSE EXPOSURE</p>
+      <p>The robotics course covered LiDAR, ROS, OpenCV, and foundational robotics and control techniques. ROS and LiDAR are course topics; they are not claimed as integrations in this project implementation.</p>
+    </aside>
+  </section>
+</div>
+
+<style>
+  .mini-pupper-story { --mini-blue: #e7f0fa; --mini-sage: #e7eee7; color: var(--text, #202124); }
+  .mini-pupper-section { padding-block: clamp(36px,4.25vw,54px); border-top: 1px solid var(--border, #e8e8e6); scroll-margin-top: 110px; }
+  .mini-pupper-process-section { padding-bottom: var(--process-outro-gap,48px); }
+  .mini-pupper-section:first-child { padding-top: 0; border-top: 0; }
+  .mini-pupper-section .eyebrow { margin: 0 0 13px; color: #70766f; font-size: 10px; letter-spacing: .13em; }
+  .mini-pupper-section h2 { margin: 0; color: var(--text, #202124); font-size: clamp(25px,3vw,36px); line-height: 1.13; letter-spacing: -.045em; text-wrap: balance; }
+  .mini-pupper-section>p:not(.eyebrow) { max-width: 720px; margin: 16px 0 0; color: #51574f; font-size: 14px; line-height: 1.75; }
+  .mini-pupper-intro-grid { display: grid; grid-template-columns: minmax(0,1.04fr) minmax(0,.96fr); align-items: center; gap: clamp(28px,4vw,52px); }
+  .mini-pupper-intro-visual { min-width: 0; }
+  .mini-pupper-intro-visual :global(.technical-figure) { max-width: 540px; }
+  .mini-pupper-intro-visual :global(.technical-figure-frame) { padding: 0; overflow: hidden; border-radius: 12px; background: #f3f0ea; }
+  .mini-pupper-intro-visual :global(.technical-figure-frame img) { width: 100%; max-height: 380px; object-fit: contain; }
+  .mini-pupper-intro-visual :global(.technical-figure-open) { display: grid; place-items: center; width: 28px; height: 28px; top: 10px; right: 10px; border-radius: 50%; background: #ffffffdf; }
+  .mini-pupper-intro-copy { min-width: 0; }
+  .mini-pupper-intro-copy h2 { max-width: 500px; }
+  .mini-pupper-intro-copy>p:not(.eyebrow) { max-width: 500px; margin: 18px 0 0; color: #51574f; font-size: 15px; line-height: 1.75; }
+  .mini-pupper-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 20px 0 0; padding: 0; list-style: none; }
+  .mini-pupper-tags li { padding: 5px 9px; border-radius: 5px; background: #eef1ed; color: #536255; font-size: 10px; line-height: 1.5; }
+  .mini-pupper-tags li:first-child { background: var(--mini-blue); color: #4e657c; }
+  .mini-pupper-platform-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(25px,4vw,50px); margin-top: 36px; border-top: 1px solid var(--border,#e8e8e6); }
+  .mini-pupper-platform-comparison>section { min-width: 0; padding: 20px 0 0; }
+  .mini-pupper-platform-comparison .mini-pupper-added-work { padding-left: 20px; border-left: 2px solid #cfdeed; }
+  .mini-pupper-comparison-label,.mini-pupper-diagram-label { margin: 0; color: #70766f; font-size: 9px; font-weight: 550; letter-spacing: .12em; }
+  .mini-pupper-platform-comparison h3 { margin: 8px 0 10px; color: #303832; font-size: 16px; font-weight: 550; line-height: 1.4; }
+  .mini-pupper-platform-comparison ul { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .mini-pupper-platform-comparison li { color: #5c635b; font-size: 12px; line-height: 1.6; }
+  .mini-pupper-platform-comparison li::before { content: '—'; margin-right: 8px; color: #9aa39a; }
+  .mini-pupper-added-work li::before { color: #7890a2; }
+  .mini-pupper-lede { max-width: 720px!important; }
+  .mini-pupper-vision-grid { display: grid; grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr); align-items: center; gap: clamp(26px,4vw,46px); margin-top: var(--process-outro-gap,48px); }
+  .mini-pupper-vision-concept { min-width: 0; margin: 0; padding: 16px 18px 12px; border: 1px solid var(--border,#e8e8e6); border-radius: 12px; background: #f7fafe; }
+  .mini-pupper-vision-concept svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .mini-pupper-vision-concept svg text { fill: #66756c; font: 8px var(--font,-apple-system,BlinkMacSystemFont,Arial,sans-serif); letter-spacing: .09em; }
+  .vision-frame { fill: #fff; stroke: #afc4dc; stroke-width: 1.5; }
+  .vision-horizon { fill: none; stroke: #cfdae3; stroke-width: 1; stroke-dasharray: 4 4; }
+  .vision-object { fill: #e5ebe6; stroke: #819386; stroke-width: 1.5; }
+  .vision-target { fill: #e7f0fa; stroke: #698098; stroke-width: 2; }
+  .vision-target-center { fill: #698098; }
+  .vision-signal { fill: none; stroke: #698098; stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .vision-signal-box { fill: #fff; stroke: #c9d5df; stroke-width: 1; }
+  .vision-signal-dot { fill: #8da5bb; }
+  .vision-signal-line { stroke: #bdcbd8; stroke-width: 2; }
+  .mini-pupper-vision-concept figcaption { margin-top: 8px; color: #70766f; font-size: 10px; line-height: 1.55; }
+  .mini-pupper-vision-stages { display: grid; grid-template-columns: minmax(0,1fr); gap: 0; margin: 0; padding: 0; border-top: 1px solid var(--border,#e8e8e6); list-style: none; }
+  .mini-pupper-vision-stages li { display: grid; grid-template-columns: 32px minmax(0,1fr); gap: 13px; align-items: start; min-width: 0; margin: 0; padding: 17px 0; border-bottom: 1px solid var(--border,#e8e8e6); }
+  .mini-pupper-vision-stages li>span { color: #698098; font-size: 10px; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .mini-pupper-vision-stages h3 { margin: 0; color: #303832; font-size: 14px; font-weight: 550; line-height: 1.4; }
+  .mini-pupper-vision-stages p { margin: 5px 0 0; color: #61675f; font-size: 12px; line-height: 1.65; }
+  .mini-pupper-section-lede { max-width: 720px!important; }
+  .mini-pupper-architecture { display: grid; grid-template-columns: repeat(4,minmax(0,1fr) 20px) minmax(0,1fr); grid-template-rows: auto auto auto; align-items: stretch; min-width: 0; margin: var(--process-intro-gap,48px) 0 0; padding: 0; border-top: 1px solid var(--border,#e8e8e6); list-style: none; }
+  .mini-pupper-architecture>li:not(.mini-pupper-architecture-connector) { display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; align-content: start; min-width: 0; margin: 0; padding: 16px 12px 12px 0; border-bottom: 1px solid var(--border,#e8e8e6); }
+  .mini-pupper-architecture-number { grid-row: 1; color: #698098; font-size: 9px; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .mini-pupper-architecture h3 { grid-row: 2; margin: 7px 0 0; color: #303832; font-size: 13px; font-weight: 550; line-height: 1.4; }
+  .mini-pupper-architecture p { grid-row: 3; margin: 6px 0 0; color: #61675f; font-size: 11px; line-height: 1.55; }
+  .mini-pupper-architecture-connector { display: grid; grid-row: 1 / span 3; place-items: center; margin: 0; padding: 0; color: #819384; font-size: 15px; }
+  .mini-pupper-route-grid { display: grid; grid-template-columns: minmax(180px,.55fr) minmax(0,1.45fr); align-items: center; gap: 25px; margin-top: 34px; padding: 17px 0; border-block: 1px solid var(--border,#e8e8e6); }
+  .mini-pupper-route-note { margin: 7px 0 0; color: #767c74; font-size: 10px; line-height: 1.5; }
+  .mini-pupper-route-grid svg { display: block; width: 100%; height: auto; }
+  .mini-pupper-route-grid svg text { font: 9px var(--font,-apple-system,BlinkMacSystemFont,Arial,sans-serif); letter-spacing: .1em; }
+  .route-outbound { fill: none; stroke: #89a0b4; stroke-width: 3; stroke-linecap: round; }
+  .route-return { fill: none; stroke: #9bae98; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 7 5; }
+  .route-start { fill: #e7f0fa; stroke: #7890a2; stroke-width: 2; }
+  .route-target { fill: #e7eee7; stroke: #7e957b; stroke-width: 2; }
+  .route-label { fill: #4f5d52; font-weight: 600; }
+  .route-direction { fill: #69776c; font-size: 8px!important; }
+  .mini-pupper-implementation-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0 clamp(16px,2.5vw,30px); margin-top: 24px; border-top: 1px solid var(--border,#e8e8e6); }
+  .mini-pupper-implementation-grid article { display: grid; grid-template-rows: auto auto 1fr; align-content: start; min-width: 0; padding: 16px 0 18px; border-bottom: 1px solid var(--border,#e8e8e6); }
+  .mini-pupper-implementation-grid article>span { color: #698098; font-size: 9px; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .mini-pupper-implementation-grid h3 { margin: 8px 0 7px; color: #303832; font-size: 13px; font-weight: 550; line-height: 1.4; }
+  .mini-pupper-implementation-grid p { margin: 0; color: #61675f; font-size: 11px; line-height: 1.65; }
+  .mini-pupper-course { display: grid; grid-template-columns: minmax(130px,.35fr) minmax(0,1fr); gap: 20px; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border,#e8e8e6); }
+  .mini-pupper-course>p:last-child { margin: 0; color: #61675f; font-size: 11px; line-height: 1.7; }
+  @media (max-width: 1100px) {
+    .mini-pupper-architecture { grid-template-columns: minmax(0,1fr); grid-template-rows: none; gap: 0; }
+    .mini-pupper-architecture>li:not(.mini-pupper-architecture-connector) { grid-row: auto; grid-column: 1!important; grid-template-rows: auto auto auto; grid-template-columns: 28px minmax(0,1fr); padding: 13px 0; border-bottom: 1px solid var(--border,#e8e8e6); }
+    .mini-pupper-architecture-number { grid-column: 1; grid-row: 1 / span 2; padding-top: 3px; }
+    .mini-pupper-architecture h3 { grid-column: 2; grid-row: 1; margin: 0; }
+    .mini-pupper-architecture p { grid-column: 2; grid-row: 2; margin-top: 4px; }
+    .mini-pupper-architecture-connector { grid-row: auto; grid-column: 1!important; height: 22px; }
+    .mini-pupper-architecture-connector span { transform: rotate(90deg); }
+    .mini-pupper-implementation-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  }
+  @media (max-width: 900px) {
+    .mini-pupper-intro-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; }
+    .mini-pupper-vision-grid { gap: 22px; }
+  }
+  @media (max-width: 600px) {
+    .mini-pupper-section { padding-block: 32px; scroll-margin-top: 90px; }
+    .mini-pupper-process-section { padding-bottom: var(--process-outro-gap,32px); }
+    .mini-pupper-section h2 { font-size: 27px; }
+    .mini-pupper-section>p:not(.eyebrow) { font-size: 13px; }
+    .mini-pupper-intro-grid,.mini-pupper-vision-grid,.mini-pupper-route-grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+    .mini-pupper-intro-grid { align-items: start; }
+    .mini-pupper-platform-comparison { grid-template-columns: minmax(0,1fr); gap: 12px; margin-top: 26px; }
+    .mini-pupper-platform-comparison>section { padding-top: 15px; }
+    .mini-pupper-platform-comparison .mini-pupper-added-work { padding-left: 14px; }
+    .mini-pupper-route-grid { gap: 8px; }
+    .mini-pupper-route-grid svg { max-height: 160px; }
+    .mini-pupper-implementation-grid { grid-template-columns: minmax(0,1fr); }
+    .mini-pupper-implementation-grid article { grid-template-columns: 30px minmax(0,1fr); grid-template-rows: auto auto; padding-block: 13px; }
+    .mini-pupper-implementation-grid article>span { grid-column: 1; grid-row: 1 / span 2; }
+    .mini-pupper-implementation-grid h3 { grid-column: 2; grid-row: 1; margin: 0 0 5px; }
+    .mini-pupper-implementation-grid p { grid-column: 2; grid-row: 2; }
+    .mini-pupper-course { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>

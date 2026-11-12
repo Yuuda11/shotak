@@ -6,6 +6,8 @@ highlightTone: "blue"
 summary: "An exploration of electrochemical machining and manufacturing process design."
 category: "Manufacturing"
 filters: ["Manufacturing"]
+role: "Needs confirmation"
+projectStatus: "Needs confirmation"
 tools: ["Process Design", "Electrochemistry", "CNC", "Manufacturing"]
 illustration:
   src: /images/projects/covers/ecm.webp

@@ -12,6 +12,9 @@ import RocketRecognition from '../components/RocketRecognition.astro';
 import RocketProjectIntro from '../components/RocketProjectIntro.astro';
 import RocketActuationComparison from '../components/RocketActuationComparison.astro';
 import RocketSimulation from '../components/RocketSimulation.astro';
+import ProjectFacts from '../components/ProjectFacts.astro';
+import GimbalProjectStory from '../components/GimbalProjectStory.astro';
+import MiniPupperProjectStory from '../components/MiniPupperProjectStory.astro';
 interface Props{project:CollectionEntry<'projects'>;headings:{depth:number;slug:string;text:string}[];}
 const {project,headings}=Astro.props;const p=project.data;
 const projectTitle=p.title.replace(/\.$/,'');
@@ -19,6 +22,7 @@ const projectTitleSplit=projectTitle.lastIndexOf(' ');
 const projectTitlePrefix=projectTitleSplit>=0?projectTitle.slice(0,projectTitleSplit+1):'';
 const projectTitleFinal=projectTitle.slice(projectTitleSplit+1);
 const subtitleHighlightIndex=p.highlightPhrase?p.subtitle.indexOf(p.highlightPhrase):-1;
+const mediaLabels={concept:'concept illustration',diagram:'functional diagram',photo:'project photograph',cad:'project CAD',platform:'Mini Pupper platform'};
 ---
 <BaseLayout title={p.title} description={p.summary}>
 <article class="case-study wrap" data-project={project.id} data-media-kind={p.mediaKind}>
@@ -29,30 +33,25 @@ const subtitleHighlightIndex=p.highlightPhrase?p.subtitle.indexOf(p.highlightPhr
 <p>{subtitleHighlightIndex>=0&&p.highlightPhrase?<>{p.subtitle.slice(0,subtitleHighlightIndex)}<span class={`project-subtitle-highlight tone-${p.highlightTone??'blue'}`}>{p.highlightPhrase}</span>{p.subtitle.slice(subtitleHighlightIndex+p.highlightPhrase.length)}</>:p.subtitle}</p>
 </header>
 <div class="case-cover">
-<img src={url(p.cover)} alt={p.coverAlt} width="1200" height="750" fetchpriority="high"/>
-<span class="art-caption">{{concept:'concept illustration',diagram:'functional diagram',photo:'project photograph',cad:'project CAD',platform:'Mini Pupper platform'}[p.mediaKind]}{project.id==='rocket-airbrake'&&<> · <a href={url(p.cover)} target="_blank" rel="noopener noreferrer">open CAD image</a></>}</span>
+{project.id==='autonomous-mini-pupper'?<a class="case-cover-enlargement" href={url(p.cover)} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Mini Pupper technical illustration">
+<img src={url(p.cover)} alt={p.coverAlt} width="1536" height="1024" fetchpriority="high"/>
+<span class="case-cover-enlarge-icon" aria-hidden="true">↗</span>
+</a>:<img src={url(p.cover)} alt={p.coverAlt} width="1200" height="750" fetchpriority="high"/>}
+<span class="art-caption">{project.id==='autonomous-mini-pupper'?'Mini Pupper platform · conceptual technical illustration':mediaLabels[p.mediaKind]}{project.id==='rocket-airbrake'&&<> · <a href={url(p.cover)} target="_blank" rel="noopener noreferrer">open CAD image</a></>}</span>
 </div>
+{project.id==='autonomous-mini-pupper'&&<p class="mini-pupper-cover-note">Concept illustration; it does not document the exact hardware configuration of the class-project unit.</p>}
+<ProjectFacts status={p.projectStatus} role={p.role} discipline={p.discipline??p.category} tools={p.tools}/>
 {project.id==='rocket-airbrake'&&<RocketProjectIntro/>}
-{project.id!=='rocket-airbrake'&&<dl class="project-facts">
-{p.projectStatus&&<div><dt>Status</dt><dd>{p.projectStatus}</dd></div>}
-{p.teamContext&&<div><dt>Team context</dt><dd>{p.teamContext}</dd></div>}{p.role&&<div>
-<dt>Role</dt>
-<dd>{p.role}</dd>
-</div>}{p.year&&<div>
-<dt>Year</dt>
-<dd>{p.year}</dd>
-</div>}<div>
-<dt>Discipline</dt>
-<dd>{p.category}</dd>
-</div>
-{p.tools.length>0&&<div><dt>Tools & technologies</dt><dd>{p.tools.join(' · ')}</dd></div>}
-</dl>}
  <div class="case-body">
 <aside class="case-nav">
 <nav aria-label="In this project">
 <p class="eyebrow">in this project</p>
 {project.id==='rocket-airbrake'?<>
 <a href="#engineering-systems">Engineering systems</a><a href="#control-architecture">My contribution</a><a href="#actuation">Actuation demo</a><a href="#simulation">Simulation</a><a href="#development-timeline">Development timeline</a><a href="#flight-results">Test results</a><a href="#recognition">Recognition</a><a href="#lessons-learned">Lessons learned</a><a href="#report-poster">Technical evidence</a>
+</>:project.id==='face-tracking-laser-gimbal'?<>
+<a href="#the-project">The project</a><a href="#face-tracking">Face tracking</a><a href="#camera-stabilization">Camera stabilization</a><a href="#mechanical-design">Mechanical design</a><a href="#system-integration">System integration</a><a href="#development-process">Development process</a><a href="#technical-contribution">Technical contribution</a><a href="#results-and-lessons">Results &amp; lessons</a>
+</>:project.id==='autonomous-mini-pupper'?<>
+<a href="#platform-transition">Platform to mission</a><a href="#mission">Mission sequence</a><a href="#computer-vision">Computer vision</a><a href="#navigation-controls">Navigation &amp; controls</a><a href="#development-process">Development process</a><a href="#technical-implementation">Technical implementation</a><a href="#course-context">Course context</a>
 </>:<>{headings.filter(h=>h.depth===2).map(h=>
 <a href={`#${h.slug}`}>{h.text}</a>)}{p.documents.length>0&&<a href="#report-poster">Technical evidence · report &amp; poster</a>}</>}
 </nav>
@@ -61,8 +60,14 @@ const subtitleHighlightIndex=p.highlightPhrase?p.subtitle.indexOf(p.highlightPhr
 {project.id==='rocket-airbrake'&&<>
 <RocketSystemsOverview/><RocketControlArchitecture/><RocketActuationComparison/><RocketSimulation/><RocketTimeline/><RocketFlightResults/><RocketRecognition/>
 </>}
+{project.id==='face-tracking-laser-gimbal'&&<GimbalProjectStory/>}
+{project.id==='autonomous-mini-pupper'&&<MiniPupperProjectStory/>}
 {project.id==='rocket-airbrake'?<>
 {p.documents.length>0&&<ProjectDocuments ids={p.documents}/>}
+<slot/>
+</>:project.id==='face-tracking-laser-gimbal'?<>
+<slot/>
+</>:project.id==='autonomous-mini-pupper'?<>
 <slot/>
 </>:<>
 <slot/>{p.documents.length>0&&<ProjectDocuments ids={p.documents}/>}
@@ -81,3 +86,17 @@ const subtitleHighlightIndex=p.highlightPhrase?p.subtitle.indexOf(p.highlightPhr
 </div>
 </article>
 </BaseLayout>
+
+<style>
+  .case-study[data-project="autonomous-mini-pupper"] .case-cover { height: auto; aspect-ratio: 3 / 2; background: #fafaf8; }
+  .case-study[data-project="autonomous-mini-pupper"] .case-cover-enlargement { position: relative; display: block; width: 100%; height: 100%; }
+  .case-study[data-project="autonomous-mini-pupper"] .case-cover-enlargement img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .case-study[data-project="autonomous-mini-pupper"] .case-cover-enlarge-icon { position: absolute; top: 14px; right: 14px; display: grid; width: 32px; height: 32px; place-items: center; border-radius: 50%; background: #fffffff0; color: #698098; font-size: 15px; }
+  .case-study[data-project="autonomous-mini-pupper"] .case-cover .art-caption { left: 18px; bottom: 16px; max-width: calc(100% - 36px); padding: 4px 8px; border-radius: 4px; background: #fffffff0; color: #344033; font-size: 10px; }
+  .mini-pupper-cover-note { margin: 8px 0 0; color: #70766f; font-size: 11px; line-height: 1.5; }
+  @media (max-width: 600px) {
+    .case-study[data-project="autonomous-mini-pupper"] .case-cover { aspect-ratio: 3 / 2; }
+    .case-study[data-project="autonomous-mini-pupper"] .case-cover .art-caption { left: 10px; bottom: 9px; max-width: calc(100% - 20px); font-size: 8px; }
+    .case-study[data-project="autonomous-mini-pupper"] .case-cover-enlarge-icon { top: 8px; right: 8px; width: 28px; height: 28px; }
+  }
+</style>

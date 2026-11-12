@@ -9,16 +9,22 @@ const systems = [
   {name:'Controls & Software',tone:'blue',items:['MATLAB / Simulink','Flight simulation','State estimation + embedded logic']},
   {name:'Recovery',tone:'sage',items:['Recovery avionics','Deployment systems','Ground + flight integration']},
 ];
+const systemRows = Array.from({ length: Math.ceil(systems.length / 2) }, (_, row) => systems.slice(row * 2, row * 2 + 2));
 ---
 <section id="engineering-systems" class="rocket-section rocket-systems" aria-labelledby="rocket-systems-heading">
   <div class="rocket-section-heading"><p class="eyebrow">TEAM SYSTEMS</p><h2 id="rocket-systems-heading">one rocket. six interconnected systems.</h2><p>Four-person capstone project · disciplines shown here represent the team's integrated work.</p></div>
   <div class="rocket-systems-layout">
-  <ol class="rocket-systems-grid">
-    {systems.map((system,index)=><li class={`rocket-system tone-${system.tone}`}>
-      <span class="rocket-system-index">0{index+1}</span><h3>{system.name}</h3>
-      <ul>{system.items.map(item=><li>{item}</li>)}</ul>
-    </li>)}
-  </ol>
+  <div class="rocket-systems-grid" role="list" aria-label="Six team engineering systems">
+    {systemRows.map((row, rowIndex) => <div class="rocket-system-row" role="presentation">
+      {row.map((system, columnIndex) => {
+        const index = rowIndex * 2 + columnIndex;
+        return <article class={`rocket-system tone-${system.tone}`} role="listitem">
+          <span class="rocket-system-index">0{index + 1}</span><h3>{system.name}</h3><span class="rocket-system-underline" aria-hidden="true"></span>
+          <ul>{system.items.map(item=><li>{item}</li>)}</ul>
+        </article>;
+      })}
+    </div>)}
+  </div>
   <RocketInvolvement/>
   </div>
   <div class="rocket-subsection-heading"><p class="eyebrow">DESIGN → IMPLEMENTATION</p><h3>from CAD to hardware.</h3><p>Project-level design and integration examples; this overview does not assign every discipline to one team member.</p></div>

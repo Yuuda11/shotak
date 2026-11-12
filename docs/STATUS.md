@@ -1,6 +1,46 @@
 # Project status and handoff
 
-Last updated: 2026-11-11.
+Last updated: 2026-11-12.
+
+## Mini Pupper preview tag — 2026-11-12
+
+Added ROS to the data-driven project-card preview list. Left ROS out of the shared Tools & Technologies field because the current case study documents it as course exposure rather than an implemented integration; it remains visible as coursework on the detail page.
+
+## Mini Pupper technical schematic cover — 2026-11-12
+
+Added the owner-provided 1536 × 1024 schematic as an optimized local WebP and changed only the Mini Pupper case-study cover reference. Removed the unverified dimension panel, USB camera and Raspberry Pi specifications, ROS label, servo count/DOF annotation, and status-function claim; the right panel now summarizes documented platform and team work. The full image keeps its aspect ratio, has a click-to-open full-size link, and is captioned “Mini Pupper platform · conceptual technical illustration,” with a note that it does not document the exact class-project hardware configuration. The actual assembled-robot photograph remains in the Engineering Challenge section; the homepage and Projects listing illustration are unchanged.
+
+The live project-page images and crop were browser-checked at desktop and 390px mobile widths; the cover retains the full 3:2 schematic without cropping, and the original robot photograph remains in the Engineering Challenge section. Screenshots: `/private/tmp/mini-pupper-cover-review/mini-pupper-cover-full-frame.png`, `/private/tmp/mini-pupper-cover-review/mini-pupper-challenge-1440.png`, and `/private/tmp/mini-pupper-cover-review/mini-pupper-cover-390.png`. `npm run verify` and `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Mini Pupper robotics case study — 2026-11-12
+
+Reworked the case study into a visual sequence: actual MangDang Mini Pupper platform photo and concise project introduction; stock-platform versus team implementation comparison; the existing mission and development timelines; a clearly labeled conceptual OpenCV vision diagram; a system architecture and explicitly illustrative preplanned route schematic; and four concise implementation areas. The project is described as completed. OpenCV is listed as implemented; ROS and LiDAR remain course exposure and are not claimed as integrations. No detection model, retrieval mechanism, route geometry, or performance result is invented. Existing platform photo and enlarge interaction are retained.
+
+Browser screenshots were captured at 1440, 1366, 1024, 768, and 390px in `/private/tmp/mini-pupper-visual-review/`. The rendered page had no horizontal overflow at these widths; desktop shows the two-column introduction and architecture, while mobile stacks content and the architecture flow vertically. Final `npm run verify` passed with zero Astro errors, warnings, or hints; 14 pages built and 241 local asset/navigation links checked. `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Gimbal mode process timelines — 2026-11-12
+
+Replaced the blue and sage gradient process tiles below the Face Tracking and Stabilization illustrations with compact vertical line-and-dot timelines. Both timelines use the same number/title row structure and retain their five-step and four-step sequences. The illustrations now share matching padded frames, and the existing subgrid synchronizes both figure/caption rows and timeline starts on desktop; tablet/mobile stack the complete modes in semantic order. No outcome label was added because each mode's purpose is already stated above its diagram.
+
+Actual browser screenshots were inspected at 1440, 1366, 1024, 768, and 390px. At 1440/1366 the illustration top edges were both 335px and timeline starts both 644px; at 1024 they were both 328px and 630px respectively. Widths matched viewport widths. Separate 390px screenshots show all five Face Tracking steps and all four Stabilization steps. Captures: `/private/tmp/gimbal-vertical-timeline-review/`. `npm run verify` passed with zero Astro diagnostics, 14 built pages, and 239 local links/assets checked; `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Site-wide vertical spacing refinement — 2026-11-12
+
+Centralized repeated vertical rhythm in shared CSS tokens and reduced major section padding from 70px to 58px per side (40px mobile), page-content gaps from 65px to 54px (34px mobile), and recurring case-study spacing by roughly 15–20%. Trimmed excess top spacing before About expertise/toolkit/industries/R&D, tightened selected-work row gaps, resume and document sections, and removed an unused minimum height from project prose. Gimbal and Mini Pupper section padding and Rocket's repeated section margins were reduced without changing type sizes, media dimensions, horizontal spacing, or process-diagram intro/outro gaps. The hero and contact-page viewport sizing remain unchanged. Added shared section-spacing guidance to `AGENTS.md` and `docs/DESIGN_ALIGNMENT_GUIDELINES.md`.
+
+Browser screenshots were captured before and after at 1440px and 390px for Home, About, Projects, Contact, Resume, and all six project details. Process-focused desktop/mobile screenshots were also captured after the changes for Mini Pupper mission/development, Gimbal modes/mechanical/development, Environmental Chamber architecture, Rocket control/timeline, and About R&D. Screenshot directories: `/private/tmp/portfolio-spacing-before-site/`, `/private/tmp/portfolio-spacing-after-site/`, and `/private/tmp/portfolio-spacing-after-process/`. Document widths matched the viewport at all 22 page/viewport combinations. Excluding Contact (intentionally unchanged), desktop document height changed by 1.5–9.7% by route and mobile by 1.1–7.1%. Total page-height reductions are lower than the 14–20% reduction in repeated spacing values because page copy, photos, illustrations, and diagrams remain unchanged in size. `npm run verify` passed with zero Astro diagnostics, 14 built pages, and 239 local links/assets checked; `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Universal process-diagram spacing — 2026-11-12
+
+Introduced shared desktop/mobile spacing tokens for process diagrams, and applied them to Mini Pupper mission and development timelines, Gimbal mechanical/development timelines and mode flows, Environmental Chamber system architecture and detail rows, Rocket development timeline and control architecture, and the About Research & Development process. Direct-after-heading timelines use their own shared token; process containers retain their existing internal dot/line/text alignment. Added permanent process-spacing requirements to `AGENTS.md` and documented the tokens and section-spacing exception in the design alignment guidelines.
+
+Browser QA captured 45 screenshots across 1440, 1366, 1024, 768, and 390px widths. Computed spacing measured 48px desktop / 32px at 768px and 390px after introductory text; 60px desktop / 36px mobile after headings; and 48px / 32px before related follow-on content. The timeline dots and lines remain aligned, and every tested page's document width matched the viewport. Representative renders: `/private/tmp/portfolio-visual-qa/mini-mission-1440.png`, `mini-mission-390.png`, `gimbal-modes-1440.png`, `chamber-architecture-1440.png`, `chamber-architecture-390.png`, `rocket-timeline-390.png`, and `rocket-control-1440.png`. `npm run verify` passed with zero Astro diagnostics, 14 built pages, and 239 local links/assets checked; `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Final UI polish — 2026-11-12
+
+Repaired four remaining alignment details: Gimbal skill tiles now use equal two-column grid tracks and consistent padding/minimum dimensions in both blue and sage groups; removed the floating center arrow from Rocket's retracted/extended photo comparison; replaced Environmental Chamber's two-column bullets with numbered `number | title | description` rows; and increased spacing before Mini Pupper's development timeline at desktop, tablet, and mobile breakpoints. Clarified permanent tile, comparison, detail-row, heading-spacing, and shared-rule guidance in `AGENTS.md` and the design guidelines.
+
+Checkpoint copy: `/private/tmp/portfolio-final-polish-checkpoint/` (starting HEAD `c3d037d`; existing uncommitted work was preserved). Browser screenshots and computed layout checks were completed at 1440, 1366, 1024, 768, and 390px widths. All page document widths matched their viewports; Gimbal tiles measured identical dimensions at each width; all chamber detail rows shared the same grid tracks; the Rocket comparison had no arrow element; and Mini Pupper heading-to-timeline spacing measured 52px, 40px, and 32px at desktop, tablet, and mobile widths. Screenshots are in `/private/tmp/portfolio-visual-qa/`. `npm run verify` passed with zero Astro diagnostics, 14 built pages, and 239 checked local links; `git diff --check` passed. No commit, push, or deployment was performed.
 
 ## Repository state
 
@@ -39,6 +79,12 @@ Documentation was committed as `1078224`. Subsequent implementation checkpoints 
 4. Perform a fuller keyboard, reduced-motion, and browser PDF review when convenient.
 
 No deployment, publication, or remote push was performed.
+
+## Dual-mode face-tracking gimbal case study — 2026-11-12
+
+Updated the project identity and metadata for the IoT course final prototype, then replaced the previous long-form case-study text with a structured visual story. It distinguishes camera/OpenCV face tracking from MPU-based orientation stabilization with PID on the same two-axis actuation platform. Added accessible native SVG diagrams for the image-frame error and conceptual stabilization motion; concise hardware/software summaries; mechanical design and 3D-printing stages; system integration; development stages; contribution areas; and factual results/lessons. Existing concept cover, prototype photograph, and title-period/subtitle-highlight system are preserved.
+
+Accuracy limits: public copy does not name an MPU part number, assign UART or I²C to a specific peripheral, claim a particular sensor-fusion method, or state quantitative tracking/stability performance. `Flask` remains in the tool list because the previous project entry documented it. No separate CAD or printed-part photograph was found in the existing project assets. No commit, push, or deployment was performed.
 
 ## Rocket Real Vehicle photo layout — 2026-11-11
 
@@ -201,3 +247,45 @@ Visual review used native Safari screenshots of the rendered desktop Engineering
 Replaced the paragraph in the middle column of “The Real Vehicle” with a compact editorial infographic: a highlighted “from design to flight.” heading, project descriptor, 4-person and 11.12-foot scale metrics, three documented primary contribution areas (Electronics, PCB Design, Software), and a linked team-award row. The existing team and launch photographs, their source files, displayed aspect ratios, placement, captions, and enlarge links were left unchanged for this update.
 
 Visual review in the local browser confirmed the three-column desktop composition, visible powder-blue marker, metrics, contribution icons, and award link. A 390px mobile view was also reviewed; the contribution items wrap into a readable two-column arrangement with the final item spanning the row. `npm run verify` passed with zero Astro diagnostics; `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Standardized project information — 2026-11-12
+
+Checkpoint before this refinement: `c3d037d` (`Refine rocket project presentation`). Added shared `ProjectFacts.astro` rendering directly beneath the cover on all six project detail pages, including Rocket before its Real Vehicle infographic. The four consistent fields are Status, Role, Discipline, and Tools & Technologies; status uses `projectStatus`, discipline uses the project category, and the remaining values come from project frontmatter. The website publication `status` is never used as engineering status. The strip is four columns on desktop, two by two on tablet, and compact stacked rows on mobile. A separate optional `cardStatus` preserves the existing project-list status labels without surfacing new detail statuses there.
+
+Added project status and role values only where existing descriptions support them. ECM status and individual role remain marked “Needs confirmation”; the Rube Goldberg build/validation state is also marked for confirmation. The Mini Pupper entry notes that validation results are undocumented. No cover images, captions, or enlargement behavior were changed.
+
+Verification: `npm run verify` passed with zero Astro diagnostics; 14 static pages built and 228 local asset/navigation links checked. Generated HTML inspection confirmed one four-field strip below each of the six project covers and, on Rocket, before the Real Vehicle section. The local browser preview host was unavailable from the browser session, so screenshot-based responsive review could not be completed; responsive layouts were checked in the CSS. The unrelated untracked personal statement PDF remains untouched.
+
+## Environmental Chamber and Mini Pupper project updates — 2026-11-12
+
+Environmental Chamber status now reflects the built physical prototype, completed initial presentation, and further development pending funding. Its Undergraduate Research Fellow role, verified IoT architecture/tool list, and no-deployment/no-validation qualification remain.
+
+Mini Pupper is presented as a completed robotics class project on the commercial MangDang quadruped. The case study now shows the four-stage detect → navigate → retrieve → return mission, four implementation areas, and the assemble → movement test → vision → controls → mission development sequence. Navigation is explicitly limited to executing a preplanned route. OpenCV is the only tool listed as implemented; LiDAR and ROS are labeled as course topics, not project integrations.
+
+No specific object detector, retrieval mechanism, navigation algorithm, LiDAR/ROS integration, or performance measurement is claimed. `npm run verify` passed with zero Astro diagnostics; 14 pages built and 232 local asset/navigation links checked. Generated output assertions confirmed the updated statuses, project details, and Mini Pupper anchors; `git diff --check` passed. No commit, push, or deployment was performed.
+
+## Gimbal process-flow alignment — 2026-11-12
+
+Aligned the Face Tracking and Camera Stabilization process flows by using a consistent two-row grid for each stage and resetting the global prose-list spacing that had staggered later list items. At narrow widths, both flows use one column with downward arrows. A desktop browser screenshot confirmed aligned numbers and description rows; the mobile breakpoint rules were reviewed, but a reliable 390px browser screenshot could not be captured in this session.
+
+Verification: `npm run verify` passed with zero Astro diagnostics; 14 static pages built and 232 local asset/navigation links checked. `git diff --check` passed.
+
+## Shared mission and process-flow alignment — 2026-11-12
+
+Added a reusable `ProcessFlow.astro` component and applied it to the Mini Pupper mission plus both Gimbal operating-mode flows. Each stage has separate number, title, and optional description rows; dedicated grid tracks carry the arrows. Four or five equal stage columns are used on desktop, and stages become an aligned vertical sequence with downward connectors below 900px. Mini Pupper keeps its subtle pastel stage treatment; Gimbal retains its existing muted typography and numbering.
+
+`npm run verify` passed with zero Astro diagnostics; 14 static pages built and 232 local asset/navigation links checked. `git diff --check` passed. Browser screenshot capture was attempted, but Chrome's responsive preview stopped rendering the page after its viewport control entered an invalid width, and Safari screenshot capture was unavailable. Therefore, fresh desktop and 390px visual screenshots remain unverified; the responsive layout was checked in the generated CSS and the project pages rendered in the accessibility tree before the browser issue.
+
+## Gimbal shared-platform comparison — 2026-11-12
+
+Reworked the two operating-mode sections into matching parent-grid rows so their headings, descriptions, sensing configurations, media, and process diagrams align independently of each mode's content height. Consolidated common hardware into one shared platform panel and replaced duplicated hardware/software/control lists with a semantic, aligned Software/Control comparison table. The reusable `ProcessFlow.astro` uses dedicated connector tracks and aligned number/title/detail rows; a scoped word-wrapping rule prevents stage titles from splitting inside words.
+
+Safari screenshots were captured for the shared platform and sensing columns, and the aligned Software/Control comparison. The flow section was inspected in-browser; the browser viewport could not be switched to a true 390px width in this session, so a mobile screenshot remains unavailable. Responsive stack rules are present below 900px. `npm run verify` passed with zero Astro diagnostics, 14 static pages, and 232 checked local asset/navigation links; `git diff --check` passed. No unrelated files were intentionally edited; the existing untracked PDF remains untouched.
+
+## Portfolio process-visualization standards — 2026-11-12
+
+Added permanent UI/UX and alignment rules to the root `AGENTS.md`, with detailed examples in `docs/DESIGN_ALIGNMENT_GUIDELINES.md`. Added reusable `ProcessTimeline.astro` for unified horizontal line-and-dot timelines that become vertical on narrow screens. Mini Pupper's mission and development sequences now use the timeline; the latter emphasizes its final milestone in sage. Rocket's existing vertical chronology and recognition panel are preserved. Rocket control stages now use numbered blocks without decorative arrows. The existing Gimbal shared-platform redesign remains intact; both mode flows use the same numbered-block component and parent-grid row alignment. About's R&D process now uses the shared line-and-dot component. Environmental Chamber's arrows remain because they represent system/data flow rather than decorative process connectors.
+
+Local browser screenshots were reviewed for the Mini Pupper mission and development timelines, both Gimbal mode flows/comparison, and the Rocket vertical timeline. The Rocket screenshot confirms the continuous axis, aligned date/event columns, milestone colors, and final award panel. The available browser session did not provide a reliable true 390px viewport capture, so mobile behavior was checked against the responsive CSS but not visually screenshot-verified at the requested sizes.
+
+Verification: `npm run check` and `npm run verify` passed with zero Astro diagnostics, 14 static pages, and 232 checked local asset/navigation links. `git diff --check` passed. No commit, push, or deployment was performed. A recoverable copy of the pre-edit state is at `/private/tmp/portfolio-process-design-checkpoint/`; the repository was already on `c3d037d` at task start, and this task remains uncommitted. Existing unrelated working-tree edits and the untracked personal statement PDF were preserved.

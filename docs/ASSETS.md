@@ -26,6 +26,7 @@ Earlier `public/images/projects/covers/*.webp` images and `public/images/project
 - `public/images/projects/rocket-airbrake/research-poster.webp` — rendered poster preview; original PDF is linked separately.
 - `public/images/projects/face-tracking-laser-gimbal/prototype.webp` — existing gimbal photograph.
 - `public/images/projects/autonomous-mini-pupper/platform.webp` — existing Mini Pupper platform photograph.
+- `public/images/projects/autonomous-mini-pupper/mini-pupper-technical-schematic.webp` — owner-supplied conceptual technical illustration used only on the Mini Pupper case-study page. Unsupported dimensions, camera-interface, controller-model, ROS, servo-count, and status-function annotations were removed/rephrased; the right panel now summarizes documented project context. The page labels the image conceptual, not a specification of the class-project unit. The actual robot photograph remains in the Engineering Challenge section.
 - `public/images/projects/rube-goldberg-machine/mechanism.webp`, `cad.webp` — existing mechanism photo and CAD.
 - `public/images/projects/chamber.svg` — high-level functional overview; not an implementation drawing.
 

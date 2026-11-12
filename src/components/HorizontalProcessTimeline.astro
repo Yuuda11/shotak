@@ -1,0 +1,194 @@
+---
+interface Step {
+  number?: string;
+  title: string;
+  detail?: string;
+  tone?: 'blue' | 'sage' | 'lavender' | 'cream';
+  emphasize?: boolean;
+}
+
+interface Props {
+  steps: Step[];
+  label: string;
+  className?: string;
+  stackAt?: 'mobile' | 'tablet';
+}
+
+const { steps, label, className, stackAt = 'mobile' } = Astro.props;
+---
+
+<ol
+  class:list={['horizontal-process-timeline', stackAt === 'tablet' && 'horizontal-process-timeline--tablet', className]}
+  style={`--timeline-count:${steps.length};--timeline-inset:${50 / steps.length}%`}
+  aria-label={label}
+>
+  {steps.map((step, index) => (
+    <li class:list={['horizontal-process-step', step.tone && `tone-${step.tone}`, step.emphasize && 'is-emphasized']}>
+      <span class="horizontal-process-dot" aria-hidden="true"></span>
+      <span class="horizontal-process-number">{step.number ?? String(index + 1).padStart(2, '0')}</span>
+      <strong>{step.title}</strong>
+      {step.detail && <p>{step.detail}</p>}
+    </li>
+  ))}
+</ol>
+
+<style is:global>
+  .horizontal-process-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--timeline-count), minmax(0, 1fr));
+    grid-template-rows: 20px auto auto auto;
+    align-items: stretch;
+    gap: 0;
+    min-width: 0;
+    margin: var(--process-intro-gap, 48px) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  /* Project prose gives every ordered list an indent and adds top margin to
+     adjacent items. Reset those generic list rules so all milestones share
+     the timeline's actual grid tracks. */
+  .prose .horizontal-process-timeline { padding-inline: 0; margin-block: var(--process-intro-gap, 48px) 0; }
+  .prose .horizontal-process-timeline.process-heading-following { margin-block-start: var(--process-heading-gap, 60px); }
+  .prose .horizontal-process-timeline > li { margin-top: 0; padding-inline: 0; }
+  .horizontal-process-timeline::before {
+    position: absolute;
+    z-index: 0;
+    top: 10px;
+    right: var(--timeline-inset);
+    left: var(--timeline-inset);
+    height: 1px;
+    background: #d5ddda;
+    content: '';
+  }
+  .horizontal-process-timeline.process-heading-following { margin-top: var(--process-heading-gap, 60px); }
+  .horizontal-process-step {
+    position: relative;
+    display: grid;
+    grid-row: 1 / span 4;
+    grid-template-rows: subgrid;
+    align-content: start;
+    align-items: start;
+    justify-items: center;
+    gap: 6px;
+    min-width: 0;
+    margin: 0;
+    padding: 0 10px;
+    text-align: center;
+  }
+  .horizontal-process-dot {
+    z-index: 1;
+    display: block;
+    align-self: start;
+    justify-self: center;
+    width: 12px;
+    height: 12px;
+    margin-top: 4px;
+    border: 1px solid #aebfce;
+    border-radius: 50%;
+    background: #e7f0fa;
+  }
+  .horizontal-process-step.tone-sage .horizontal-process-dot { border-color: #9eb29c; background: #e7eee7; }
+  .horizontal-process-step.tone-lavender .horizontal-process-dot { border-color: #bfb2c9; background: #f1edf5; }
+  .horizontal-process-step.tone-cream .horizontal-process-dot { border-color: #cabb9f; background: #f5eee3; }
+  .horizontal-process-step.is-emphasized .horizontal-process-dot { width: 16px; height: 16px; margin-top: 2px; border-width: 2px; }
+  .horizontal-process-number {
+    color: #73879a;
+    font-size: 9px;
+    line-height: 1.3;
+    letter-spacing: .08em;
+    font-variant-numeric: tabular-nums;
+  }
+  .horizontal-process-step > strong {
+    display: block;
+    min-width: 0;
+    color: #323a34;
+    font-size: 13px;
+    font-weight: 550;
+    line-height: 1.4;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .horizontal-process-step > p {
+    min-width: 0;
+    margin: 0;
+    color: #61675f;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .case-study[data-project="embedded-iot"] .horizontal-process-step { list-style: none; }
+  @media (max-width: 1100px) {
+    .horizontal-process-timeline--tablet {
+      position: relative;
+      grid-template-columns: 22px minmax(0, 1fr);
+      grid-template-rows: none;
+      gap: 0;
+      margin-top: var(--process-intro-gap, 48px);
+    }
+    .horizontal-process-timeline--tablet.process-heading-following { margin-top: var(--process-heading-gap, 60px); }
+    .horizontal-process-timeline--tablet::before { display: none; }
+    .horizontal-process-timeline--tablet .horizontal-process-step {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      grid-template-columns: 22px minmax(0, 1fr);
+      grid-template-rows: auto auto auto;
+      justify-items: start;
+      align-items: start;
+      column-gap: 12px;
+      row-gap: 3px;
+      padding: 0 0 23px;
+      text-align: left;
+    }
+    .horizontal-process-timeline--tablet .horizontal-process-step:not(:last-child)::after {
+      position: absolute;
+      z-index: 0;
+      content: '';
+      top: 10px;
+      bottom: -10px;
+      left: 10.5px;
+      width: 1px;
+      background: #d5ddda;
+    }
+    .horizontal-process-timeline--tablet .horizontal-process-dot { grid-column: 1; grid-row: 1; justify-self: center; align-self: start; margin-top: 4px; }
+    .horizontal-process-timeline--tablet .horizontal-process-number { grid-column: 2; grid-row: 1; }
+    .horizontal-process-timeline--tablet .horizontal-process-step > strong { grid-column: 2; grid-row: 2; }
+    .horizontal-process-timeline--tablet .horizontal-process-step > p { grid-column: 2; grid-row: 3; }
+  }
+  @media (max-width: 800px) {
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet) {
+      position: relative;
+      grid-template-columns: 22px minmax(0, 1fr);
+      grid-template-rows: none;
+      gap: 0;
+      margin-top: var(--process-intro-gap, 48px);
+    }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet).process-heading-following { margin-top: var(--process-heading-gap, 60px); }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet)::before { display: none; }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet) .horizontal-process-step {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      grid-template-columns: 22px minmax(0, 1fr);
+      grid-template-rows: auto auto auto;
+      justify-items: start;
+      align-items: start;
+      column-gap: 12px;
+      row-gap: 3px;
+      padding: 0 0 23px;
+      text-align: left;
+    }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet) .horizontal-process-step:not(:last-child)::after {
+      position: absolute;
+      z-index: 0;
+      content: '';
+      top: 10px;
+      bottom: -10px;
+      left: 10.5px;
+      width: 1px;
+      background: #d5ddda;
+    }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet) .horizontal-process-dot { grid-column: 1; grid-row: 1; justify-self: center; align-self: start; margin-top: 4px; }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet) .horizontal-process-number { grid-column: 2; grid-row: 1; }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet) .horizontal-process-step > strong { grid-column: 2; grid-row: 2; }
+    .horizontal-process-timeline:not(.horizontal-process-timeline--tablet) .horizontal-process-step > p { grid-column: 2; grid-row: 3; }
+  }
+</style>

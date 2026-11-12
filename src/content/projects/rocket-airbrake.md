@@ -6,7 +6,7 @@ highlightTone: "blue"
 summary: "Developed the electronics and software for a team-built high-powered rocket with a custom airbrake system."
 category: "Rocketry / Controls / Hardware"
 filters: ["Controls", "Hardware"]
-tools: ["Python", "C++", "MATLAB", "GitHub", "Simulations", "State Estimation", "Controls", "Electronics", "PCB Design", "Rocketry", "Mechanical Design", "CFD"]
+tools: ["C++", "MATLAB", "Simulink", "Teensy 4.1", "PCB Design", "State Estimation", "Electronics"]
 previewTools: ["Mechanical Design", "Controls", "State Estimation", "C++", "MATLAB"]
 illustration:
   src: /images/projects/covers/rocket.webp
@@ -21,6 +21,7 @@ role: "Electronics and Software"
 year: "2026"
 teamContext: "Four-person GW capstone team · advisor: Professor Amir Barakati"
 projectStatus: "Flight demonstration completed; feedback control simulated"
+cardStatus: "Flight demonstration completed; feedback control simulated"
 documents: [rocket-final-report, rocket-poster]
 status: "published"
 documentation: "complete"

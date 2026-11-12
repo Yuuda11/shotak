@@ -1,13 +1,14 @@
 ---
 import {url} from '../lib/paths';
 import {aboutSections} from '../data/aboutSections';
+import ProcessTimeline from './ProcessTimeline.astro';
 const number = aboutSections.find(section=>section.id==='research-development')?.number;
 const steps = [
-  {title:'Explore',text:'Identify problems, review existing approaches, and develop hypotheses.',tone:'blue'},
-  {title:'Design',text:'Develop analytical models, simulations, and engineering concepts.',tone:'sage'},
-  {title:'Build',text:'Create prototypes, integrate hardware, and implement solutions.',tone:'lavender'},
-  {title:'Analyze',text:'Collect data, investigate performance, and identify root causes.',tone:'cream'},
-  {title:'Validate',text:'Test improvements, assess reliability, and document results.',tone:'blue'},
+  {title:'Explore',text:'Identify problems, review existing approaches, and develop hypotheses.',tone:'blue' as const},
+  {title:'Design',text:'Develop analytical models, simulations, and engineering concepts.',tone:'sage' as const},
+  {title:'Build',text:'Create prototypes, integrate hardware, and implement solutions.',tone:'lavender' as const},
+  {title:'Analyze',text:'Collect data, investigate performance, and identify root causes.',tone:'cream' as const},
+  {title:'Validate',text:'Test improvements, assess reliability, and document results.',tone:'blue' as const},
 ];
 ---
 <section id="research-development" class="section research-development" aria-labelledby="research-heading">
@@ -16,13 +17,7 @@ const steps = [
     <h2 id="research-heading">from hypothesis to <span class="marker-highlight marker-lavender">hardware.</span></h2>
     <p class="section-description">My approach to engineering combines curiosity, experimentation, and practical implementation. I enjoy investigating how physical systems behave, testing ideas through simulation and experimentation, and translating findings into reliable engineering solutions.</p>
   </div>
-  <ol class="research-process">
-    {steps.map((step,index)=><li class={`research-step tone-${step.tone}`}>
-      <span class="research-step-number">0{index+1}</span>
-      <h3>{step.title}</h3>
-      <p>{step.text}</p>
-    </li>)}
-  </ol>
+  <ProcessTimeline className="research-process" steps={steps.map((step) => ({ title: step.title, detail: step.text, tone: step.tone }))} label="Five stages of engineering research and development" />
   <div class="research-examples" aria-label="Examples across experience and projects">
     <p class="research-examples-label">ACROSS EXPERIENCE &amp; PROJECTS</p>
     <ul>

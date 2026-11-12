@@ -6,6 +6,8 @@ highlightTone: "cream"
 summary: "Designed and built a collaborative Rube Goldberg machine that transported a ball through 40 sections demonstrating different mechanisms and engineering principles."
 category: "Mechanical Design / Collaboration"
 filters: ["Hardware", "Manufacturing"]
+role: "Collaborative design and build contribution"
+projectStatus: "Build and validation status needs confirmation"
 teamContext: "Collaborative build · 40 sections across the full machine"
 tools: ["Mechanical Design", "Mechanisms", "Collaboration"]
 illustration:
