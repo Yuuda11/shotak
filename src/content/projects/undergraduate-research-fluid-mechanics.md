@@ -1,15 +1,15 @@
 ---
 title: "Undergraduate Research — Fluid Mechanics & Computational Modeling"
-subtitle: "Two years of experimental research combining rheometry, scientific programming, statistical analysis, and predictive modeling of fluid behavior."
-highlightPhrase: "predictive modeling of fluid behavior"
+subtitle: "Undergraduate research spanning digital signal processing, two years of experimental rheometry, predictive mathematical modeling, and fluid-system control."
+highlightPhrase: "predictive mathematical modeling"
 highlightTone: "sage"
-summary: "A standalone account of approximately two years of undergraduate research spanning reusable signal-processing code, experimental rheometry and concentration-dependent modeling, and gear-pump flow experiments."
+summary: "Three distinct undergraduate research workstreams in reusable signal-processing code, experimental rheometry and concentration-dependent modeling, and gear-pump flow experiments. Rheometry was the main and longest-running effort."
 category: "Undergraduate Research"
 discipline: "Experimental Fluid Mechanics / Rheology / Scientific Computing / Data Analytics"
 filters: ["Research"]
 role: "Undergraduate Research Assistant"
-teamContext: "Several related laboratory and computational workstreams during approximately two years of undergraduate research; not one continuous formal project. Separate from the Environmental Chamber fellowship project."
-projectStatus: "Research conducted over approximately two years"
+teamContext: "Three distinct related research workstreams: DSP, experimental rheometry, and gear-pump flow experiments. Rheometry was the main and longest-running effort. Separate from the Environmental Chamber fellowship project."
+projectStatus: "Undergraduate Research"
 tools: ["Python", "NumPy", "Pandas", "DSP", "FFT", "Rheometry", "Statistical Analysis", "Curve Fitting", "Mathematical Modeling", "Data Visualization", "Experimental Design", "Gear Pump Control"]
 previewTools: ["Python", "Rheometry", "DSP & FFT", "Mathematical Modeling", "Gear Pump Control"]
 illustration:

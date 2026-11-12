@@ -53,14 +53,14 @@ const pumpBlocks = [
 
 <div class="fluid-research-story">
   <section id="research-overview" class="fr-section" aria-labelledby="fr-overview-title">
-    <header class="fr-heading"><p class="eyebrow">undergraduate research</p><h2 id="fr-overview-title">from experimental data to predictive models.</h2><p>Across approximately two years, I developed experimental fluid-mechanics and scientific-computing skills to measure, analyze, and model material behavior. Related workstreams spanned digital signal processing, laboratory rheometry, mathematical modeling, and programmable fluid-flow experiments.</p></header>
+    <header class="fr-heading"><p class="eyebrow">undergraduate research</p><h2 id="fr-overview-title">from experimental data to predictive models.</h2><p>This case study brings together three distinct workstreams: digital signal processing and scientific programming, experimental rheometry, and gear-pump experiments. Rheometry was my main and longest-running effort, spanning approximately two years; no duration is implied for the DSP or pump-control work.</p></header>
     <ol class="fr-overview" aria-label="Three research workstreams">
       {areas.map((area) => <li class={`tone-${area.tone}`}><span class="fr-number">{area.n}</span><h3>{area.title}</h3><strong>{area.verb}</strong><p>{area.detail}</p></li>)}
     </ol>
   </section>
 
   <section id="signal-processing" class="fr-section" aria-labelledby="fr-dsp-title">
-    <header class="fr-heading"><p class="eyebrow">01 / scientific computing</p><h2 id="fr-dsp-title">understanding signals through code.</h2><p>I built reusable DSP functions for waveform generation and signal analysis: composing sinusoidal and square waves, inspecting time-domain behavior, and using the Fast Fourier Transform to examine frequency content. This programming foundation also supported later pump-control experiments.</p></header>
+    <header class="fr-heading"><p class="eyebrow">01 / scientific computing</p><h2 id="fr-dsp-title">understanding signals through code.</h2><p>I built reusable DSP functions for waveform generation and signal analysis: composing sinusoidal and square waves, inspecting time-domain behavior, and using the Fast Fourier Transform to examine frequency content. This work developed scientific programming, signal-processing, and research-software skills.</p></header>
     <div class="fr-dsp-grid" aria-label="Illustrative synthetic DSP examples">
       <figure class="fr-plot"><figcaption><span>01 / WAVEFORM GENERATION</span><strong>Sinusoidal + square components</strong></figcaption><svg viewBox="0 0 520 250" role="img" aria-labelledby="fr-wave-title fr-wave-desc"><title id="fr-wave-title">Synthetic sinusoidal and square wave components</title><desc id="fr-wave-desc">Illustrative normalized signals plotted over two seconds. This is generated example data, not a research measurement.</desc><path d="M46 22V212H500M46 117H500" class="fr-axis"/><polyline points={single(time.map(t => 0.6 * Math.sin(2 * Math.PI * 4 * t)))} transform="translate(46 22)" class="fr-line-blue"/><polyline points={plot(time.map(t => 0.3 * (Math.sin(2 * Math.PI * 12 * t) >= 0 ? 1 : -1)), -1, 1)} transform="translate(46 22)" class="fr-line-sage"/><text x="46" y="238" class="fr-axis-label">0 s</text><text x="455" y="238" class="fr-axis-label">2 s</text><text x="3" y="25" class="fr-axis-label">+1</text><text x="11" y="210" class="fr-axis-label">−1</text><text x="220" y="246" class="fr-axis-label">Time · seconds</text></svg><p class="fr-plot-note">Synthetic illustration · normalized amplitude</p></figure>
       <figure class="fr-plot"><figcaption><span>02 / SUPERPOSITION</span><strong>Combined signal</strong></figcaption><svg viewBox="0 0 520 250" role="img" aria-labelledby="fr-combined-title fr-combined-desc"><title id="fr-combined-title">Synthetic combined waveform</title><desc id="fr-combined-desc">A mathematically generated combination of a four-hertz sine wave and a twelve-hertz sine wave, shown over two seconds; not research data.</desc><path d="M46 22V212H500M46 117H500" class="fr-axis"/><polyline points={single(signal)} transform="translate(46 22)" class="fr-line-sage"/><text x="46" y="238" class="fr-axis-label">0 s</text><text x="455" y="238" class="fr-axis-label">2 s</text><text x="3" y="25" class="fr-axis-label">+1</text><text x="11" y="210" class="fr-axis-label">−1</text><text x="220" y="246" class="fr-axis-label">Time · seconds</text></svg><p class="fr-plot-note">Synthetic illustration · normalized amplitude</p></figure>
@@ -70,7 +70,7 @@ const pumpBlocks = [
   </section>
 
   <section id="rheometry" class="fr-section fr-featured" aria-labelledby="fr-rheo-title">
-    <header class="fr-heading"><p class="eyebrow">02 / experimental research</p><h2 id="fr-rheo-title">measuring materials. discovering patterns.</h2><p>Rheometry was the main research effort. Laboratory measurements across materials and formulations supported investigation of viscosity, shear behavior, and how measured properties changed with experimental conditions. I organized datasets, used statistical analysis to identify trends, and developed fitted mathematical models to interpret them.</p></header>
+    <header class="fr-heading"><p class="eyebrow">02 / experimental research</p><p class="fr-duration-label">TWO YEARS OF EXPERIMENTAL RESEARCH</p><h2 id="fr-rheo-title">measuring materials. discovering patterns.</h2><p>For approximately two years, I conducted experimental rheometry research. As my main and longest-running research effort, it involved laboratory measurements across materials and formulations to investigate viscosity, shear behavior, and changes under different test conditions. I organized datasets, used statistical analysis to identify trends, and developed fitted mathematical models to interpret them.</p></header>
     <ul class="fr-rheo-methods" aria-label="Rheometry research activities">{considerations.map(([title, detail], i) => <li><span>{String(i + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{detail}</p></div></li>)}</ul>
   </section>
 
@@ -115,6 +115,7 @@ const pumpBlocks = [
   .fluid-research-story li + li { margin-top: 0; }
   .fr-heading { max-width: 780px; }
   .fr-heading .eyebrow { margin-bottom: 12px; }
+  .fr-heading .fr-duration-label { margin: -4px 0 10px; color: #728c75; font-size: 9px; letter-spacing: .1em; }
   .fr-heading h2 { margin: 0; color: var(--text); font-size: clamp(28px, 3.2vw, 42px); }
   .fr-heading > p:last-child { margin: 16px 0 0; max-width: 70ch; color: var(--muted); font-size: 14px; line-height: 1.8; }
   .fluid-research-story p { margin-bottom: 0; }
