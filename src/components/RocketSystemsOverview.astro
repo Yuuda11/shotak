@@ -1,19 +1,39 @@
 ---
+import TechnicalFigure from './TechnicalFigure.astro';
+import RocketInvolvement from './RocketInvolvement.astro';
 const systems = [
-  {name:'Design & CAD',tone:'blue',items:['Rocket airframe','Airbrake mechanism','Mechanical integration']},
+  {name:'Design & CAD',tone:'blue',items:['Airframe CAD','Airbrake design','Mechanical integration']},
   {name:'CFD & FEA',tone:'sage',items:['Aerodynamic modeling','Structural analysis','ANSYS Fluent · CFD']},
-  {name:'Propulsion',tone:'cream',items:['Solid-propellant propulsion','Motor integration','Ground testing']},
-  {name:'Avionics',tone:'lavender',items:['Teensy 4.1 flight controller','IMU + barometric sensors','PCB + power electronics']},
-  {name:'Controls & Software',tone:'blue',items:['MATLAB / Simulink','Flight simulation','State estimation + apogee prediction','Embedded flight logic']},
+  {name:'Propulsion',tone:'cream',items:['Solid-propellant system','Motor integration','Ground testing']},
+  {name:'Avionics',tone:'lavender',items:['Teensy 4.1','IMU + barometric sensors','PCB + power electronics']},
+  {name:'Controls & Software',tone:'blue',items:['MATLAB / Simulink','Flight simulation','State estimation + embedded logic']},
   {name:'Recovery',tone:'sage',items:['Recovery avionics','Deployment systems','Ground + flight integration']},
 ];
 ---
 <section id="engineering-systems" class="rocket-section rocket-systems" aria-labelledby="rocket-systems-heading">
   <div class="rocket-section-heading"><p class="eyebrow">TEAM SYSTEMS</p><h2 id="rocket-systems-heading">one rocket. six interconnected systems.</h2><p>Four-person capstone project · disciplines shown here represent the team's integrated work.</p></div>
+  <div class="rocket-systems-layout">
   <ol class="rocket-systems-grid">
     {systems.map((system,index)=><li class={`rocket-system tone-${system.tone}`}>
       <span class="rocket-system-index">0{index+1}</span><h3>{system.name}</h3>
       <ul>{system.items.map(item=><li>{item}</li>)}</ul>
     </li>)}
   </ol>
+  <RocketInvolvement/>
+  </div>
+  <div class="rocket-subsection-heading"><p class="eyebrow">DESIGN → IMPLEMENTATION</p><h3>from CAD to hardware.</h3><p>Project-level design and integration examples; this overview does not assign every discipline to one team member.</p></div>
+  <div class="rocket-visual-pair rocket-design-reality">
+    <TechnicalFigure src="/images/projects/rocket-airbrake/media/airbrake-coupler-cad.webp" alt="Transparent CAD rendering of the airbrake coupler and internal mechanism." caption="Airbrake assembly · CAD" width={374} height={665} className="rocket-portrait-evidence"/>
+    <TechnicalFigure src="/images/projects/rocket-airbrake/media/airbrake-mechanism-workbench.webp" alt="Physical servo-actuated airbrake mechanism assembled on a workshop bench." caption="Physical airbrake mechanism · workbench" width={676} height={682}/>
+  </div>
+  <div class="rocket-analysis-row" aria-label="Engineering analyses">
+    <div class="rocket-analysis-card">
+      <p class="rocket-analysis-label">STRUCTURAL ANALYSIS</p>
+      <TechnicalFigure src="/images/projects/rocket-airbrake/media/airbrake-fea-factor-of-safety.webp" alt="Factor-of-safety visualization of the airbrake mechanism with its color scale visible." caption="FEA · Factor of safety" width={961} height={591}/>
+    </div>
+    <div class="rocket-analysis-card rocket-analysis-card-cfd">
+      <p class="rocket-analysis-label">AERODYNAMIC ANALYSIS</p>
+      <TechnicalFigure src="/images/projects/rocket-airbrake/media/rocket-cfd-flow-field.webp" alt="Narrow CFD contour image showing flow around the rocket and its wake." caption="CFD · Aerodynamic simulation" width={150} height={700} enlarge={false}/>
+    </div>
+  </div>
 </section>

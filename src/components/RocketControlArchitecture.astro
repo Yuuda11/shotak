@@ -1,15 +1,26 @@
 ---
-const stages = ['IMU + barometers','Teensy 4.1 / PCB','State estimation','Apogee prediction','Drag / deployment command','Servo actuation','Airbrake extension'];
+import TechnicalFigure from './TechnicalFigure.astro';
+const stages = [
+  {title:'Sense',text:'IMU + barometric measurements'},
+  {title:'Estimate',text:'Flight state + apogee prediction'},
+  {title:'Decide',text:'Required deployment command'},
+  {title:'Actuate',text:'Servo control + airbrake extension'},
+];
+const signalPath = ['IMU + barometers','Teensy 4.1 / PCB','State estimation','Apogee prediction','Drag / deployment command','Servo actuation','Airbrake extension'];
 ---
 <section id="control-architecture" class="rocket-section rocket-control" aria-labelledby="rocket-control-heading">
   <div class="rocket-section-heading"><p class="eyebrow">MY CONTRIBUTION · ELECTRONICS &amp; SOFTWARE</p><h2 id="rocket-control-heading">from sensor data to airbrake actuation.</h2><p>My primary responsibility was the dedicated airbrake flight computer and control-system development within the four-person team.</p></div>
-  <ol class="rocket-control-flow" aria-label="Airbrake control signal flow">
-    {stages.map((stage,index)=><li><span class="rocket-flow-index">0{index+1}</span><span>{stage}</span></li>)}
-  </ol>
+  <div class="rocket-contribution-grid">
+    <TechnicalFigure src="/images/projects/rocket-airbrake/media/flight-computer-pcb-cad.webp" alt="CAD rendering of the custom flight-computer PCB with microcontroller and electronic modules." caption="Custom flight-computer PCB · Teensy 4.1 and sensor integration" width={917} height={536} className="rocket-pcb-evidence"/>
+    <ol class="rocket-control-flow" aria-label="Four phases of the airbrake control architecture">
+      {stages.map((stage,index)=><li><span class="rocket-flow-index">0{index+1}</span><div><h3>{stage.title}</h3><p>{stage.text}</p></div>{index<stages.length-1&&<span class="rocket-flow-connector" aria-hidden="true">↓</span>}</li>)}
+    </ol>
+  </div>
+  <details class="rocket-signal-detail"><summary>View the seven-stage signal path</summary><ol>{signalPath.map(stage=><li>{stage}</li>)}</ol></details>
   <div class="rocket-control-details">
-    <div><h3>Flight computer</h3><p>Embedded C/C++ · sensor integration and acquisition · real-time flight-state logic · data logging · servo command and actuation</p></div>
-    <div><h3>Estimation &amp; control</h3><p>State-space estimation · filtering · sensor fusion · predictive guidance · feedback-loop development</p></div>
-    <div><h3>Simulation</h3><p>MATLAB / Simulink rocket dynamics and airbrake-controller models supported predictive feedback development.</p></div>
+    <div><h3>Flight Computer</h3><p>Embedded C/C++ · Sensors · PCB · Data Logging</p></div>
+    <div><h3>Estimation &amp; Control</h3><p>State Estimation · Sensor Fusion · Apogee Prediction</p></div>
+    <div><h3>Simulation</h3><p>MATLAB · Simulink · Predictive Guidance</p></div>
   </div>
   <div class="rocket-evidence-split">
     <div class="rocket-evidence simulation"><span>SIMULATION</span><p>Predictive feedback control developed and tested in simulation.</p></div>

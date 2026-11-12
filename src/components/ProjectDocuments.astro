@@ -6,8 +6,8 @@ interface Props {ids:ProjectDocumentId[];}
 const {ids}=Astro.props;
 ---
 <section class="project-documents" id="report-poster" aria-labelledby="documents-heading">
-  <h2 id="documents-heading">Report &amp; poster</h2>
-  <p>The original team documents, preserved intact. Read the report for the full test history and limits of the flight demonstration.</p>
+  <h2 id="documents-heading">Technical evidence</h2>
+  <p>The original team final report and research poster, preserved intact. The report contains the detailed test history and flight limitations.</p>
   <div class="document-links">{ids.map(id=>{
     const doc=projectDocuments[id];
     return <a href={url(`/documents/${id}/`)}><span>{doc.action}</span><small>{doc.pages} {doc.pages===1?'page':'pages'} · PDF preview</small><Icon name="arrow"/></a>;

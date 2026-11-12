@@ -12,9 +12,9 @@ const milestones = [
 <section id="development-timeline" class="rocket-section rocket-timeline" aria-labelledby="rocket-timeline-heading">
   <div class="rocket-section-heading"><p class="eyebrow">PROJECT DEVELOPMENT</p><h2 id="rocket-timeline-heading">from concept to flight.</h2></div>
   <ol class="rocket-milestones">
-    {milestones.map((milestone,index)=><li class={`rocket-milestone tone-${milestone.tone}`}>
-      <span class="rocket-milestone-dot" aria-hidden="true"></span><span class="rocket-milestone-index">0{index+1}</span>
-      <p class="rocket-milestone-date">{milestone.date}</p><h3>{milestone.title}</h3><p>{milestone.text}</p>
+    {milestones.map(milestone=><li class={`rocket-milestone tone-${milestone.tone}`}>
+      <time class="rocket-milestone-date">{milestone.date}</time><span class="rocket-milestone-dot" aria-hidden="true"></span>
+      <div class="rocket-milestone-content"><h3>{milestone.title}</h3><p>{milestone.text}</p></div>
     </li>)}
   </ol>
 </section>

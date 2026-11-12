@@ -1,0 +1,9 @@
+---
+import {url} from '../lib/paths';
+interface Props {src:string;alt:string;caption:string;width:number;height:number;enlarge?:boolean;className?:string;}
+const {src,alt,caption,width,height,enlarge=true,className=''}=Astro.props;
+---
+<figure class={`technical-figure ${className}`}>
+  {enlarge?<a class="technical-figure-frame" href={url(src)} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size image: ${caption}`}><img src={url(src)} alt={alt} width={width} height={height} loading="lazy" decoding="async"/><span class="technical-figure-open" aria-hidden="true">↗</span></a>:<div class="technical-figure-frame"><img src={url(src)} alt={alt} width={width} height={height} loading="lazy" decoding="async"/></div>}
+  <figcaption>{caption}{enlarge&&<span class="technical-figure-hint"> · enlarge ↗</span>}</figcaption>
+</figure>

@@ -22,6 +22,7 @@ Earlier `public/images/projects/covers/*.webp` images and `public/images/project
 - `public/images/projects/rocket-airbrake/assembly.webp` — existing detailed airbrake CAD; retained as rocket case-study cover/evidence, never as its listing illustration.
 - `public/images/projects/rocket-airbrake/rocket-and-team.webp` — existing rocket/team photograph.
 - `public/images/projects/rocket-airbrake/report-*.webp` — selected rendered pages from the supplied report, including avionics, controller, simulation, and flight results.
+- `public/images/projects/rocket-airbrake/media/` — 11 owner-provided, optimized WebP assets from `rocket_media_pack.zip`. The team/launchpad image introduces the real vehicle; PCB CAD supports My Contribution; coupler CAD, workbench mechanism, FEA, and CFD support Engineering Systems; ground-state crops show actuation; Simulink supports the simulation section; and the small in-flight photo supports Flight Results. `airbrake-ground-comparison.webp` remains an unused combined alternative to the two state crops. The CFD and in-flight assets remain at modest display sizes and are not linked for enlargement. The zip's `source_originals/` were not copied into `public/`.
 - `public/images/projects/rocket-airbrake/research-poster.webp` — rendered poster preview; original PDF is linked separately.
 - `public/images/projects/face-tracking-laser-gimbal/prototype.webp` — existing gimbal photograph.
 - `public/images/projects/autonomous-mini-pupper/platform.webp` — existing Mini Pupper platform photograph.

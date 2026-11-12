@@ -36,7 +36,7 @@ This is a concise factual reference, not a substitute for the project entries or
 
 Detailed public wording and source evidence live in `src/content/projects/*.md` and the supplied rocket report/poster. Keep project facts there, rather than duplicating every case-study detail here.
 
-- High-Powered Altitude-Targeting Rocket System — Four-person GW capstone; report identifies Shota’s responsibility as Electronics and Software. Team full-deployment flight comparison reports 4.6% apogee reduction; feedback control remained simulated and was not validated in flight. Distinguish the team result from individual contribution.
+- High-Powered Altitude-Targeting Rocket System — Four-person GW capstone; report describes a 133.44-inch (11.12-foot) vehicle and identifies Shota’s responsibility as Electronics and Software. Team full-deployment flight comparison reports 4.6% apogee reduction; feedback control remained simulated and was not validated in flight. Distinguish the team result from individual contribution.
 - Environmental Chamber for 3D Printing Filaments — Undergraduate Research Fellow; prototype is in development. Do not publish unpublished mechanisms or assert patent-pending status without confirmation.
 - Face Tracking Laser Gimbal — existing portfolio supports OpenCV, Raspberry Pi, servo actuation, Flask controls, and real-time tracking. Do not invent validation metrics.
 - Autonomous Robot Dog — Mini Pupper — existing portfolio supports target detection with OpenCV and the detect / navigate / retrieve / return mission description. Individual modifications, retrieval mechanism, navigation method, and ROS/LiDAR/RTOS assignments are unconfirmed.

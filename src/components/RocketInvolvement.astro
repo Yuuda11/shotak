@@ -1,0 +1,14 @@
+---
+const tiers = [
+  {name:'HIGH',label:'Primary responsibility',tone:'high',areas:[{title:'Controls & Software',items:['Embedded C/C++','State estimation','Apogee prediction','MATLAB / Simulink','Flight logic']},{title:'Electronics & Avionics',items:['Teensy 4.1','PCB integration / design','Sensors','Data logging','Servo control']}]},
+  {name:'MEDIUM',label:'Supporting involvement',tone:'medium',areas:[{title:'Mechanical Design',items:['CAD','Mechanical integration']},{title:'Manufacturing',items:['Prototyping','Assembly','Hardware testing']}]},
+  {name:'LOW',label:'Team-level exposure',tone:'low',areas:[{title:'Propulsion & Aerodynamic Analysis',items:['Propulsion','CFD','FEA']}]},
+];
+---
+<section class="rocket-involvement" aria-labelledby="rocket-involvement-heading">
+  <h2 id="rocket-involvement-heading">My technical involvement</h2>
+  {tiers.map(tier=><div class={`rocket-involvement-tier tier-${tier.tone}`}>
+    <p class="rocket-involvement-level"><span>{tier.name}</span><small>{tier.label}</small></p>
+    <div class="rocket-involvement-areas">{tier.areas.map(area=><div class="rocket-involvement-area"><h3>{area.title}</h3><ul>{area.items.map(item=><li>{item}</li>)}</ul></div>)}</div>
+  </div>)}
+</section>
