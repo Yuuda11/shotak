@@ -2,6 +2,10 @@
 
 Last updated: 2026-11-12.
 
+## Typography system cleanup — 2026-11-15
+
+Consolidated duplicate color tokens and equivalent typography cascades in `src/styles/global.css`. The hero title/subtitle retain their effective desktop, tablet, and mobile values; project-card descriptions retain 14.5px desktop and 14px narrow-layout sizing. Equivalent section-label selectors now use the shared label class/tokens, while credentials, body copy, metadata, captions, and technical annotations retain their distinct roles. Before/after browser screenshots at 1440px, 768px, and 390px show no noticeable changes to typography, wrapping, hero position, Selected Work, or project-card placement. Representative captures are in `/private/tmp/typography-audit/{before,after}/`. `npm run verify` and `git diff --check` passed. No project content or layout was changed for this cleanup.
+
 ## Research duration scope correction — 2026-11-12
 
 Clarified that the approximately two-year duration applies only to experimental rheometry, Shota’s main and longest-running research effort. Updated the project subtitle, project status, card summary, overview copy, and Rheometry section label/body; DSP and Gear Pump workstreams carry no stated duration. Browser screenshots reviewed at desktop and 390px mobile show the corrected overview and Rheometry label without layout issues. `npm run verify` and `git diff --check` passed. This correction remains local and was not committed, pushed, or deployed.
