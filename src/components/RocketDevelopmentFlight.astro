@@ -9,7 +9,7 @@ const milestones = [
   {date:'March 2026', title:'Rebuild & Refine', text:'Recovery revisions, hardware integration, software, and simulation work.', tone:'lavender'},
   {date:'April 11, 2026', title:'Baseline Flight', text:'5,867 ft; airbrakes did not actuate.', tone:'cream'},
   {date:'April 12, 2026', title:'Full-Deployment Flight', text:'5,597 ft with full deployment; reported apogee was 4.6% lower than baseline.', tone:'sage'},
-  {date:'May 2026', title:'Team Recognition', text:'Best Senior Design Project, GW Department of Mechanical & Aerospace Engineering.', tone:'cream'},
+  {date:'May 2026', tone:'cream', recognition:true},
 ];
 ---
 <section id="development-flight" class="rocket-section rocket-development-flight" aria-labelledby="development-flight-heading">
@@ -31,9 +31,9 @@ const milestones = [
       <TechnicalFigure src="/images/projects/rocket-airbrake/media/rocket-in-flight.webp" alt="Rocket ascending under motor thrust against a blue sky." caption="Rocket during powered ascent." width={174} height={662} className="development-photo-flight"/>
     </div>
     <ol class="development-timeline" aria-label="Project development timeline">
-      {milestones.map(milestone => <li class={`tone-${milestone.tone}`}>
+      {milestones.map(milestone => <li class={`tone-${milestone.tone} ${milestone.recognition ? 'development-recognition-milestone' : ''}`}>
         <time>{milestone.date}</time><span class="development-dot" aria-hidden="true"></span>
-        <div><h3>{milestone.title}</h3><p>{milestone.text}</p></div>
+        {milestone.recognition ? <div class="development-award rocket-award-panel"><p class="rocket-award-kicker">TEAM RECOGNITION</p><h3>Best Senior Design Project</h3><p>GW Department of Mechanical &amp; Aerospace Engineering</p></div> : <div><h3>{milestone.title}</h3><p>{milestone.text}</p></div>}
       </li>)}
     </ol>
   </div>
@@ -63,6 +63,8 @@ const milestones = [
   .development-dot { z-index:1; width:8px; height:8px; margin:4px auto 0; border:1px solid #b9c9d8; border-radius:50%; background:#dce7ef; }
   .tone-coral .development-dot { border-color:#c89c91; background:#f1e4e1; }.tone-sage .development-dot { border-color:#93aa95; background:#e7eee7; }.tone-lavender .development-dot { border-color:#c8bad3; background:#f1edf5; }.tone-cream .development-dot { border-color:#d1c0a7; background:#f5eee3; }
   .development-timeline h3 { margin:0; font-size:13px; line-height:1.35; }.development-timeline p { margin:2px 0 0; color:#555b55; font-size:10px; line-height:1.45; }
+  .development-recognition-milestone .development-dot { margin-top:16px; border-color:#cdbb97; background:#f5ead4; }
+  .development-award { padding:11px 13px; }.development-award :global(.rocket-award-kicker) { margin:0; }.development-award h3 { margin-top:5px; font-size:15px; font-weight:600; }.development-award p:last-child { margin-top:3px; }
   .development-recognition { display:grid; grid-template-columns:24px minmax(0,1fr) auto; align-items:center; gap:10px 13px; margin-top:var(--process-outro-gap); padding:16px 0; border-block:1px solid var(--border); }
   .development-recognition svg { width:20px; height:20px; fill:none; stroke:#80745f; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.4; }.development-recognition strong { font-size:14px; font-weight:550; }.development-recognition p { margin:3px 0 0; color:var(--muted); font-size:11px; }
   .development-recognition-links { display:flex; flex-wrap:wrap; justify-content:end; gap:8px 14px; }.development-recognition-links a { color:#365a7c; font-size:11px; text-decoration:underline; text-decoration-color:#b9c8d6; text-underline-offset:3px; }

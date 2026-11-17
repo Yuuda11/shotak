@@ -335,3 +335,5 @@ Checkpoint 9420bcb. Verification passed with 15 built pages and 263 checked link
 Integrated observed flight comparison, launch evidence, the complete development chronology, and recognition into one section immediately after the contribution map. The flight qualification remains alongside the comparison. The recognition row retains GW's announcement, Engineering feature, and the local recognition reference. Standalone flight-results, timeline, and recognition render points were removed from the project layout.
 
 Checkpoint 3d26217. `npm run verify` passed with zero Astro diagnostics, 15 built pages, and 263 checked local asset and navigation links. Chrome checks at 1440, 768, and 390 pixels confirmed the updated section navigation, external and local recognition links, image enlargement, document destinations, and no horizontal overflow.
+
+The May 2026 recognition milestone again uses the warm ivory, bordered award panel while retaining its date, dot, and timeline connector.
