@@ -22,3 +22,5 @@
 If a new request conflicts with these decisions, follow the site owner’s explicit instruction and update this record. The unresolved rocket cover request is documented as incomplete rather than treated as an approved visual change.
 
 The rocket introduction groups team scope into the owner's eight requested disciplines. Personal responsibility follows immediately, with team design and analysis evidence retained below the individual architecture section.
+
+The owner’s refined rocket layout supersedes the eight-discipline overview. The contribution map now shows ten team disciplines, highlights four primary responsibilities and describes the individual work alongside them.

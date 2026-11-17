@@ -1,28 +1,66 @@
 ---
-const areas = [
-  ['Electronics & PCB Design','Built the dedicated flight computer from the ground up, including electronic architecture, PCB design, and sensor integration.'],
-  ['Actuation & Control','Developed the software interface between the flight controller and the physical airbrake mechanism.'],
-  ['Feedback Control','Developed flight-state estimation, apogee prediction, and predictive feedback control in simulation.'],
-  ['Embedded Communication','Worked on sensor communication, byte-level data handling, and efficient real-time computation.'],
-  ['Flight & Controller Simulation','Developed flight dynamics and controller simulations using MATLAB and Simulink to evaluate system behavior.'],
+const teamDisciplines = ['Rocket Design', 'Propellant Manufacturing', 'Recovery', 'Mechanical CAD', 'Mechanical Manufacturing & Integration', 'CFD / FEA'];
+const primaryDisciplines = ['Electronics & PCB Design', 'Airbrake Avionics', 'Flight Controller', 'Flight & Controller Simulation'];
+const responsibilities = [
+  { title: 'Electronics & PCB Design', detail: 'Built the dedicated airbrake flight computer from the ground up, including electronic architecture, PCB design, and sensor integration.', skills: ['PCB Design', 'Electronics', 'Teensy 4.1', 'Sensors'] },
+  { title: 'Actuation & Control', detail: 'Integrated the flight computer and embedded software with the physical airbrake actuation mechanism.', skills: ['C++', 'Embedded Systems', 'Servo Control', 'PWM'] },
+  { title: 'Feedback Loop', detail: 'Developed flight-state estimation, apogee prediction, and predictive feedback control in simulation.', skills: ['Kalman Filtering', 'Sensor Fusion', 'State Estimation', 'Control Systems'] },
+  { title: 'Embedded Communication', detail: 'Developed sensor communication, byte-level data handling, data logging, and real-time processing.', skills: ['SPI', 'I²C', 'C++', 'Data Acquisition'] },
+  { title: 'Flight & Controller Simulation', detail: 'Developed simulations to model flight dynamics and evaluate controller performance.', skills: ['MATLAB', 'Simulink', 'Dynamic Modeling', 'Control Simulation'] },
 ];
 ---
-<section id="my-contribution" aria-labelledby="contribution-heading">
-  <p class="eyebrow">MY CONTRIBUTION</p>
-  <h2 id="contribution-heading">building the intelligence behind the rocket.</h2>
-  <p class="intro">I led the development of the airbrake flight computer, electronics, and embedded control software — connecting sensor data, flight prediction, and mechanical actuation into an integrated system.</p>
-  <ol>{areas.map(([title, detail], index) => <li><span aria-hidden="true">0{index+1}</span><h3>{title}</h3><p>{detail}</p></li>)}</ol>
+<section id="my-contribution" class="section" aria-labelledby="contribution-heading">
+  <header class="section-heading">
+    <p class="eyebrow">MY CONTRIBUTION</p>
+    <h2 id="contribution-heading">my role within the system.</h2>
+    <p class="intro">I led the development of the airbrake electronics, flight computer, and embedded control software within a four-person engineering team.</p>
+  </header>
+  <div class="map">
+    <div id="engineering-systems">
+      <h3 class="eyebrow">Overall project</h3>
+      <ul class="disciplines">{teamDisciplines.map(name => <li>{name}</li>)}</ul>
+      <div class="primary">
+        <p class="eyebrow">Primary responsibility</p>
+        <ul class="disciplines">{primaryDisciplines.map(name => <li>{name}</li>)}</ul>
+      </div>
+    </div>
+    <div class="responsibilities">
+      <h3 class="eyebrow">My responsibilities</h3>
+      <ol>{responsibilities.map(({title, detail, skills}, index) => <li class="branch">
+        <h4><span aria-hidden="true">0{index + 1}</span>{title}</h4>
+        <p>{detail}</p>
+        <ul class="skills" aria-label="Skills">{skills.map(skill => <li>{skill}</li>)}</ul>
+      </li>)}</ol>
+    </div>
+  </div>
 </section>
 <style>
-  section {border-top:1px solid var(--border);padding-block:var(--section-space)}
-  h2 {font-size:clamp(2rem,4.5vw,4rem);max-width:23ch}
-  .intro {max-width:74ch;margin:18px 0 32px}
-  ol {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;list-style:none;padding:0}
-  li {display:grid;grid-template-rows:subgrid;grid-row:span 3;gap:8px;padding:clamp(20px,3vw,34px);border-radius:var(--radius);background:var(--blue)}
-  li:nth-child(2){background:var(--sage)}li:nth-child(3){background:var(--lavender)}li:nth-child(4){background:var(--cream)}
-  li:last-child{grid-column:1/-1}
-  li span {font-size:.8rem;font-variant-numeric:tabular-nums;color:var(--muted)}
-  li h3 {font-size:clamp(1.2rem,2vw,1.6rem)}
-  li p {max-width:74ch}
-  @media(max-width:660px){ol {grid-template-columns:1fr}}
+  section {border-top:1px solid var(--border)}
+  .intro {margin-top:16px;max-width:72ch}
+  .map {--gutter:clamp(44px,6vw,84px);--wire:#a9b9c8;display:grid;grid-template-columns:minmax(0,37fr) minmax(0,63fr);gap:var(--gutter);margin-top:var(--process-intro-gap)}
+  .map ul,.map ol {padding:0;margin:0;list-style:none}
+  .disciplines {display:grid;grid-auto-rows:1fr;gap:6px}
+  .disciplines li {display:flex;align-items:center;padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:.9rem}
+  .primary {position:relative;margin-top:12px;padding:12px;border:1px dashed var(--wire);border-radius:9px}
+  .primary .eyebrow {margin-bottom:8px}
+  .primary li {background:var(--blue);border-color:var(--project-marker-blue)}
+  .primary::after {content:'';position:absolute;left:100%;top:50%;width:calc(var(--gutter) / 2 + 1px);border-top:1px solid var(--wire)}
+  .responsibilities {display:flex;flex-direction:column}
+  ol {flex:1;display:grid}
+  .branch {position:relative;padding:0 0 20px}
+  .branch:last-child {padding-bottom:0}
+  .branch::before,.branch::after {content:'';position:absolute;left:calc(var(--gutter) / -2)}
+  .branch::before {top:0;bottom:0;border-left:1px solid var(--wire)}
+  .branch:first-child::before {top:12px}
+  .branch:last-child::before {height:12px}
+  .branch::after {top:12px;width:calc(var(--gutter) / 2 - 8px);border-top:1px solid var(--wire)}
+  h4 {display:flex;align-items:baseline;gap:10px;font-weight:600;line-height:1.4}
+  h4 span {color:var(--muted);font-size:.75rem;font-variant-numeric:tabular-nums}
+  .branch p {margin:4px 0 8px;font-size:.9375rem}
+  .skills {display:flex;flex-wrap:wrap;gap:4px}
+  .skills li {border-radius:4px;padding:2px 7px;background:var(--sage);font-size:.75rem}
+  @media(max-width:740px){
+    .map {grid-template-columns:1fr;gap:var(--related-content-gap)}
+    .primary::after,.branch::before,.branch::after {display:none}
+  }
 </style>

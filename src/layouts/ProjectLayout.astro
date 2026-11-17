@@ -34,7 +34,7 @@ const mediaLabels={concept:'concept illustration',diagram:'functional diagram',p
 <header class="case-header">
 <p class="eyebrow">{p.category}{p.year&&` / ${p.year}`}</p>
 <h1>{projectTitlePrefix}<span class="project-title-final">{projectTitleFinal}<span class="project-title-dot">.</span></span></h1>
-{project.id!=='rocket-airbrake'&&<p>{subtitleHighlightIndex>=0&&p.highlightPhrase?<>{p.subtitle.slice(0,subtitleHighlightIndex)}<span class={`project-subtitle-highlight tone-${p.highlightTone??'blue'}`}>{p.highlightPhrase}</span>{p.subtitle.slice(subtitleHighlightIndex+p.highlightPhrase.length)}</>:p.subtitle}</p>}
+<p>{subtitleHighlightIndex>=0&&p.highlightPhrase?<>{p.subtitle.slice(0,subtitleHighlightIndex)}<span class={`project-subtitle-highlight tone-${p.highlightTone??'blue'}`}>{p.highlightPhrase}</span>{p.subtitle.slice(subtitleHighlightIndex+p.highlightPhrase.length)}</>:p.subtitle}</p>
 </header>
 {project.id==='rocket-airbrake'?<><RocketProjectIntro/><RocketInvolvement/></>:<>
 <div class="case-cover">
@@ -53,7 +53,6 @@ const mediaLabels={concept:'concept illustration',diagram:'functional diagram',p
 <p class="eyebrow">in this project</p>
 {project.id==='rocket-airbrake'?<>
 <a href="#real-vehicle">Project overview</a>
-<a href="#engineering-systems">Team engineering systems</a>
 <a href="#my-contribution">My contribution</a>
 <a href="#control-architecture">System architecture</a>
 <a href="#design-implementation">Design to implementation</a>

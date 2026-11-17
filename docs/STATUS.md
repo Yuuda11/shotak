@@ -317,3 +317,9 @@ Verification: `npm run check` and `npm run verify` passed with zero Astro diagno
 The rocket page now opens with the goal, approach and enlargeable assembly CAD, followed by eight team disciplines, three project statistics and five personal responsibilities. Architecture, team implementation, ground actuation, simulation, flight evidence, chronology, recognition, documents and lessons follow. Launch photographs accompany the flight comparison. The observed 4.6% difference is qualified at first mention. The final report identifies Shota’s electronics and software role and documents the PCB, sensor processing and servo interface. Byte-level handling is owner-supplied detail.
 
 Pre-edit checkpoint: e39d018. Verification passed with zero Astro diagnostics, 15 built pages and 263 checked links. Chrome checks at 1440, 768 and 390 pixels confirmed internal anchors, full-size image and PDF destinations, and no horizontal overflow.
+
+## Rocket scope and ownership map · 2026-11-17
+
+Restored the shared highlighted hero introduction. The compact overview now leads directly to the three statistics. A responsive HTML map groups four primary disciplines within the ten team disciplines and connects them to five responsibilities. Flight qualification remains in the architecture and flight evidence sections. Kalman filtering appears in the project poster. SPI, I²C, PWM and byte-level handling are owner-supplied specifics.
+
+Checkpoint a614064. Astro verification passed with 15 built pages and 263 checked local links. Local Chrome checks at 1440, 768 and 390 pixels confirmed responsive layout, section anchors and image and document destinations.
