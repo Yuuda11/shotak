@@ -6,9 +6,7 @@ import Icon from '../components/Icon.astro';
 import ProjectDocuments from '../components/ProjectDocuments.astro';
 import RocketSystemsOverview from '../components/RocketSystemsOverview.astro';
 import RocketControlArchitecture from '../components/RocketControlArchitecture.astro';
-import RocketTimeline from '../components/RocketTimeline.astro';
-import RocketFlightResults from '../components/RocketFlightResults.astro';
-import RocketRecognition from '../components/RocketRecognition.astro';
+import RocketDevelopmentFlight from '../components/RocketDevelopmentFlight.astro';
 import RocketInvolvement from '../components/RocketInvolvement.astro';
 import RocketProjectIntro from '../components/RocketProjectIntro.astro';
 import RocketActuationComparison from '../components/RocketActuationComparison.astro';
@@ -56,12 +54,11 @@ const mediaLabels={concept:'concept illustration',diagram:'functional diagram',p
 {project.id==='rocket-airbrake'?<>
 <a href="#real-vehicle">Project overview</a>
 <a href="#my-contribution">My contribution</a>
+<a href="#development-flight">Project development &amp; flight</a>
 <a href="#control-architecture">System architecture</a>
 <a href="#design-implementation">Design to implementation</a>
+<a href="#actuation">Ground actuation</a>
 <a href="#simulation">Simulation &amp; controls</a>
-<a href="#flight-results">Flight results</a>
-<a href="#development-timeline">Development timeline</a>
-<a href="#recognition">Recognition</a>
 <a href="#report-poster">Technical evidence</a>
 <a href="#lessons-learned">Lessons learned</a>
 </>:project.id==='face-tracking-laser-gimbal'?<>
@@ -80,7 +77,7 @@ const mediaLabels={concept:'concept illustration',diagram:'functional diagram',p
 </aside>
 <div class="prose">
 {project.id==='rocket-airbrake'&&<>
-<RocketControlArchitecture/><RocketSystemsOverview/><RocketActuationComparison/><RocketSimulation/><RocketFlightResults/><RocketTimeline/><RocketRecognition/>
+<RocketDevelopmentFlight/><RocketControlArchitecture/><RocketSystemsOverview/><RocketActuationComparison/><RocketSimulation/>
 </>}
 {project.id==='face-tracking-laser-gimbal'&&<GimbalProjectStory/>}
 {project.id==='autonomous-mini-pupper'&&<MiniPupperProjectStory/>}

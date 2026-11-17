@@ -24,3 +24,5 @@ If a new request conflicts with these decisions, follow the site owner’s expli
 The rocket introduction groups team scope into the owner's eight requested disciplines. Personal responsibility follows immediately, with team design and analysis evidence retained below the individual architecture section.
 
 The owner’s refined rocket layout supersedes the eight-discipline overview. The contribution map now shows ten team disciplines, highlights four primary responsibilities and describes the individual work alongside them.
+
+Rocket's development and flight evidence is presented as one editorial section before the technical implementation sections. The timeline remains complete, while its recognition milestone is summarized by the linked recognition row rather than a second standalone section.
