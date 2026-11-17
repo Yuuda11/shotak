@@ -1,14 +1,28 @@
 ---
-const tiers = [
-  {name:'HIGH',label:'Primary responsibility',tone:'high',areas:[{title:'Controls & Software',items:['Embedded C/C++','State estimation','Apogee prediction','MATLAB / Simulink','Flight logic']},{title:'Electronics & Avionics',items:['Teensy 4.1','PCB integration / design','Sensors','Data logging','Servo control']}]},
-  {name:'MEDIUM',label:'Supporting involvement',tone:'medium',areas:[{title:'Mechanical Design',items:['CAD','Mechanical integration']},{title:'Manufacturing',items:['Prototyping','Assembly','Hardware testing']}]},
-  {name:'LOW',label:'Team-level exposure',tone:'low',areas:[{title:'Propulsion & Aerodynamic Analysis',items:['Propulsion','CFD','FEA']}]},
+const areas = [
+  ['Electronics & PCB Design','Built the dedicated flight computer from the ground up, including electronic architecture, PCB design, and sensor integration.'],
+  ['Actuation & Control','Developed the software interface between the flight controller and the physical airbrake mechanism.'],
+  ['Feedback Control','Developed flight-state estimation, apogee prediction, and predictive feedback control in simulation.'],
+  ['Embedded Communication','Worked on sensor communication, byte-level data handling, and efficient real-time computation.'],
+  ['Flight & Controller Simulation','Developed flight dynamics and controller simulations using MATLAB and Simulink to evaluate system behavior.'],
 ];
 ---
-<section class="rocket-involvement" aria-labelledby="rocket-involvement-heading">
-  <h2 id="rocket-involvement-heading">My technical involvement</h2>
-  {tiers.map(tier=><div class={`rocket-involvement-tier tier-${tier.tone}`}>
-    <p class="rocket-involvement-level"><span>{tier.name}</span><small>{tier.label}</small></p>
-    <div class="rocket-involvement-areas">{tier.areas.map(area=><div class="rocket-involvement-area"><h3>{area.title}</h3><ul>{area.items.map(item=><li>{item}</li>)}</ul></div>)}</div>
-  </div>)}
+<section id="my-contribution" aria-labelledby="contribution-heading">
+  <p class="eyebrow">MY CONTRIBUTION</p>
+  <h2 id="contribution-heading">building the intelligence behind the rocket.</h2>
+  <p class="intro">I led the development of the airbrake flight computer, electronics, and embedded control software — connecting sensor data, flight prediction, and mechanical actuation into an integrated system.</p>
+  <ol>{areas.map(([title, detail], index) => <li><span aria-hidden="true">0{index+1}</span><h3>{title}</h3><p>{detail}</p></li>)}</ol>
 </section>
+<style>
+  section {border-top:1px solid var(--border);padding-block:var(--section-space)}
+  h2 {font-size:clamp(2rem,4.5vw,4rem);max-width:23ch}
+  .intro {max-width:74ch;margin:18px 0 32px}
+  ol {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;list-style:none;padding:0}
+  li {display:grid;grid-template-rows:subgrid;grid-row:span 3;gap:8px;padding:clamp(20px,3vw,34px);border-radius:var(--radius);background:var(--blue)}
+  li:nth-child(2){background:var(--sage)}li:nth-child(3){background:var(--lavender)}li:nth-child(4){background:var(--cream)}
+  li:last-child{grid-column:1/-1}
+  li span {font-size:.8rem;font-variant-numeric:tabular-nums;color:var(--muted)}
+  li h3 {font-size:clamp(1.2rem,2vw,1.6rem)}
+  li p {max-width:74ch}
+  @media(max-width:660px){ol {grid-template-columns:1fr}}
+</style>

@@ -20,3 +20,5 @@
 - **Undergraduate research case study.** Keep the fluid-mechanics/DSP/rheometry/gear-pump work as a separate project page from the Environmental Chamber Fellowship and any research award. Do not publish unprovided measurement data, fitted equations or parameters, concentration limits, or numerical fit metrics. Clearly label synthetic DSP examples as illustrative only; show measured research plots only from source records.
 
 If a new request conflicts with these decisions, follow the site owner’s explicit instruction and update this record. The unresolved rocket cover request is documented as incomplete rather than treated as an approved visual change.
+
+The rocket introduction groups team scope into the owner's eight requested disciplines. Personal responsibility follows immediately, with team design and analysis evidence retained below the individual architecture section.

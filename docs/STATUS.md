@@ -311,3 +311,9 @@ Added permanent UI/UX and alignment rules to the root `AGENTS.md`, with detailed
 Local browser screenshots were reviewed for the Mini Pupper mission and development timelines, both Gimbal mode flows/comparison, and the Rocket vertical timeline. The Rocket screenshot confirms the continuous axis, aligned date/event columns, milestone colors, and final award panel. The available browser session did not provide a reliable true 390px viewport capture, so mobile behavior was checked against the responsive CSS but not visually screenshot-verified at the requested sizes.
 
 Verification: `npm run check` and `npm run verify` passed with zero Astro diagnostics, 14 static pages, and 232 checked local asset/navigation links. `git diff --check` passed. No commit, push, or deployment was performed. A recoverable copy of the pre-edit state is at `/private/tmp/portfolio-process-design-checkpoint/`; the repository was already on `c3d037d` at task start, and this task remains uncommitted. Existing unrelated working-tree edits and the untracked personal statement PDF were preserved.
+
+## Rocket case study · 2026-11-17
+
+The rocket page now opens with the goal, approach and enlargeable assembly CAD, followed by eight team disciplines, three project statistics and five personal responsibilities. Architecture, team implementation, ground actuation, simulation, flight evidence, chronology, recognition, documents and lessons follow. Launch photographs accompany the flight comparison. The observed 4.6% difference is qualified at first mention. The final report identifies Shota’s electronics and software role and documents the PCB, sensor processing and servo interface. Byte-level handling is owner-supplied detail.
+
+Pre-edit checkpoint: e39d018. Verification passed with zero Astro diagnostics, 15 built pages and 263 checked links. Chrome checks at 1440, 768 and 390 pixels confirmed internal anchors, full-size image and PDF destinations, and no horizontal overflow.

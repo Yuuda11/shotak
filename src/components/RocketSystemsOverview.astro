@@ -1,33 +1,8 @@
 ---
 import TechnicalFigure from './TechnicalFigure.astro';
-import RocketInvolvement from './RocketInvolvement.astro';
-const systems = [
-  {name:'Design & CAD',tone:'blue',items:['Airframe CAD','Airbrake design','Mechanical integration']},
-  {name:'CFD & FEA',tone:'sage',items:['Aerodynamic modeling','Structural analysis','ANSYS Fluent · CFD']},
-  {name:'Propulsion',tone:'cream',items:['Solid-propellant system','Motor integration','Ground testing']},
-  {name:'Avionics',tone:'lavender',items:['Teensy 4.1','IMU + barometric sensors','PCB + power electronics']},
-  {name:'Controls & Software',tone:'blue',items:['MATLAB / Simulink','Flight simulation','State estimation + embedded logic']},
-  {name:'Recovery',tone:'sage',items:['Recovery avionics','Deployment systems','Ground + flight integration']},
-];
-const systemRows = Array.from({ length: Math.ceil(systems.length / 2) }, (_, row) => systems.slice(row * 2, row * 2 + 2));
 ---
-<section id="engineering-systems" class="rocket-section rocket-systems" aria-labelledby="rocket-systems-heading">
-  <div class="rocket-section-heading"><p class="eyebrow">TEAM SYSTEMS</p><h2 id="rocket-systems-heading">one rocket. six interconnected systems.</h2><p>Four-person capstone project · disciplines shown here represent the team's integrated work.</p></div>
-  <div class="rocket-systems-layout">
-  <div class="rocket-systems-grid" role="list" aria-label="Six team engineering systems">
-    {systemRows.map((row, rowIndex) => <div class="rocket-system-row" role="presentation">
-      {row.map((system, columnIndex) => {
-        const index = rowIndex * 2 + columnIndex;
-        return <article class={`rocket-system tone-${system.tone}`} role="listitem">
-          <span class="rocket-system-index">0{index + 1}</span><h3>{system.name}</h3><span class="rocket-system-underline" aria-hidden="true"></span>
-          <ul>{system.items.map(item=><li>{item}</li>)}</ul>
-        </article>;
-      })}
-    </div>)}
-  </div>
-  <RocketInvolvement/>
-  </div>
-  <div class="rocket-subsection-heading"><p class="eyebrow">DESIGN → IMPLEMENTATION</p><h3>from CAD to hardware.</h3><p>Project-level design and integration examples; this overview does not assign every discipline to one team member.</p></div>
+<section id="design-implementation" class="rocket-section rocket-systems" aria-labelledby="design-heading">
+  <div class="rocket-section-heading"><p class="eyebrow">DESIGN TO IMPLEMENTATION</p><h2 id="design-heading">from CAD to hardware.</h2><p>The team designed and built the airframe, propulsion and recovery systems. I supported mechanical integration, prototyping, assembly and hardware testing.</p></div>
   <div class="rocket-visual-pair rocket-design-reality">
     <TechnicalFigure src="/images/projects/rocket-airbrake/media/airbrake-coupler-cad.webp" alt="Transparent CAD rendering of the airbrake coupler and internal mechanism." caption="Airbrake assembly · CAD" width={374} height={665} className="rocket-portrait-evidence"/>
     <TechnicalFigure src="/images/projects/rocket-airbrake/media/airbrake-mechanism-workbench.webp" alt="Physical servo-actuated airbrake mechanism assembled on a workshop bench." caption="Physical airbrake mechanism · workbench" width={676} height={682}/>
