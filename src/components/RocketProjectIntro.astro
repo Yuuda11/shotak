@@ -11,22 +11,26 @@ import TechnicalFigure from './TechnicalFigure.astro';
   </div>
   <TechnicalFigure src="/images/projects/rocket-airbrake/assembly.webp" alt="CAD assembly of the rocket’s deployable airbrake mechanism" caption="Airbrake assembly · project CAD" width={537} height={481}/>
   </div>
-  <dl>
+  <slot/>
+  <dl class="stats">
     <div><dt>Rocket length</dt><dd>11.12 <small>ft</small></dd></div>
     <div><dt>Lower apogee with airbrakes deployed</dt><dd>4.6%</dd></div>
     <div><dt>Team members</dt><dd>4</dd></div>
   </dl>
 </section>
 <style>
-  section {border-top:1px solid var(--border)}
+  section {padding-block:var(--related-content-gap);border-top:1px solid var(--border)}
   .goal {display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:var(--process-intro-gap)}
+  .goal :global(.technical-figure-frame img) {max-height:clamp(200px,21vw,250px)}
   .section-heading {margin:0}
   h2 {max-width:19ch;margin-bottom:var(--related-content-gap)}
   .approach {max-width:36ch}
-  dl {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border-top:1px solid var(--border);margin-top:var(--related-content-gap);padding-top:24px}
-  dl div {display:flex;flex-direction:column-reverse;justify-content:end}
+  .stats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px;row-gap:0;padding-top:var(--related-content-gap)}
+  .stats div {display:grid;grid-template-rows:subgrid;grid-row:span 2;row-gap:0}
+  .stats dd {grid-row:1}
+  .stats dt {grid-row:2}
   dd {margin:0;font-size:clamp(1.65rem,4vw,3.25rem);letter-spacing:-.05em}
   dd small {font-size:.5em}
   dt {color:var(--muted);font-size:.875rem}
-  @media(max-width:660px){.goal {grid-template-columns:1fr}dl {gap:10px}}
+  @media(max-width:660px){.goal {grid-template-columns:1fr}.stats {column-gap:10px}}
 </style>

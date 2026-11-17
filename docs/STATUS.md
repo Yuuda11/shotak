@@ -323,3 +323,9 @@ Pre-edit checkpoint: e39d018. Verification passed with zero Astro diagnostics, 1
 Restored the shared highlighted hero introduction. The compact overview now leads directly to the three statistics. A responsive HTML map groups four primary disciplines within the ten team disciplines and connects them to five responsibilities. Flight qualification remains in the architecture and flight evidence sections. Kalman filtering appears in the project poster. SPI, I²C, PWM and byte-level handling are owner-supplied specifics.
 
 Checkpoint a614064. Astro verification passed with 15 built pages and 263 checked local links. Local Chrome checks at 1440, 768 and 390 pixels confirmed responsive layout, section anchors and image and document destinations.
+
+## Rocket opening metadata and discipline icons · 2026-11-17
+
+The shared project facts component now follows the smaller enlargeable CAD figure. It uses the rocket entry’s status, role, discipline and six tools. The three statistics share number and label baselines. Ten decorative line icons distinguish disciplines inside the existing contribution map.
+
+Checkpoint 9420bcb. Verification passed with 15 built pages and 263 checked links. Chrome checks at 1440, 768 and 390 pixels confirmed navigation targets, full-size image and document destinations, and no horizontal overflow.

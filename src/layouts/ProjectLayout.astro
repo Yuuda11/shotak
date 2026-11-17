@@ -36,7 +36,9 @@ const mediaLabels={concept:'concept illustration',diagram:'functional diagram',p
 <h1>{projectTitlePrefix}<span class="project-title-final">{projectTitleFinal}<span class="project-title-dot">.</span></span></h1>
 <p>{subtitleHighlightIndex>=0&&p.highlightPhrase?<>{p.subtitle.slice(0,subtitleHighlightIndex)}<span class={`project-subtitle-highlight tone-${p.highlightTone??'blue'}`}>{p.highlightPhrase}</span>{p.subtitle.slice(subtitleHighlightIndex+p.highlightPhrase.length)}</>:p.subtitle}</p>
 </header>
-{project.id==='rocket-airbrake'?<><RocketProjectIntro/><RocketInvolvement/></>:<>
+{project.id==='rocket-airbrake'?<><RocketProjectIntro>
+<ProjectFacts status={p.projectStatus} role={p.role} discipline={p.discipline??p.category} tools={p.tools}/>
+</RocketProjectIntro><RocketInvolvement/></>:<>
 <div class="case-cover">
 {project.id==='autonomous-mini-pupper'?<a class="case-cover-enlargement" href={url(p.cover)} target="_blank" rel="noopener noreferrer" aria-label="Open full-size Mini Pupper technical illustration">
 <img src={url(p.cover)} alt={p.coverAlt} width="1536" height="1024" fetchpriority="high"/>

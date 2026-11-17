@@ -1,6 +1,19 @@
 ---
-const teamDisciplines = ['Rocket Design', 'Propellant Manufacturing', 'Recovery', 'Mechanical CAD', 'Mechanical Manufacturing & Integration', 'CFD / FEA'];
-const primaryDisciplines = ['Electronics & PCB Design', 'Airbrake Avionics', 'Flight Controller', 'Flight & Controller Simulation'];
+import Icon from './Icon.astro';
+const teamDisciplines = [
+  { label: 'Rocket Design', icon: 'rocket' },
+  { label: 'Propellant Manufacturing', icon: 'flame' },
+  { label: 'Recovery', icon: 'shield' },
+  { label: 'Mechanical CAD', icon: 'cube' },
+  { label: 'Mechanical Manufacturing & Integration', icon: 'wrench' },
+  { label: 'CFD / FEA', icon: 'airflow' },
+];
+const primaryDisciplines = [
+  { label: 'Electronics & PCB Design', icon: 'circuit' },
+  { label: 'Airbrake Avionics', icon: 'chip' },
+  { label: 'Flight Controller', icon: 'sliders' },
+  { label: 'Flight & Controller Simulation', icon: 'chart' },
+];
 const responsibilities = [
   { title: 'Electronics & PCB Design', detail: 'Built the dedicated airbrake flight computer from the ground up, including electronic architecture, PCB design, and sensor integration.', skills: ['PCB Design', 'Electronics', 'Teensy 4.1', 'Sensors'] },
   { title: 'Actuation & Control', detail: 'Integrated the flight computer and embedded software with the physical airbrake actuation mechanism.', skills: ['C++', 'Embedded Systems', 'Servo Control', 'PWM'] },
@@ -18,10 +31,10 @@ const responsibilities = [
   <div class="map">
     <div id="engineering-systems">
       <h3 class="eyebrow">Overall project</h3>
-      <ul class="disciplines">{teamDisciplines.map(name => <li>{name}</li>)}</ul>
+      <ul class="disciplines">{teamDisciplines.map(({label, icon}) => <li><Icon name={icon}/>{label}</li>)}</ul>
       <div class="primary">
         <p class="eyebrow">Primary responsibility</p>
-        <ul class="disciplines">{primaryDisciplines.map(name => <li>{name}</li>)}</ul>
+        <ul class="disciplines">{primaryDisciplines.map(({label, icon}) => <li><Icon name={icon}/>{label}</li>)}</ul>
       </div>
     </div>
     <div class="responsibilities">
@@ -40,7 +53,9 @@ const responsibilities = [
   .map {--gutter:clamp(44px,6vw,84px);--wire:#a9b9c8;display:grid;grid-template-columns:minmax(0,37fr) minmax(0,63fr);gap:var(--gutter);margin-top:var(--process-intro-gap)}
   .map ul,.map ol {padding:0;margin:0;list-style:none}
   .disciplines {display:grid;grid-auto-rows:1fr;gap:6px}
-  .disciplines li {display:flex;align-items:center;padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:.9rem}
+  .disciplines li {display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:.9rem}
+  .disciplines :global(svg) {width:17px;height:17px;flex:none;color:var(--muted)}
+  .primary :global(svg) {color:var(--accent)}
   .primary {position:relative;margin-top:12px;padding:12px;border:1px dashed var(--wire);border-radius:9px}
   .primary .eyebrow {margin-bottom:8px}
   .primary li {background:var(--blue);border-color:var(--project-marker-blue)}
