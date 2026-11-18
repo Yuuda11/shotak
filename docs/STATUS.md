@@ -337,3 +337,9 @@ Integrated observed flight comparison, launch evidence, the complete development
 Checkpoint 3d26217. `npm run verify` passed with zero Astro diagnostics, 15 built pages, and 263 checked local asset and navigation links. Chrome checks at 1440, 768, and 390 pixels confirmed the updated section navigation, external and local recognition links, image enlargement, document destinations, and no horizontal overflow.
 
 The May 2026 recognition milestone again uses the warm ivory, bordered award panel while retaining its date, dot, and timeline connector.
+
+## Rocket system architecture · 2026-11-17
+
+The system architecture section now leads with the custom flight computer, its sensing and electronics features, and a four-stage visual control loop. Simulation and flight evidence appear as compact validation rows with the documented limitation retained below them.
+
+Checkpoint 6644ccd. `npm run verify` passed with zero Astro diagnostics, 15 built pages, and 263 checked local asset and navigation links. Chrome checks at 1440, 768, and 390 pixels confirmed the hardware figure, control-flow connectors, simulated feedback loop, section navigation, media destinations, and no horizontal overflow.

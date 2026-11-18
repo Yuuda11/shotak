@@ -1,23 +1,55 @@
 ---
 import TechnicalFigure from './TechnicalFigure.astro';
-import ProcessFlow from './ProcessFlow.astro';
-const stages = [
-  {title:'Sense',detail:'IMU + barometric measurements'},
-  {title:'Estimate',detail:'Flight state + apogee prediction'},
-  {title:'Decide',detail:'Required deployment command'},
-  {title:'Actuate',detail:'Servo control + airbrake extension'},
+import Icon from './Icon.astro';
+const hardwareFeatures = [
+  {icon:'chip', text:'Teensy 4.1 microcontroller'},
+  {icon:'activity', text:'IMUs & barometric sensors'},
+  {icon:'circuit', text:'Custom PCB & electronics'},
 ];
-const signalPath = ['IMU + barometers','Teensy 4.1 / PCB','State estimation','Apogee prediction','Drag / deployment command','Servo actuation','Airbrake extension'];
+const stages = [
+  {number:'01', title:'Sense', details:['IMU + barometers', 'Sensor acquisition'], tone:'blue'},
+  {number:'02', title:'Estimate', details:['State estimation', 'Apogee prediction'], tone:'sage'},
+  {number:'03', title:'Decide', details:['Flight controller', 'Deployment command'], tone:'lavender'},
+  {number:'04', title:'Actuate', details:['Servo control', 'Airbrake extension'], tone:'cream'},
+];
 ---
 <section id="control-architecture" class="rocket-section rocket-control" aria-labelledby="rocket-control-heading">
-  <div class="rocket-section-heading"><p class="eyebrow">SYSTEM ARCHITECTURE</p><h2 id="rocket-control-heading">from sensor data to airbrake actuation.</h2></div>
-  <div class="rocket-contribution-grid">
-    <TechnicalFigure src="/images/projects/rocket-airbrake/media/flight-computer-pcb-cad.webp" alt="CAD rendering of the custom flight-computer PCB with microcontroller and electronic modules." caption="Custom flight-computer PCB · Teensy 4.1 and sensor integration" width={917} height={536} className="rocket-pcb-evidence"/>
-    <ProcessFlow steps={stages} label="Four phases of the airbrake control architecture" columns={1} className="rocket-control-flow" />
+  <div class="rocket-section-heading"><p class="eyebrow">SYSTEM ARCHITECTURE</p><h2 id="rocket-control-heading">from sensor data to <span class="architecture-highlight">airbrake actuation.</span></h2></div>
+  <div class="hardware-showcase">
+    <TechnicalFigure src="/images/projects/rocket-airbrake/media/flight-computer-pcb-cad.webp" alt="CAD rendering of the custom flight-computer PCB with microcontroller and electronic modules." caption="Custom flight-computer PCB · Teensy 4.1 and sensor integration" width={917} height={536} className="hardware-figure"/>
+    <div class="hardware-copy">
+      <p class="eyebrow">CUSTOM HARDWARE</p>
+      <h3>a dedicated flight computer.</h3>
+      <p>Designed from the ground up to integrate sensing, onboard computation, and airbrake actuation.</p>
+      <ul>{hardwareFeatures.map(feature => <li><Icon name={feature.icon}/><span>{feature.text}</span></li>)}</ul>
+    </div>
   </div>
-  <details class="rocket-signal-detail"><summary>View the seven-stage signal path</summary><ol>{signalPath.map(stage=><li>{stage}</li>)}</ol></details>
-  <div class="rocket-evidence-split">
-    <div class="rocket-evidence simulation"><span>SIMULATION</span><p>Predictive feedback control developed and tested in simulation.</p></div>
-    <div class="rocket-evidence flight"><span>FLIGHT</span><p>Full airbrake deployment demonstrated; closed-loop altitude targeting was not validated in flight.</p></div>
+
+  <div class="control-system">
+    <p class="eyebrow">CONTROL SYSTEM</p>
+    <ol aria-label="Airbrake control system stages">
+      {stages.map(stage => <li class={`tone-${stage.tone}`}>
+        <span class="control-number">{stage.number}</span><h3>{stage.title}</h3>
+        <p>{stage.details[0]}<br/>{stage.details[1]}</p>
+      </li>)}
+    </ol>
+    <div class="feedback-loop" aria-hidden="true"><span>feedback loop · simulated</span></div>
   </div>
+
+  <div class="architecture-validation">
+    <div><Icon name="monitor"/><p><strong>SIMULATION</strong>Predictive feedback control developed and tested.</p></div>
+    <div><Icon name="rocket"/><p><strong>FLIGHT</strong>Full airbrake deployment demonstrated.</p></div>
+  </div>
+  <p class="architecture-note">Closed-loop altitude targeting was not validated in flight.</p>
 </section>
+
+<style>
+  .architecture-highlight { background-image:linear-gradient(to top,var(--project-marker-blue) 0 32%,transparent 32%); background-repeat:no-repeat; }
+  .hardware-showcase { display:grid; grid-template-columns:minmax(0,1.12fr) minmax(250px,.88fr); align-items:center; gap:clamp(28px,5vw,62px); margin-top:var(--process-intro-gap); }
+  .hardware-figure :global(.technical-figure-frame) { min-height:0; padding:clamp(12px,1.6vw,18px); }.hardware-figure :global(.technical-figure-frame img) { max-height:260px; }.hardware-copy .eyebrow { margin-bottom:10px; }.hardware-copy h3 { margin:0; font-size:clamp(22px,2.6vw,31px); }.hardware-copy>p:not(.eyebrow) { margin:12px 0 20px; color:var(--muted); font-size:14px; line-height:1.65; }.hardware-copy ul { margin:0; padding:0; list-style:none; border-top:1px solid var(--border); }.hardware-copy li { display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); color:#4e574f; font-size:12px; }.hardware-copy :global(svg) { width:17px; height:17px; color:#68829d; }
+  .control-system { margin-top:var(--process-heading-gap); padding-top:var(--related-content-gap); border-top:1px solid var(--border); }.control-system>.eyebrow { margin-bottom:var(--related-content-gap); }.control-system ol { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin:0; padding:0; list-style:none; }.control-system li { position:relative; min-height:148px; padding:16px; border-radius:10px; }.control-system li:not(:last-child)::after { position:absolute; z-index:1; top:50%; left:calc(100% + 2px); width:12px; border-top:1px solid #a7b4b2; content:''; }.control-system li:not(:last-child)::before { position:absolute; z-index:1; top:calc(50% - 3px); left:calc(100% + 10px); border-width:3px 0 3px 5px; border-style:solid; border-color:transparent transparent transparent #a7b4b2; content:''; }.control-system .tone-blue { background:var(--blue); }.control-system .tone-sage { background:var(--sage); }.control-system .tone-lavender { background:var(--lavender); }.control-system .tone-cream { background:var(--cream); }.control-number { color:#667f9a; font-size:10px; font-variant-numeric:tabular-nums; letter-spacing:.08em; }.control-system h3 { margin:18px 0 6px; font-size:18px; }.control-system li p { margin:0; color:#586159; font-size:11px; line-height:1.6; }
+  .feedback-loop { position:relative; height:36px; margin:10px 12.5% 0; border-inline:1px dashed #9caebd; border-bottom:1px dashed #9caebd; border-radius:0 0 10px 10px; }.feedback-loop::before { position:absolute; top:-4px; left:-4px; border-width:4px 5px 4px 0; border-style:solid; border-color:transparent #9caebd transparent transparent; content:''; }.feedback-loop span { position:absolute; right:8px; bottom:7px; color:#718392; font-size:9px; letter-spacing:.04em; }
+  .architecture-validation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; margin-top:var(--process-outro-gap); padding-top:18px; border-top:1px solid var(--border); }.architecture-validation>div { display:flex; align-items:flex-start; gap:10px; }.architecture-validation :global(svg) { width:18px; height:18px; flex:none; color:#667f9a; }.architecture-validation p { margin:0; color:#555b55; font-size:12px; line-height:1.55; }.architecture-validation strong { display:block; margin-bottom:3px; color:#61707b; font-size:9px; font-weight:600; letter-spacing:.1em; }.architecture-note { margin:12px 0 0; color:var(--muted); font-size:11px; line-height:1.55; }
+  @media(max-width:700px) { .hardware-showcase { grid-template-columns:1fr; }.hardware-figure { max-width:560px; }.control-system ol { grid-template-columns:1fr; gap:8px; }.control-system li { min-height:0; }.control-system li:not(:last-child)::after { top:calc(100% + 4px); left:27px; width:0; height:8px; border-top:0; border-left:1px solid #a7b4b2; }.control-system li:not(:last-child)::before { top:calc(100% + 10px); left:24px; border-width:5px 3px 0; border-color:#a7b4b2 transparent transparent; }.control-system h3 { margin-top:10px; }.feedback-loop { height:25px; margin:10px 28px 0; }.feedback-loop span { right:7px; bottom:5px; }.architecture-validation { gap:16px; } }
+  @media(max-width:440px) { .architecture-validation { grid-template-columns:1fr; gap:13px; } }
+</style>
